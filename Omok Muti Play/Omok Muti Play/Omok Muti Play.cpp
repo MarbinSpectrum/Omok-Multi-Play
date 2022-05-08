@@ -1,7 +1,4 @@
-﻿// Omok Muti Play.cpp : 애플리케이션에 대한 진입점을 정의합니다.
-//
-
-#include "framework.h"
+﻿#include "framework.h"
 #include "Omok Muti Play.h"
 
 #define MAX_LOADSTRING 100
@@ -17,10 +14,10 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance,			// 프로그램의 핸들 인스턴스
+                     _In_opt_ HINSTANCE hPrevInstance,	// 이전에 실행 된 핸들 인스턴스(사용 안함)
+                     _In_ LPWSTR    lpCmdLine,			// 명령행으로 입력 된 프로그램 인수
+                     _In_ int       nCmdShow)			// 프로그램이 시작 될 때 형태 (최소화, 보통 등의 상태값)
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
@@ -28,23 +25,27 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     // TODO: 여기에 코드를 입력합니다.
 
     // 전역 문자열을 초기화합니다.
-    LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+    //LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_OMOKMUTIPLAY, szWindowClass, MAX_LOADSTRING);
+
+    // 창 클래스 등록
     MyRegisterClass(hInstance);
 
-    // 애플리케이션 초기화를 수행합니다:
+    // 응용 프로그램 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
     {
         return FALSE;
     }
 
+    // 엑셀러레이터(단축키) 테이블을 읽어드린다.
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_OMOKMUTIPLAY));
 
     MSG msg;
 
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+     while (GetMessage(&msg, nullptr, 0, 0))
     {
+         // 키보드 메시지를 WM_COMMAND 로 변경해서 엑셀러레이터가 동작 할 수 있도록 해주는 함수
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
             TranslateMessage(&msg);
@@ -63,23 +64,23 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
-    WNDCLASSEXW wcex;
+    WNDCLASSEXW wcex;		// WNDCLASS : 윈도우의 정보를 저장하기 위한 구조체
 
-    wcex.cbSize = sizeof(WNDCLASSEX);
+    wcex.cbSize = sizeof(WNDCLASSEX);											// 구조체의 크기 정보
 
-    wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
-    wcex.cbClsExtra     = 0;
-    wcex.cbWndExtra     = 0;
-    wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_OMOKMUTIPLAY));
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_OMOKMUTIPLAY);
-    wcex.lpszClassName  = szWindowClass;
-    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+    wcex.style = CS_HREDRAW | CS_VREDRAW;										// 윈도우 스타일
+    wcex.lpfnWndProc = WndProc;												    // 윈도우 프로시져 (메시지 처리 함수)
+    wcex.cbClsExtra = 0;														// 클래스 여분의 메모리
+    wcex.cbWndExtra = 0;														// 윈도우 여분의 메모리
+    wcex.hInstance = hInstance;													// 인스턴스
+    wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_OMOKMUTIPLAY));	    // 아이콘
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);								// 커서
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);							// 백그라운드
+    wcex.lpszMenuName = MAKEINTRESOURCEW(IDI_SMALL);						    // 메뉴 이름 (NULL 메뉴 없앰)
+    wcex.lpszClassName = szWindowClass;											// 클래스 이름
+    wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));		// 작은 아이콘
 
-    return RegisterClassExW(&wcex);
+    return RegisterClassExW(&wcex);	                                            // 윈도우 클래스 등록
 }
 
 //
@@ -96,8 +97,27 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+   // 화면 해상도 얻기
+   int nResolutionX = GetSystemMetrics(SM_CXSCREEN);
+   int nResolutionY = GetSystemMetrics(SM_CYSCREEN);
+
+   // 창 화면 중앙 위치 계산
+   int nWinPosX = nResolutionX / 2 - WINSIZEX / 2;
+   int nWinPosY = nResolutionY / 2 - WINSIZEY / 2;
+
+   HWND hWnd = CreateWindowW(
+       szWindowClass,			// 윈도우 클래스 이름
+       szTitle,					// 타이틀바에 띠울 이름
+       WS_OVERLAPPEDWINDOW,		// 윈도우 스타일
+       nWinPosX,				// 윈도우 화면 좌표 x
+       nWinPosY,				// 윈도우 화면 좌표 y
+       WINSIZEX,				// 윈도우 가로 사이즈
+       WINSIZEY,				// 윈도우 세로 사이즈
+       nullptr,					// 부모 윈도우
+       nullptr,					// 메뉴 핸들
+       hInstance,				// 인스턴스 지정
+       nullptr					// 자식 윈도우를 생성하면 지정 그렇지 않으면 NULL
+   );
 
    if (!hWnd)
    {

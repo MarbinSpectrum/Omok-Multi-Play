@@ -13,3 +13,6 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+
+#define WINSIZEX 640
+#define WINSIZEY 640
