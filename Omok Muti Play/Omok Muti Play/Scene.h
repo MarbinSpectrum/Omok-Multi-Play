@@ -2,23 +2,21 @@
 
 #include<string>
 
-using namespace std;
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /// : æ¿ ∫£¿ÃΩ∫
 ////////////////////////////////////////////////////////////////////////////////////////////////
 class Scene
 {
 public:
-	Scene(string name);
+	Scene(std::string name);
 	virtual ~Scene();
 
 private:
-	virtual void	Render() = 0;
+	virtual void Render();
 
 public:
-	string			GetSceneName();
+	std::string	 GetSceneName();
 
 private:
-	string			sceneName;
+	std::string	 sceneName;
 };

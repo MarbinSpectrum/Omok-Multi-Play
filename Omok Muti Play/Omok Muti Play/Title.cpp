@@ -1,6 +1,7 @@
 #include "Title.h"
 
-Title::Title(string name) : Scene(name)
+Title::Title(std::string name) 
+: Scene(name)
 {
 	//»ý¼ºÀÚ
 }

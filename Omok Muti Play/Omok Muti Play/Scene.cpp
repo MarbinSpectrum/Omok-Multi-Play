@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-Scene::Scene(string name) : sceneName(name)
+Scene::Scene(std::string name) : sceneName(name)
 {
 	//생성자
 }
@@ -13,7 +13,7 @@ Scene::~Scene()
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /// : 씬이름을 가져온다.
 ////////////////////////////////////////////////////////////////////////////////////////////////
-string Scene::GetSceneName()
+std::string Scene::GetSceneName()
 {
 	return sceneName;
 }
@@ -25,3 +25,5 @@ void Scene::Render()
 {
 
 }
+
+

@@ -2,10 +2,10 @@
 
 #include "Scene.h"
 
-class Title : Scene
+class Title : public Scene
 {
 public:
-	Title(string name);
+	Title(std::string name);
 	virtual ~Title();
 
 private:
