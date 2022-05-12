@@ -2,6 +2,7 @@
 
 SceneMgr::SceneMgr() 
 : sceneMap(new SceneMap)
+, nowScene(NULL)
 {
 	//생성자
 }
@@ -40,6 +41,8 @@ SceneMgr& SceneMgr::Instance()
 	{
 		//싱글톤 객체를 추가
 		instance = new SceneMgr();
+
+		instance->Init();
 	}
 	return *instance;
 }
@@ -50,12 +53,51 @@ SceneMgr& SceneMgr::Instance()
 void SceneMgr::Init()
 {
 	AddScene(SCENE(Title, "Title"));
+	
+	nowScene = GetScene("Title");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-/// : 씬추가
+/// : 씬 추가
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void SceneMgr::AddScene(std::string sceneName, Scene* scene)
 {
 	sceneMap->insert({ sceneName, scene });
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 씬 가져오기
+////////////////////////////////////////////////////////////////////////////////////////////////
+Scene* SceneMgr::GetScene(std::string sceneName)
+{
+	if (sceneMap == NULL)
+	{
+		return NULL;
+	}
+
+	SceneMap m_sceneMap = (*sceneMap);
+
+	SceneMap::iterator iter = m_sceneMap.find(sceneName);
+	if (iter == m_sceneMap.end())
+	{
+		//해당 이름의 씬이 없을때
+		return NULL;
+	}
+
+	Scene* m_scene = iter->second;
+	if (m_scene == NULL)
+	{
+		//씬이 없을때
+		return NULL;
+	}
+
+	return m_scene;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 현재 가져오기
+////////////////////////////////////////////////////////////////////////////////////////////////
+Scene* SceneMgr::GetNowScene()
+{
+	return nowScene;
 }

@@ -106,17 +106,17 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    int nWinPosY = nResolutionY / 2 - WINSIZEY / 2;
 
    HWND hWnd = CreateWindowW(
-       szWindowClass,			// 윈도우 클래스 이름
-       szTitle,					// 타이틀바에 띠울 이름
-       WS_OVERLAPPEDWINDOW,		// 윈도우 스타일
-       nWinPosX,				// 윈도우 화면 좌표 x
-       nWinPosY,				// 윈도우 화면 좌표 y
-       WINSIZEX,				// 윈도우 가로 사이즈
-       WINSIZEY,				// 윈도우 세로 사이즈
-       nullptr,					// 부모 윈도우
-       nullptr,					// 메뉴 핸들
-       hInstance,				// 인스턴스 지정
-       nullptr					// 자식 윈도우를 생성하면 지정 그렇지 않으면 NULL
+       szWindowClass,			        // 윈도우 클래스 이름
+       szTitle,					        // 타이틀바에 띠울 이름
+       WS_OVERLAPPED | WS_SYSMENU,		// 윈도우 스타일
+       nWinPosX,				        // 윈도우 화면 좌표 x
+       nWinPosY,				        // 윈도우 화면 좌표 y
+       WINSIZEX,				        // 윈도우 가로 사이즈
+       WINSIZEY,				        // 윈도우 세로 사이즈
+       nullptr,					        // 부모 윈도우
+       nullptr,					        // 메뉴 핸들
+       hInstance,				        // 인스턴스 지정
+       nullptr					        // 자식 윈도우를 생성하면 지정 그렇지 않으면 NULL
    );
 
    if (!hWnd)
@@ -162,12 +162,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
-            EndPaint(hWnd, &ps);
-        }
+        SCENE_MGR.GetNowScene()->Render(hWnd, message, wParam, lParam);     
         break;
     case WM_DESTROY:
         PostQuitMessage(0);

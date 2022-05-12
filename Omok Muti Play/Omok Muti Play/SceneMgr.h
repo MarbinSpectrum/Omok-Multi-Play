@@ -26,8 +26,11 @@ public:
 public:
 	virtual void	Init() override;
 	void			AddScene(std::string sceneName, Scene* scene);
+	Scene*			GetScene(std::string sceneName);
+	Scene*			GetNowScene();
 
 private:
+	Scene*			nowScene;
 	SceneMap*		sceneMap;
 };
 

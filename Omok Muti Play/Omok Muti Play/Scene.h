@@ -1,6 +1,7 @@
 #pragma once
 
-#include<string>
+#include <windows.h>
+#include <string>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /// : æ¿ ∫£¿ÃΩ∫
@@ -11,10 +12,8 @@ public:
 	Scene(std::string name);
 	virtual ~Scene();
 
-private:
-	virtual void Render();
-
 public:
+	virtual void Render(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
 	std::string	 GetSceneName();
 
 private:
