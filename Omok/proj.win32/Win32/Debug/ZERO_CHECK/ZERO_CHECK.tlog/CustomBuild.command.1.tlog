@@ -1,0 +1,10 @@
+^D:\PROGRAM FILES\GIT\OMOK MULTI PLAY\OMOK\PROJ.WIN32\CMAKEFILES\A224302BA81F6695B1D114936B0668D7\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/Program Files/Git/Omok Multi Play/Omok" "-BD:/Program Files/Git/Omok Multi Play/Omok/proj.win32" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "D:/Program Files/Git/Omok Multi Play/Omok/proj.win32/Omok.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

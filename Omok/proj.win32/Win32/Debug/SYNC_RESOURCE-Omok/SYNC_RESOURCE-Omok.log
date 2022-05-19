@@ -1,0 +1,9 @@
+﻿  Copying resources for Omok ...
+  Building Custom Rule D:/Program Files/Git/Omok Multi Play/Omok/CMakeLists.txt
+      copying to D:/Program Files/Git/Omok Multi Play/Omok/proj.win32/bin/Omok/Debug/Resources
+    Create D:/Program Files/Git/Omok Multi Play/Omok/proj.win32/bin/Omok/Debug/Resources\fonts\Marker Felt.ttf
+    Create D:/Program Files/Git/Omok Multi Play/Omok/proj.win32/bin/Omok/Debug/Resources\HelloWorld.png
+    Create D:/Program Files/Git/Omok Multi Play/Omok/proj.win32/bin/Omok/Debug/Resources\res\.gitkeep
+    ...
+    0 items updated, 6 items created 
+    takes 0.0390000343323 seconds

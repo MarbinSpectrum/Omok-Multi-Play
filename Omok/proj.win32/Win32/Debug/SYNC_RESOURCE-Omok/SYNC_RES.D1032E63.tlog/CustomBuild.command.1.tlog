@@ -1,0 +1,20 @@
+^D:\PROGRAM FILES\GIT\OMOK MULTI PLAY\OMOK\PROJ.WIN32\CMAKEFILES\A224302BA81F6695B1D114936B0668D7\SYNC_RESOURCE-OMOK.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "Copying resources for Omok ..."
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\PROGRAM FILES\GIT\OMOK MULTI PLAY\OMOK\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/Program Files/Git/Omok Multi Play/Omok" "-BD:/Program Files/Git/Omok Multi Play/Omok/proj.win32" --check-stamp-file "D:/Program Files/Git/Omok Multi Play/Omok/proj.win32/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

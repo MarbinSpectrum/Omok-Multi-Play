@@ -53,60 +53,60 @@ $RECYCLE.BIN/
 
 # proj.android
 bin/
-proj.android/assets/
-proj.android/bin/
-proj.android/gen/
-proj.android/libs/
-proj.android/local.properties
-proj.android/obj/
-cocos2d/cocos/platform/android/java/bin/
-cocos2d/cocos/platform/android/java/gen/
-cocos2d/cocos/platform/android/java/local.properties
-cocos2d/cocos/platform/android/java/res/
+Omok/proj.android/assets/
+Omok/proj.android/bin/
+Omok/proj.android/gen/
+Omok/proj.android/libs/
+Omok/proj.android/local.properties
+Omok/proj.android/obj/
+Omok/cocos2d/cocos/platform/android/java/bin/
+Omok/cocos2d/cocos/platform/android/java/gen/
+Omok/cocos2d/cocos/platform/android/java/local.properties
+Omok/cocos2d/cocos/platform/android/java/res/
 .metadata/
 .recommenders/
 
 # proj.android-studio
 *.iml
-proj.android/app/assets/
-proj.android/app/obj/
-proj.android/app/libs/armeabi/
+Omok/proj.android/app/assets/
+Omok/proj.android/app/obj/
+Omok/proj.android/app/libs/armeabi/
 #proj.android-studio/app/gradle.properties
-proj.android/app/.cxx/ndk_locator_record.json
-proj.android/app/local.properties
-proj.android/*/build/
-cocos2d/cocos/platform/android/libcocos2dx/build/
+Omok/proj.android/app/.cxx/ndk_locator_record.json
+Omok/proj.android/app/local.properties
+Omok/proj.android/*/build/
+Omok/cocos2d/cocos/platform/android/libcocos2dx/build/
 
 # proj.ios_mac
-cocos2d/build/build/
-cocos2d/build/cocos2d_libs.xcodeproj/xcuserdata/
-proj.ios_mac/build/
-proj.ios_mac/*.xcodeproj/project.xcworkspace
-proj.ios_mac/*.xcodeproj/xcuserdata/
+Omok/cocos2d/build/build/
+Omok/cocos2d/build/cocos2d_libs.xcodeproj/xcuserdata/
+Omok/proj.ios_mac/build/
+Omok/proj.ios_mac/*.xcodeproj/project.xcworkspace
+Omok/proj.ios_mac/*.xcodeproj/xcuserdata/
 !*.pch
 .cxx
 
 # proj.linux
 
 # proj.win32
-cocos2d/cocos/2d/Debug.*/
-cocos2d/cocos/editor-support/spine/proj.win32/Debug.*/
-cocos2d/external/Box2D/proj.win32/Debug.*/
-cocos2d/external/bullet/proj.win32/Debug.*/
-cocos2d/external/recast/proj.win32/Debug.*/
-cocos2d/cocos/2d/Release.*/
-cocos2d/cocos/editor-support/spine/proj.win32/Release.*/
-cocos2d/external/Box2D/proj.win32/Release.*/
-cocos2d/external/bullet/proj.win32/Release.*/
-cocos2d/external/recast/proj.win32/Release.*/
-proj.win32/*.sdf
-proj.win32/*.opensdf
-proj.win32/Debug.*/
-proj.win32/Release.*/
-proj.win32/.vs/
-proj.win32/engine/
+Omok/cocos2d/cocos/2d/Debug.*/
+Omok/cocos2d/cocos/editor-support/spine/proj.win32/Debug.*/
+Omok/cocos2d/external/Box2D/proj.win32/Debug.*/
+Omok/cocos2d/external/bullet/proj.win32/Debug.*/
+Omok/cocos2d/external/recast/proj.win32/Debug.*/
+Omok/cocos2d/cocos/2d/Release.*/
+Omok/cocos2d/cocos/editor-support/spine/proj.win32/Release.*/
+Omok/cocos2d/external/Box2D/proj.win32/Release.*/
+Omok/cocos2d/external/bullet/proj.win32/Release.*/
+Omok/cocos2d/external/recast/proj.win32/Release.*/
+Omok/proj.win32/*.sdf
+Omok/proj.win32/*.opensdf
+Omok/proj.win32/Debug.*/
+Omok/proj.win32/Release.*/
+Omok/proj.win32/.vs/
+Omok/proj.win32/engine/
 
-win32-build/
+Omok/win32-build/
 
 # proj.win8.1-universal
 
