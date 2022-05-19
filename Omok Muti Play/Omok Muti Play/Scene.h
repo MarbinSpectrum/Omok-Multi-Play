@@ -1,5 +1,6 @@
 #pragma once
 
+#include "resource.h"
 #include <windows.h>
 #include <string>
 
@@ -13,7 +14,9 @@ public:
 	virtual ~Scene();
 
 public:
-	virtual void Render(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
+	virtual void Create(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam, HINSTANCE hInst);
+	virtual void Command(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam, HINSTANCE hInst);
+	virtual void Render(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam, HINSTANCE hInst);
 	std::string	 GetSceneName();
 
 private:
