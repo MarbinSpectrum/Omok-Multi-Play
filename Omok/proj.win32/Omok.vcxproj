@@ -115,7 +115,8 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>												</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "D:/Program Files/Git/Omok Multi Play/Omok/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll" "D:/Program Files/Git/Omok Multi Play/Omok/proj.win32/bin/Omok/Debug/libssl-1_1.dll"
 if %errorlevel% neq 0 goto :cmEnd
@@ -279,7 +280,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>												</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "D:/Program Files/Git/Omok Multi Play/Omok/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll" "D:/Program Files/Git/Omok Multi Play/Omok/proj.win32/bin/Omok/Release/libssl-1_1.dll"
 if %errorlevel% neq 0 goto :cmEnd
@@ -443,7 +445,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>												</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "D:/Program Files/Git/Omok Multi Play/Omok/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll" "D:/Program Files/Git/Omok Multi Play/Omok/proj.win32/bin/Omok/MinSizeRel/libssl-1_1.dll"
 if %errorlevel% neq 0 goto :cmEnd
@@ -606,7 +609,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>												</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "D:/Program Files/Git/Omok Multi Play/Omok/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll" "D:/Program Files/Git/Omok Multi Play/Omok/proj.win32/bin/Omok/RelWithDebInfo/libssl-1_1.dll"
 if %errorlevel% neq 0 goto :cmEnd
@@ -797,12 +801,17 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.h" />
-    <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\framework.h" />
+    <ClInclude Include="..\Classes\Manager\BaseMgr.h" />
+    <ClInclude Include="..\Classes\Manager\SceneMgr\SceneMgr.h" />
+    <ClInclude Include="..\Classes\Scene\Title\Title.h" />
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.h" />
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\resource.h" />
-    <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.cpp" />
-    <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\Manager\BaseMgr.cpp" />
+    <ClCompile Include="..\Classes\Manager\SceneMgr\SceneMgr.cpp" />
+    <ClCompile Include="..\Classes\Scene\Title\Title.cpp" />
     <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp" />
     <ResourceCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\game.rc" />
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Resources\CloseNormal.png" />
@@ -874,6 +883,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{6D94E934-0D6D-3428-93C3-3C35A0CBA9DE}</Project>
       <Name>external</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\res\OK_Normal.png" />
+    <Image Include="..\Resources\res\OK_Selected.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

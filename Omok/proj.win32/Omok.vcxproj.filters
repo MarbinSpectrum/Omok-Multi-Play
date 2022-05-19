@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.cpp">
-      <Filter>Source Files\Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\HelloWorldScene.cpp">
-      <Filter>Source Files\Classes</Filter>
-    </ClCompile>
     <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
     <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\precheader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\SceneMgr\SceneMgr.cpp">
+      <Filter>Source Files\Classes\Manager\SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\BaseMgr.cpp">
+      <Filter>Source Files\Classes\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\Title\Title.cpp">
+      <Filter>Source Files\Classes\Scene\Title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.h">
-      <Filter>Source Files\Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\HelloWorldScene.h">
-      <Filter>Source Files\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.h">
       <Filter>Source Files\proj.win32</Filter>
     </ClInclude>
@@ -44,6 +44,21 @@
     </ClInclude>
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Resources\res\.gitkeep">
       <Filter>Resources\res</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\framework.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\SceneMgr\SceneMgr.h">
+      <Filter>Source Files\Classes\Manager\SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\BaseMgr.h">
+      <Filter>Source Files\Classes\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\Title\Title.h">
+      <Filter>Source Files\Classes\Scene\Title</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -73,5 +88,25 @@
     <Filter Include="Source Files\proj.win32">
       <UniqueIdentifier>{6FECBA23-33BC-320A-B783-EA9EC307A4CC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Classes\Manager">
+      <UniqueIdentifier>{c24a29be-abf2-4bbb-b752-f8ac0b6050af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Scene">
+      <UniqueIdentifier>{c779e0fa-67af-48d6-a50e-cb2a1440e9de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Manager\SceneMgr">
+      <UniqueIdentifier>{061c0def-a38c-4448-8e64-f3f4e9812326}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Scene\Title">
+      <UniqueIdentifier>{21c49277-483d-403f-804c-e10091cdd108}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\res\OK_Normal.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\OK_Selected.png">
+      <Filter>Resources\res</Filter>
+    </Image>
   </ItemGroup>
 </Project>
