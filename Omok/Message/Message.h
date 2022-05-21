@@ -1,0 +1,29 @@
+#pragma once
+
+#include <queue>
+#include <string>
+
+enum class MessageType
+{
+	LOBBY_ENTER_REQUEST = 100,
+	LOBBY_ENTER_REPLY	= 101,
+};
+
+class Message
+{
+	typedef std::queue<std::string> MessageQueue;
+
+public:
+	Message(MessageType messageType);
+	Message(std::string str);
+
+public:
+	void WriteMessage(std::string str);
+	void WriteMessage(int value);
+	std::string ReadMessage();
+	std::string ConvertString();
+
+private:
+	MessageType messageType;
+	MessageQueue messageQueue;
+};

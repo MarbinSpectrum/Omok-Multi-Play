@@ -801,17 +801,23 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Algorithm\Algorithm.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\framework.h" />
     <ClInclude Include="..\Classes\Manager\BaseMgr.h" />
+    <ClInclude Include="..\Classes\Manager\MassageMgr\MassageMgr.h" />
     <ClInclude Include="..\Classes\Manager\SceneMgr\SceneMgr.h" />
     <ClInclude Include="..\Classes\Scene\Title\Title.h" />
+    <ClInclude Include="..\Message\Message.h" />
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.h" />
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\resource.h" />
+    <ClCompile Include="..\Algorithm\Algorithm.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Manager\BaseMgr.cpp" />
+    <ClCompile Include="..\Classes\Manager\MassageMgr\MassageMgr.cpp" />
     <ClCompile Include="..\Classes\Manager\SceneMgr\SceneMgr.cpp" />
     <ClCompile Include="..\Classes\Scene\Title\Title.cpp" />
+    <ClCompile Include="..\Message\Message.cpp" />
     <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp" />
     <ResourceCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\game.rc" />
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Resources\CloseNormal.png" />

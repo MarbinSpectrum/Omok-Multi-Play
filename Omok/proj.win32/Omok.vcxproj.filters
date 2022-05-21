@@ -19,6 +19,15 @@
     <ClCompile Include="..\Classes\Scene\Title\Title.cpp">
       <Filter>Source Files\Classes\Scene\Title</Filter>
     </ClCompile>
+    <ClCompile Include="..\Message\Message.cpp">
+      <Filter>Source Files\Classes\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Algorithm\Algorithm.cpp">
+      <Filter>Source Files\Classes\Algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\MassageMgr\MassageMgr.cpp">
+      <Filter>Source Files\Classes\Manager\MassageMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.h">
@@ -60,6 +69,15 @@
     <ClInclude Include="..\Classes\Scene\Title\Title.h">
       <Filter>Source Files\Classes\Scene\Title</Filter>
     </ClInclude>
+    <ClInclude Include="..\Message\Message.h">
+      <Filter>Source Files\Classes\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithm\Algorithm.h">
+      <Filter>Source Files\Classes\Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\MassageMgr\MassageMgr.h">
+      <Filter>Source Files\Classes\Manager\MassageMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Program Files\Git\Omok Multi Play\Omok\CMakeLists.txt" />
@@ -99,6 +117,15 @@
     </Filter>
     <Filter Include="Source Files\Classes\Scene\Title">
       <UniqueIdentifier>{21c49277-483d-403f-804c-e10091cdd108}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Message">
+      <UniqueIdentifier>{acb302f6-bc4e-4216-b8a8-37813c0c8466}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Algorithm">
+      <UniqueIdentifier>{4d3a5b38-9641-4b95-b189-ecb3dc30ac91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Manager\MassageMgr">
+      <UniqueIdentifier>{d3f02a2b-f44e-4a4e-96bc-c1ea213c788b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
