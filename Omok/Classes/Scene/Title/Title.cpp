@@ -23,24 +23,21 @@ bool Title::init()
     {
         labelText->setPosition(Vec2(origin.x + visibleSize.width / 2,
             origin.y + visibleSize.height - labelText->getContentSize().height - 70));
-
-        // add the label as a child to this layer
         this->addChild(labelText, 1);
     }
 
-    auto textField = ui::TextField::create("(8자 미만)", "fonts/GodoM.ttf", 12);
+    //텍스트 입력바
+    textField = ui::TextField::create("(8자 미만)", "fonts/GodoM.ttf", 12);
+
     if (textField != NULL)
     {
         textField->setMaxLengthEnabled(true);
         textField->setMaxLength(8);
         textField->setPosition(Vec2(origin.x + visibleSize.width / 2,
             origin.y + visibleSize.height - textField->getContentSize().height - 120));
-
-        // add the label as a child to this layer
         this->addChild(textField, 1);
     }
   
-
     //확인버튼 생성
     auto enterGameLobbyBtn = MenuItemImage::create(
         "res/OK_Normal.png", "res/OK_Selected.png",
@@ -62,5 +59,11 @@ bool Title::init()
 
 void Title::EnterGameLobby(Ref* pSender)
 {
+    Message message(MessageType::LOBBY_ENTER_REQUEST);
     
+    std::string nickName = textField->getString();
+    message.WriteMessage(nickName);
+
+
+    MASSAGE_MGR.SendMsg(message);
 }

@@ -60,7 +60,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //게임에 필요한 요소를 등록
     register_all_packages();
 
+    //메세지 매니저 실행
+    MASSAGE_MGR.Init();
+
     //시작씬에서부터 시작
+    SCENE_MGR.Init();
     auto startScene = SCENE_MGR.GetNowScene();
     director->runWithScene(startScene);
 

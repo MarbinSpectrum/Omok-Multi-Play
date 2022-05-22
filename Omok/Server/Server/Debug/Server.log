@@ -1,9 +1,2 @@
-﻿  Algorithm.cpp
-D:\Program Files\Git\Omok Multi Play\Omok\Algorithm\Algorithm.cpp(35,10): warning C4244: 'return': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Program Files\Git\Omok Multi Play\Omok\Algorithm\Algorithm.cpp(71,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-  Message.cpp
-D:\Program Files\Git\Omok Multi Play\Omok\Message\Message.cpp(11,24): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-  main.cpp
-  Server.cpp
-  코드를 생성하고 있습니다...
+﻿  MsgMgr.cpp
   Server.vcxproj -> D:\Program Files\Git\Omok Multi Play\Omok\Server\Debug\Server.exe

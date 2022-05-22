@@ -41,8 +41,6 @@ SceneMgr& SceneMgr::Instance()
 	{
 		//½Ì±ÛÅæ °´Ã¼¸¦ Ãß°¡
 		instance = new SceneMgr();
-
-		instance->Init();
 	}
 	return *instance;
 }

@@ -20,23 +20,25 @@ void recv_client();
 
 class Server
 {
+public:
+	Server();
 private:
 	static Server* instance;
 
 public:
-	static Server& Instance();
+	static Server&	Instance();
 
 public:
-	void Run();
+	void			Run();
 
 public:
-	SOCKLIST* GetSockList();
-	CLIENT_THREAD* GetClientThread();
-	SOCKET* GetServerSocket();
+	SOCKLIST*		GetSockList();
+	CLIENT_THREAD*	GetClientThread();
+	SOCKET			GetServerSocket();
 private:
-	SOCKLIST clientSock;
-	CLIENT_THREAD clientThread;
+	SOCKLIST		clientSock;
+	CLIENT_THREAD	clientThread;
 
 private:
-	SOCKET serverSock;
+	SOCKET			serverSock;
 };

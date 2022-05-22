@@ -28,6 +28,9 @@
     <ClCompile Include="..\Classes\Manager\MassageMgr\MassageMgr.cpp">
       <Filter>Source Files\Classes\Manager\MassageMgr</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\Lobby\Lobby.cpp">
+      <Filter>Source Files\Classes\Scene\Lobby</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.h">
@@ -78,6 +81,9 @@
     <ClInclude Include="..\Classes\Manager\MassageMgr\MassageMgr.h">
       <Filter>Source Files\Classes\Manager\MassageMgr</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Scene\Lobby\Lobby.h">
+      <Filter>Source Files\Classes\Scene\Lobby</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Program Files\Git\Omok Multi Play\Omok\CMakeLists.txt" />
@@ -126,6 +132,9 @@
     </Filter>
     <Filter Include="Source Files\Classes\Manager\MassageMgr">
       <UniqueIdentifier>{d3f02a2b-f44e-4a4e-96bc-c1ea213c788b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Scene\Lobby">
+      <UniqueIdentifier>{fadd37f3-2fc0-4597-9c63-29166a00c5f2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -36,6 +36,9 @@
     <ClCompile Include="..\..\Algorithm\Algorithm.cpp">
       <Filter>소스 파일\Algorithm</Filter>
     </ClCompile>
+    <ClCompile Include="MsgMgr\MsgMgr.cpp">
+      <Filter>소스 파일\Message</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Algorithm\Algorithm.h">
       <Filter>소스 파일\Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="MsgMgr\MsgMgr.h">
+      <Filter>소스 파일\Message</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

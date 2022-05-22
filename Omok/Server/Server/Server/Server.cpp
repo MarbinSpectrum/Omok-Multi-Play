@@ -1,4 +1,10 @@
 #include "Server.h"
+#include "../MsgMgr/MsgMgr.h"
+
+Server::Server()
+: serverSock(NULL)
+{
+}
 
 Server* Server::instance = NULL;
 Server& Server::Instance()
@@ -76,9 +82,9 @@ CLIENT_THREAD* Server::GetClientThread()
 	return &clientThread;
 }
 
-SOCKET* Server::GetServerSocket()
+SOCKET Server::GetServerSocket()
 {
-	return &serverSock;
+	return serverSock;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -99,15 +105,10 @@ void proc_recvs(SOCKET socket)
 			break;
 		}
 
-		//SOCKLIST* socketList = SERVER.GetSockList();
-		//for (SOCKLIST::iterator iter = socketList->begin(); iter != socketList->end(); iter++)
-		//{
-		//	//다른 클라이언트에게 브로드캐스트
-		//	if (*iter != socket)
-		//	{
-		//		send(*iter, buffer, strlen(buffer), 0);
-		//	}
-		//}
+		Message message(buffer);
+
+		//메세지 매니저에서 메세지를 처리
+		MAG_MGR.OnReceiveMsg(message);
 	}
 }
 
@@ -124,7 +125,7 @@ void recv_client()
 		SOCKET clientSock;
 		SOCKADDR_IN client = {};
 		int client_size = sizeof(client);
-		SOCKET serverSock = *SERVER.GetServerSocket();
+		SOCKET serverSock = SERVER.GetServerSocket();
 
 		//ZeroMemory : client에 client_size만큼 메모리 할당
 		ZeroMemory(&client, client_size);
