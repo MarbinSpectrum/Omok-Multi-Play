@@ -18,5 +18,5 @@
 #define SCENE_MGR SceneMgr::Instance()
 #define MASSAGE_MGR MassageMgr::Instance()
 
-#define WINSIZEX 640
-#define WINSIZEY 640
+#define WINSIZEX 480
+#define WINSIZEY 320

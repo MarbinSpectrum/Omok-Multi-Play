@@ -46,6 +46,11 @@ void proc_recv()
 		ZeroMemory(&buffer, PACKET_SIZE);
 		recv(MASSAGE_MGR.GetSock(), buffer, PACKET_SIZE, 0);
 		cmd = buffer;
+
+		Message message(buffer);
+
+		//메세지 매니저에서 메세지를 처리
+		MASSAGE_MGR.OnReceiveMsg(message);
 	}
 }
 void MassageMgr::RunThread()
@@ -107,7 +112,23 @@ void MassageMgr::OnReceiveMsg(Message message)
 	{
 		case MessageType::LOBBY_ENTER_REPLY:
 		{
+			SCENE_MGR.MoveScene("Lobby");
+		}
+		break;
+		case MessageType::LOBBY_ROOM_DATA_REPLY:
+		{
+			Lobby::RoomDataList roomList;
+
+			int roomNum = std::stoi(message.ReadMessage());
+			for (int idx = 0; idx < roomNum; idx++)
+			{
+
+			}
+
+			Scene* scene = SCENE_MGR.GetNowScene();
+			Lobby* lobbyScene = dynamic_cast<Lobby*>(scene);
 			
+			lobbyScene->UpdateLobbyRoomList(&roomList);
 		}
 		break;
 	}

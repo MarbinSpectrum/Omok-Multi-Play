@@ -2,6 +2,8 @@
 
 #include "../../../Message/Message.h"
 #include <iostream>
+#include <string>
+#include <winsock2.h>
 
 #define MAG_MGR MsgMgr::Instance()
 
@@ -14,6 +16,6 @@ public:
 	static MsgMgr&	Instance();
 
 public:
-	void			SendMsg(Message message);
-	void			OnReceiveMsg(Message message);
+	void			SendMsg(Message message, SOCKET socket);
+	void			OnReceiveMsg(Message message,SOCKET socket);
 };

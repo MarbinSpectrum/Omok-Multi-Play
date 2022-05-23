@@ -808,6 +808,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\Classes\Manager\MassageMgr\MassageMgr.h" />
     <ClInclude Include="..\Classes\Manager\SceneMgr\SceneMgr.h" />
     <ClInclude Include="..\Classes\Scene\Lobby\Lobby.h" />
+    <ClInclude Include="..\Classes\Scene\Lobby\RoomData\RoomData.h" />
     <ClInclude Include="..\Classes\Scene\Title\Title.h" />
     <ClInclude Include="..\Message\Message.h" />
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.h" />
@@ -818,6 +819,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\Classes\Manager\MassageMgr\MassageMgr.cpp" />
     <ClCompile Include="..\Classes\Manager\SceneMgr\SceneMgr.cpp" />
     <ClCompile Include="..\Classes\Scene\Lobby\Lobby.cpp" />
+    <ClCompile Include="..\Classes\Scene\Lobby\RoomData\RoomData.cpp" />
     <ClCompile Include="..\Classes\Scene\Title\Title.cpp" />
     <ClCompile Include="..\Message\Message.cpp" />
     <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp" />
@@ -893,8 +895,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Resources\res\LobbyRoomMake_Normal.png" />
+    <Image Include="..\Resources\res\LobbyRoomMake_Selected.png" />
     <Image Include="..\Resources\res\OK_Normal.png" />
     <Image Include="..\Resources\res\OK_Selected.png" />
+    <Image Include="..\Resources\res\Refresh_Normal.png" />
+    <Image Include="..\Resources\res\Refresh_Selected.png.png" />
+    <Image Include="..\Resources\res\RoomSlot.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

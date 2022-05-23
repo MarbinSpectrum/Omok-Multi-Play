@@ -28,7 +28,6 @@ bool Title::init()
 
     //텍스트 입력바
     textField = ui::TextField::create("(8자 미만)", "fonts/GodoM.ttf", 12);
-
     if (textField != NULL)
     {
         textField->setMaxLengthEnabled(true);
@@ -39,19 +38,14 @@ bool Title::init()
     }
   
     //확인버튼 생성
-    auto enterGameLobbyBtn = MenuItemImage::create(
-        "res/OK_Normal.png", "res/OK_Selected.png",
-        CC_CALLBACK_1(Title::EnterGameLobby, this));
-
+    auto enterGameLobbyBtn = ui::Button::create("res/OK_Normal.png", "res/OK_Selected.png");
     if (enterGameLobbyBtn != NULL)
     {
         float x = origin.x + visibleSize.width * 0.5f;
         float y = origin.y + visibleSize.height * 0.4f;
         enterGameLobbyBtn->setPosition(Vec2(x, y));
-
-        auto menu = Menu::create(enterGameLobbyBtn, NULL);
-        menu->setPosition(Vec2::ZERO);
-        this->addChild(menu, 1);
+        enterGameLobbyBtn->addClickEventListener(CC_CALLBACK_1(Title::EnterGameLobby, this));
+        this->addChild(enterGameLobbyBtn, 1);
     }
     return true;
 }
@@ -59,11 +53,13 @@ bool Title::init()
 
 void Title::EnterGameLobby(Ref* pSender)
 {
-    Message message(MessageType::LOBBY_ENTER_REQUEST);
-    
     std::string nickName = textField->getString();
-    message.WriteMessage(nickName);
 
+    if (nickName.size() <= 0)
+        return;
+
+    Message message(MessageType::LOBBY_ENTER_REQUEST);  
+    message.WriteMessage(nickName);
 
     MASSAGE_MGR.SendMsg(message);
 }

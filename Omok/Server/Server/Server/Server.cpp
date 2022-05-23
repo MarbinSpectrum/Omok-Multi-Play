@@ -108,7 +108,7 @@ void proc_recvs(SOCKET socket)
 		Message message(buffer);
 
 		//메세지 매니저에서 메세지를 처리
-		MAG_MGR.OnReceiveMsg(message);
+		MAG_MGR.OnReceiveMsg(message, socket);
 	}
 }
 

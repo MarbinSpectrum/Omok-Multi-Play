@@ -9,7 +9,7 @@ using namespace cocos2d::experimental;
 
 USING_NS_CC;
 
-static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320);
+static cocos2d::Size designResolutionSize = cocos2d::Size(WINSIZEX, WINSIZEY);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
@@ -65,8 +65,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     //시작씬에서부터 시작
     SCENE_MGR.Init();
+
     auto startScene = SCENE_MGR.GetNowScene();
-    director->runWithScene(startScene);
+
+    SCENE_MGR.MoveScene(startScene);
 
     return true;
 }
