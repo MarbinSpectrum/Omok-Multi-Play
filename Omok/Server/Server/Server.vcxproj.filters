@@ -22,6 +22,12 @@
     <Filter Include="소스 파일\Algorithm">
       <UniqueIdentifier>{ca8a4dda-6c2d-4d87-b814-955858801158}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\GameRoomMgr">
+      <UniqueIdentifier>{2fe220d5-4088-4f6d-88fd-ff1a56f04cdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\ClientMgr">
+      <UniqueIdentifier>{27aa5aee-ef53-40e4-868e-d1752f4b63ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,6 +45,15 @@
     <ClCompile Include="MsgMgr\MsgMgr.cpp">
       <Filter>소스 파일\Message</Filter>
     </ClCompile>
+    <ClCompile Include="GameRoomMgr\GameRoomMgr.cpp">
+      <Filter>소스 파일\GameRoomMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientMgr\ClientMgr.cpp">
+      <Filter>소스 파일\ClientMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRoomMgr\GameRoom.cpp">
+      <Filter>소스 파일\GameRoomMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -55,6 +70,15 @@
     </ClInclude>
     <ClInclude Include="MsgMgr\MsgMgr.h">
       <Filter>소스 파일\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRoomMgr\GameRoomMgr.h">
+      <Filter>소스 파일\GameRoomMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientMgr\ClientMgr.h">
+      <Filter>소스 파일\ClientMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRoomMgr\GameRoom.h">
+      <Filter>소스 파일\GameRoomMgr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

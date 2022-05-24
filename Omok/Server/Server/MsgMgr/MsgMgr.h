@@ -1,6 +1,9 @@
 #pragma once
 
 #include "../../../Message/Message.h"
+#include "../ClientMgr/ClientMgr.h"
+#include "../GameRoomMgr/GameRoomMgr.h"
+
 #include <iostream>
 #include <string>
 #include <winsock2.h>

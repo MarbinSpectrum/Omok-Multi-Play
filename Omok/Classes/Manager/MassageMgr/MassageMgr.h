@@ -13,6 +13,9 @@
 
 #define PACKET_SIZE 1024 
 
+typedef __int64 int64;
+typedef unsigned int uint;
+
 void proc_recv();
 
 class MassageMgr : BaseMgr

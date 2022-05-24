@@ -119,4 +119,5 @@ void SceneMgr::MoveScene(CSCENE* scene)
 
 	director->replaceScene(scene);
 	nowScene = scene;
+	nowScene->Start();
 }

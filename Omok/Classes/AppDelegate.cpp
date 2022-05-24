@@ -39,6 +39,8 @@ void AppDelegate::initGLContextAttrs()
 // don't modify or remove this function
 static int register_all_packages()
 {
+    PLAYER_MGR.Init();
+    MASSAGE_MGR.Init();
     SCENE_MGR.Init();
     return 0; //flag for packages manager
 }
@@ -59,12 +61,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     //게임에 필요한 요소를 등록
     register_all_packages();
-
-    //메세지 매니저 실행
-    MASSAGE_MGR.Init();
-
-    //시작씬에서부터 시작
-    SCENE_MGR.Init();
 
     auto startScene = SCENE_MGR.GetNowScene();
 

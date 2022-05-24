@@ -33,6 +33,13 @@ void Message::WriteMessage(int value)
 {
 	WriteMessage(std::to_string(value));
 }
+void Message::WriteMessage(bool state)
+{
+	if(state == 1)
+		WriteMessage(1);
+	else
+		WriteMessage(0);
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 /// : 메세지 타입을 읽는다.

@@ -12,11 +12,15 @@
 
 #include "cocos2d.h"
 #include "platform/CCStdC.h"
+#include "../Algorithm/Algorithm.h"
+
 #include "Manager/SceneMgr/SceneMgr.h"
 #include "Manager/MassageMgr/MassageMgr.h"
+#include "Manager/PlayerMgr/PlayerMgr.h"
 
 #define SCENE_MGR SceneMgr::Instance()
 #define MASSAGE_MGR MassageMgr::Instance()
+#define PLAYER_MGR PlayerMgr::Instance()
 
 #define WINSIZEX 480
 #define WINSIZEY 320

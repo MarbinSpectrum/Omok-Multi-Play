@@ -14,6 +14,7 @@ class Title : public CSCENE
 public:
     static CSCENE*  createScene();
     virtual bool    init();
+    virtual void    Start() override;
 
 public:
     void            EnterGameLobby(Ref* pSender);

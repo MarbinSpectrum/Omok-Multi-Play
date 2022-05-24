@@ -3,7 +3,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "framework.h"
-#include "RoomData/RoomData.h"
+#include "RoomData.h"
 #include <vector>
 
 #define CSCENE cocos2d::Scene
@@ -19,13 +19,14 @@ public:
 public:
     static CSCENE*  createScene();
     virtual bool    init();
-    void RequestLobbyRoomList();
-    void UpdateLobbyRoomList(RoomDataList* newRoomDataList);
-
+    virtual void    Start() override;
+    void            RequestLobbyRoomList();
+    void            UpdateLobbyRoomList(RoomDataList* newRoomDataList);
+    void            LobbyRoomMake(Ref* pSender);
+    void            RoomListRefresh(Ref* pSender);
 public:
     CREATE_FUNC(Lobby);
 
 private:
     ui::ScrollView* roomScrollView;
-    RoomDataList roomDataList;
 };

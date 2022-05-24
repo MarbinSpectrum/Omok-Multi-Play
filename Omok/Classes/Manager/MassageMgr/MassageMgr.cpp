@@ -41,7 +41,7 @@ void proc_recv()
 {
 	char buffer[PACKET_SIZE] = {};
 	std::string cmd;
-	while (!WSAGetLastError())
+	while (1)
 	{
 		ZeroMemory(&buffer, PACKET_SIZE);
 		recv(MASSAGE_MGR.GetSock(), buffer, PACKET_SIZE, 0);
@@ -93,7 +93,7 @@ void MassageMgr::RunThread()
 	receiveThread = std::thread(proc_recv);
 
 	Message message(MessageType::CONNECT_CLIENT);
-	message.WriteMessage(skt);
+	message.WriteMessage((int)skt);
 
 	SendMsg(message);
 }
@@ -112,23 +112,51 @@ void MassageMgr::OnReceiveMsg(Message message)
 	{
 		case MessageType::LOBBY_ENTER_REPLY:
 		{
-			SCENE_MGR.MoveScene("Lobby");
+			int success = std::stoi(message.ReadMessage());
+
+			if (success)
+			{
+				std::string playerName = message.ReadMessage();
+				PLAYER_MGR.RegistNickName(playerName);
+				SCENE_MGR.MoveScene("Lobby");
+			}
+			else
+			{
+				//접속 실패
+			}
 		}
 		break;
 		case MessageType::LOBBY_ROOM_DATA_REPLY:
 		{
 			Lobby::RoomDataList roomList;
 
-			int roomNum = std::stoi(message.ReadMessage());
-			for (int idx = 0; idx < roomNum; idx++)
+			int roomCnt = std::stoi(message.ReadMessage());
+			for (int idx = 0; idx < roomCnt; idx++)
 			{
-
+				uint roomNum = StringToUint(message.ReadMessage());
+				int64 roomKey = StringToInt64(message.ReadMessage());
+				int personNum = std::stoi(message.ReadMessage());
+				roomList.push_back(RoomData(roomNum, roomKey, personNum));
 			}
 
 			Scene* scene = SCENE_MGR.GetNowScene();
 			Lobby* lobbyScene = dynamic_cast<Lobby*>(scene);
 			
 			lobbyScene->UpdateLobbyRoomList(&roomList);
+		}
+		break;
+		case MessageType::MAKE_ROOM_REPLY:
+		{
+			int success = std::stoi(message.ReadMessage());
+
+			if (success)
+			{
+				
+			}
+			else
+			{
+				
+			}			
 		}
 		break;
 	}

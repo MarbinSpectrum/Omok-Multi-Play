@@ -1,4 +1,4 @@
-#include "Title.h"
+ï»¿#include "Title.h"
 
 USING_NS_CC;
 
@@ -17,8 +17,8 @@ bool Title::init()
     auto visibleSize = DIRECTOR->getVisibleSize();
     Vec2 origin = DIRECTOR->getVisibleOrigin();
 
-    //Çì´õ ÅØ½ºÆ® Ãâ·Â
-    auto labelText = Label::createWithTTF("´Ð³×ÀÓÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä!!", "fonts/GodoM.ttf", 18);
+    //í—¤ë” í…ìŠ¤íŠ¸ ì¶œë ¥
+    auto labelText = Label::createWithTTF("ë‹‰ë„¤ìž„ì„ ìž…ë ¥í•´ì£¼ì„¸ìš”!!", "fonts/GodoM.ttf", 18);
     if (labelText != NULL)
     {
         labelText->setPosition(Vec2(origin.x + visibleSize.width / 2,
@@ -26,8 +26,8 @@ bool Title::init()
         this->addChild(labelText, 1);
     }
 
-    //ÅØ½ºÆ® ÀÔ·Â¹Ù
-    textField = ui::TextField::create("(8ÀÚ ¹Ì¸¸)", "fonts/GodoM.ttf", 12);
+    //í…ìŠ¤íŠ¸ ìž…ë ¥ë°”
+    textField = ui::TextField::create("(8ìž ë¯¸ë§Œ)", "fonts/GodoM.ttf", 12);
     if (textField != NULL)
     {
         textField->setMaxLengthEnabled(true);
@@ -37,7 +37,7 @@ bool Title::init()
         this->addChild(textField, 1);
     }
   
-    //È®ÀÎ¹öÆ° »ý¼º
+    //í™•ì¸ë²„íŠ¼ ìƒì„±
     auto enterGameLobbyBtn = ui::Button::create("res/OK_Normal.png", "res/OK_Selected.png");
     if (enterGameLobbyBtn != NULL)
     {
@@ -47,7 +47,12 @@ bool Title::init()
         enterGameLobbyBtn->addClickEventListener(CC_CALLBACK_1(Title::EnterGameLobby, this));
         this->addChild(enterGameLobbyBtn, 1);
     }
+
     return true;
+}
+void Title::Start()
+{
+
 }
 
 

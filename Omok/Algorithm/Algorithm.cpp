@@ -92,3 +92,55 @@ vector<string> split(string input, initializer_list<char> check)
 	}
 	return answer;
 }
+
+unsigned int StringToUint(string num)
+{
+	unsigned int number = 0;
+	for (int i = num.size() - 1; i >= 0; i--)
+	{
+		int n = num[i] - '0';
+		number *= 10;
+		number += n;
+	}
+	return number;
+}
+
+string UintToString(unsigned int num)
+{
+	string temp = "";
+	int c = (int)log10(num);
+	for (int i = 0; i <= c; i++)
+	{
+		int n = num % 10;
+		temp += (n + '0');
+		num /= 10;
+	}
+	reverse(temp.begin(), temp.end());
+	return temp;
+}
+
+__int64 StringToInt64(string num)
+{
+	__int64 number = 0;
+	for (int i = num.size() - 1; i >= 0; i--)
+	{
+		int n = num[i] - '0';
+		number *= 10;
+		number += n;
+	}
+	return number;
+}
+
+string Int64ToString(__int64 num)
+{
+	string temp = "";
+	int c = (int)log10(num);
+	for (int i = 0; i <= c; i++)
+	{
+		int n = num % 10;
+		temp += (n + '0');
+		num /= 10;
+	}
+	reverse(temp.begin(), temp.end());
+	return temp;
+}
