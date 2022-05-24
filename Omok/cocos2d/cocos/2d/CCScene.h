@@ -122,7 +122,10 @@ CC_CONSTRUCTOR_ACCESS:
     virtual ~Scene();
     
     bool init() override;
-    virtual void Start() {}
+    virtual void Start()
+    {
+
+    }
     bool initWithSize(const Size& size);
     
     void setCameraOrderDirty() { _cameraOrderDirty = true; }

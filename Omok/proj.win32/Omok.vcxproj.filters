@@ -1,41 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
     <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
     <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\precheader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>Source Files\Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Manager\SceneMgr\SceneMgr.cpp">
-      <Filter>Source Files\Classes\Manager\SceneMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Manager\BaseMgr.cpp">
-      <Filter>Source Files\Classes\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Scene\Title\Title.cpp">
       <Filter>Source Files\Classes\Scene\Title</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Message\Message.cpp">
-      <Filter>Source Files\Classes\Message</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Algorithm\Algorithm.cpp">
-      <Filter>Source Files\Classes\Algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Manager\MassageMgr\MassageMgr.cpp">
-      <Filter>Source Files\Classes\Manager\MassageMgr</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Scene\Lobby\Lobby.cpp">
       <Filter>Source Files\Classes\Scene\Lobby</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Manager\BaseMgr.cpp">
+      <Filter>Source Files\Classes\Manager</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Manager\PlayerMgr\PlayerMgr.cpp">
       <Filter>Source Files\Classes\Manager\PlayerMgr</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Manager\SceneMgr\SceneMgr.cpp">
+      <Filter>Source Files\Classes\Manager\SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\MassageMgr\MassageMgr.cpp">
+      <Filter>Source Files\Classes\Manager\MassageMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Algorithm\Algorithm.cpp">
+      <Filter>Source Files\Algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Message\Message.cpp">
+      <Filter>Source Files\Message</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.h">
       <Filter>Source Files\proj.win32</Filter>
     </ClInclude>
@@ -60,38 +63,35 @@
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Resources\res\.gitkeep">
       <Filter>Resources\res</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>Source Files\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\framework.h">
       <Filter>Source Files\Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Manager\SceneMgr\SceneMgr.h">
-      <Filter>Source Files\Classes\Manager\SceneMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Manager\BaseMgr.h">
-      <Filter>Source Files\Classes\Manager</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\Title\Title.h">
       <Filter>Source Files\Classes\Scene\Title</Filter>
     </ClInclude>
-    <ClInclude Include="..\Message\Message.h">
-      <Filter>Source Files\Classes\Message</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Algorithm\Algorithm.h">
-      <Filter>Source Files\Classes\Algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Manager\MassageMgr\MassageMgr.h">
-      <Filter>Source Files\Classes\Manager\MassageMgr</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Scene\Lobby\Lobby.h">
       <Filter>Source Files\Classes\Scene\Lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\Lobby\RoomData.h">
+      <Filter>Source Files\Classes\Scene\Lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\BaseMgr.h">
+      <Filter>Source Files\Classes\Manager</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Manager\PlayerMgr\PlayerMgr.h">
       <Filter>Source Files\Classes\Manager\PlayerMgr</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Scene\Lobby\RoomData.h">
-      <Filter>Source Files\Classes\Scene\Lobby</Filter>
+    <ClInclude Include="..\Classes\Manager\SceneMgr\SceneMgr.h">
+      <Filter>Source Files\Classes\Manager\SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\MassageMgr\MassageMgr.h">
+      <Filter>Source Files\Classes\Manager\MassageMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithm\Algorithm.h">
+      <Filter>Source Files\Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Message\Message.h">
+      <Filter>Source Files\Message</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -122,41 +122,35 @@
       <UniqueIdentifier>{6FECBA23-33BC-320A-B783-EA9EC307A4CC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Classes\Manager">
-      <UniqueIdentifier>{c24a29be-abf2-4bbb-b752-f8ac0b6050af}</UniqueIdentifier>
+      <UniqueIdentifier>{7e5d538e-8230-48ca-a5d0-550b9c4d4f54}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Classes\Scene">
-      <UniqueIdentifier>{c779e0fa-67af-48d6-a50e-cb2a1440e9de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Classes\Manager\SceneMgr">
-      <UniqueIdentifier>{061c0def-a38c-4448-8e64-f3f4e9812326}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Classes\Scene\Title">
-      <UniqueIdentifier>{21c49277-483d-403f-804c-e10091cdd108}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Classes\Message">
-      <UniqueIdentifier>{acb302f6-bc4e-4216-b8a8-37813c0c8466}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Classes\Algorithm">
-      <UniqueIdentifier>{4d3a5b38-9641-4b95-b189-ecb3dc30ac91}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Classes\Manager\MassageMgr">
-      <UniqueIdentifier>{d3f02a2b-f44e-4a4e-96bc-c1ea213c788b}</UniqueIdentifier>
+      <UniqueIdentifier>{63bc9e02-4420-420a-8e91-2e3771351c2a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Classes\Scene\Lobby">
-      <UniqueIdentifier>{fadd37f3-2fc0-4597-9c63-29166a00c5f2}</UniqueIdentifier>
+      <UniqueIdentifier>{4a68c512-80fc-4123-a28b-23129b9ffc92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Scene\Title">
+      <UniqueIdentifier>{eb31b8fb-b07c-45ea-ad5c-40217ddc7b73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Manager\MassageMgr">
+      <UniqueIdentifier>{0465b7ed-8838-45c4-a308-8f0437c8fd37}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Classes\Manager\PlayerMgr">
-      <UniqueIdentifier>{ce9c6ef2-5b48-4c56-bb2e-76fcfd6c7c80}</UniqueIdentifier>
+      <UniqueIdentifier>{9d303a21-88bf-4d32-a85c-0356024cc7fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Manager\SceneMgr">
+      <UniqueIdentifier>{1bdce62d-4f05-4139-9296-cafebefdf616}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Algorithm">
+      <UniqueIdentifier>{11a954c8-9abe-4300-9040-e24aeaf378fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Message">
+      <UniqueIdentifier>{121830a2-a242-4ef8-a66f-f1fb16f8e33d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Resources\res\OK_Normal.png">
-      <Filter>Resources\res</Filter>
-    </Image>
-    <Image Include="..\Resources\res\OK_Selected.png">
-      <Filter>Resources\res</Filter>
-    </Image>
-    <Image Include="..\Resources\res\RoomSlot.png">
+    <Image Include="..\Resources\res\LobbyBack.png">
       <Filter>Resources\res</Filter>
     </Image>
     <Image Include="..\Resources\res\LobbyRoomMake_Normal.png">
@@ -165,11 +159,25 @@
     <Image Include="..\Resources\res\LobbyRoomMake_Selected.png">
       <Filter>Resources\res</Filter>
     </Image>
+    <Image Include="..\Resources\res\OK_Normal.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\OK_Selected.png">
+      <Filter>Resources\res</Filter>
+    </Image>
     <Image Include="..\Resources\res\Refresh_Normal.png">
       <Filter>Resources\res</Filter>
     </Image>
     <Image Include="..\Resources\res\Refresh_Selected.png">
       <Filter>Resources\res</Filter>
     </Image>
+    <Image Include="..\Resources\res\RoomSlot.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\Resources\fonts\GodoM.ttf">
+      <Filter>Resources\fonts</Filter>
+    </Font>
   </ItemGroup>
 </Project>

@@ -324,7 +324,6 @@ public:
      * @param pos Inner container position.
      */
     void setInnerContainerPosition(const Vec2 &pos);
-    
     /**
      * Get inner container position
      *

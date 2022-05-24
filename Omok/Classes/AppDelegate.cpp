@@ -62,9 +62,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //게임에 필요한 요소를 등록
     register_all_packages();
 
-    auto startScene = SCENE_MGR.GetNowScene();
-
-    SCENE_MGR.MoveScene(startScene);
+    SCENE_MGR.MoveScene("Title");
 
     return true;
 }

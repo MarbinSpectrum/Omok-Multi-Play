@@ -269,15 +269,14 @@ THE SOFTWARE.
 #include "3d/CCTerrain.h"
 #include "3d/CCVertexAttribBinding.h"
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+#pragma execution_character_set("utf-8")
+#endif
+
 NS_CC_BEGIN
 
 CC_DLL const char* cocos2dVersion();
 
 NS_CC_END
-
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-#pragma execution_character_set("utf-8")
-#endif
 
 #endif // __COCOS2D_H__

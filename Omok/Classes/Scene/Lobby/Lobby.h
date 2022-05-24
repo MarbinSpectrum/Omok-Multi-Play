@@ -28,5 +28,6 @@ public:
     CREATE_FUNC(Lobby);
 
 private:
-    ui::ScrollView* roomScrollView;
+    ui::ScrollView* roomScrollView = NULL;
+    std::vector<Sprite*> SpriteList;
 };
