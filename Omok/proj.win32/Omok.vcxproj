@@ -811,6 +811,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\Classes\Scene\Lobby\RoomData.h" />
     <ClInclude Include="..\Classes\Scene\Lobby\RoomSlot.h" />
     <ClInclude Include="..\Classes\Scene\Room\Room.h" />
+    <ClInclude Include="..\Classes\Scene\Title\LoginPopup.h" />
     <ClInclude Include="..\Classes\Scene\Title\Title.h" />
     <ClInclude Include="..\Message\Message.h" />
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.h" />
@@ -824,6 +825,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\Classes\Scene\Lobby\Lobby.cpp" />
     <ClCompile Include="..\Classes\Scene\Lobby\RoomSlot.cpp" />
     <ClCompile Include="..\Classes\Scene\Room\Room.cpp" />
+    <ClCompile Include="..\Classes\Scene\Title\LoginPopup.cpp" />
     <ClCompile Include="..\Classes\Scene\Title\Title.cpp" />
     <ClCompile Include="..\Message\Message.cpp" />
     <ClCompile Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.cpp" />
@@ -903,6 +905,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <Image Include="..\Resources\res\LobbyBack.png" />
     <Image Include="..\Resources\res\LobbyRoomMake_Normal.png" />
     <Image Include="..\Resources\res\LobbyRoomMake_Selected.png" />
+    <Image Include="..\Resources\res\NotLogin.png" />
     <Image Include="..\Resources\res\OK_Normal.png" />
     <Image Include="..\Resources\res\OK_Selected.png" />
     <Image Include="..\Resources\res\Refresh_Normal.png" />

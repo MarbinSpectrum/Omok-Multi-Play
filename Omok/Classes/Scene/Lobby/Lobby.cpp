@@ -46,7 +46,7 @@ bool Lobby::init()
         roomScrollView->addChild(roomSlot);
 
         roomSlotList.push_back(roomSlot);
-    }
+    } 
     this->addChild(roomScrollView, 0);
 
     //새로고침 버튼
@@ -128,6 +128,8 @@ void Lobby::Start()
 
 void Lobby::LobbyRoomMake(Ref* pSender)
 {
+    SCENE_MGR.MoveScene("Title");
+    return;
     Message message(MessageType::MAKE_ROOM_REQUEST);
     MASSAGE_MGR.SendMsg(message);
 }

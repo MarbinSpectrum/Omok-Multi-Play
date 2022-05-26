@@ -32,6 +32,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 		case MessageType::CONNECT_CLIENT:
 		{
 			//클라이언트와 서버가 연결됨
+			//소캣번호
 			std::cout << "CONNECT_CLIENT" << " ";
 			std::cout << "SOCKET : ";
 			std::cout << message.ReadMessage() << "\n";
@@ -40,6 +41,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 		case MessageType::LOBBY_ENTER_REQUEST:
 		{
 			//클라이언트의 로비 입장 요청
+			//아이디
 			std::string playerName = message.ReadMessage();
 
 			std::cout << "LOBBY_ENTER_REQUEST" << " ";
@@ -68,6 +70,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 		case MessageType::LOBBY_ROOM_DATA_REQUEST:
 		{
 			//로비의 방 데이터를 요청
+			//아이디
 			std::cout << "LOBBY_ROOM_DATA_REQUEST" << " ";
 			std::cout << "아이디 : ";
 			std::cout << message.ReadMessage() << "\n";
@@ -96,6 +99,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 		case MessageType::ENTER_ROOM_REQUEST:
 		{
 			//방에 입장하는 것을 요청
+			//방 번호, 키
 			std::cout << "ENTER_ROOM_REQUEST" << "\n";
 			uint roomNum = StringToUint(message.ReadMessage());
 			int64 roomKey = StringToInt64(message.ReadMessage());

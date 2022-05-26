@@ -1,2 +1,7 @@
-﻿  GameRoomMgr.cpp
+﻿  GameRoom.cpp
+  GameRoomMgr.cpp
+  main.cpp
+  MsgMgr.cpp
+  Server.cpp
+  코드를 생성하고 있습니다...
   Server.vcxproj -> D:\Program Files\Git\Omok Multi Play\Omok\Server\Debug\Server.exe

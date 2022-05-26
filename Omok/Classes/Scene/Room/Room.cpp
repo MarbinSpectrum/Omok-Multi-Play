@@ -24,5 +24,6 @@ bool Room::init()
 }
 void Room::Start()
 {
-
+    Message message(MessageType::ROOM_IS_HOST_REQUEST);
+    MASSAGE_MGR.SendMsg(message);
 }

@@ -1,75 +1,9 @@
-﻿  MassageMgr.cpp
-  PlayerMgr.cpp
-  SceneMgr.cpp
-  Lobby.cpp
-  RoomSlot.cpp
-  Room.cpp
-  Title.cpp
-  AppDelegate.cpp
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsBody.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\MassageMgr\MassageMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsShape.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\MassageMgr\MassageMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsBody.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\PlayerMgr\PlayerMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsShape.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\PlayerMgr\PlayerMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsBody.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Title\Title.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsShape.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Title\Title.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsBody.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\Lobby.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsShape.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\Lobby.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsBody.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Room\Room.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsShape.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Room\Room.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsBody.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\RoomSlot.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsShape.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\RoomSlot.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsBody.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsShape.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsBody.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\SceneMgr\SceneMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsShape.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\SceneMgr\SceneMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\ui/UIHelper.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\Lobby.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\base/ccUTF8.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\MassageMgr\MassageMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\base/ccUTF8.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\PlayerMgr\PlayerMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\base/ccUTF8.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Room\Room.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\base/ccUTF8.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Title\Title.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\base/ccUTF8.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\RoomSlot.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\base/ccUTF8.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\platform/CCSAXParser.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\MassageMgr\MassageMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\platform/CCSAXParser.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\PlayerMgr\PlayerMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\base/ccUTF8.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\SceneMgr\SceneMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\base/ccUTF8.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\Lobby.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\ui/UIHelper.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\MassageMgr\MassageMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\platform/CCSAXParser.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Room\Room.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\platform/CCSAXParser.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Title\Title.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Manager\SceneMgr\../../Scene/Lobby/Lobby.h(9,15): warning C4099: 'RoomData': 처음에는 'struct'을(를) 사용하여 형식 이름을 표시했는데 이제는 'class'을(를) 사용하여 표시합니다. (소스 파일 컴파일 중 ..\Classes\Manager\MassageMgr\MassageMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Scene\Lobby\RoomData.h(8): message : 'RoomData' 선언을 참조하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\MassageMgr\MassageMgr.cpp)
-..\Classes\Manager\MassageMgr\MassageMgr.cpp(83,25): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\platform/CCSAXParser.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\RoomSlot.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\ui/UIHelper.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\PlayerMgr\PlayerMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Manager\SceneMgr\../../Scene/Lobby/Lobby.h(9,15): warning C4099: 'RoomData': 처음에는 'struct'을(를) 사용하여 형식 이름을 표시했는데 이제는 'class'을(를) 사용하여 표시합니다. (소스 파일 컴파일 중 ..\Classes\Manager\PlayerMgr\PlayerMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Scene\Lobby\RoomData.h(8): message : 'RoomData' 선언을 참조하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\PlayerMgr\PlayerMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\platform/CCSAXParser.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\SceneMgr\SceneMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\platform/CCSAXParser.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\platform/CCSAXParser.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\Lobby.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\ui/UIHelper.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Room\Room.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Manager\SceneMgr\../../Scene/Lobby/Lobby.h(9,15): warning C4099: 'RoomData': 처음에는 'struct'을(를) 사용하여 형식 이름을 표시했는데 이제는 'class'을(를) 사용하여 표시합니다. (소스 파일 컴파일 중 ..\Classes\Scene\Room\Room.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Scene\Lobby\RoomData.h(8): message : 'RoomData' 선언을 참조하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Room\Room.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\ui/UIHelper.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Title\Title.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\ui/UIHelper.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\RoomSlot.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Manager\SceneMgr\../../Scene/Lobby/Lobby.h(9,15): warning C4099: 'RoomData': 처음에는 'struct'을(를) 사용하여 형식 이름을 표시했는데 이제는 'class'을(를) 사용하여 표시합니다. (소스 파일 컴파일 중 ..\Classes\Scene\Title\Title.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Scene\Lobby\RoomData.h(8): message : 'RoomData' 선언을 참조하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Title\Title.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\ui/UIHelper.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\ui/UIHelper.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\SceneMgr\SceneMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Manager\SceneMgr\../../Scene/Lobby/Lobby.h(9,15): warning C4099: 'RoomData': 처음에는 'struct'을(를) 사용하여 형식 이름을 표시했는데 이제는 'class'을(를) 사용하여 표시합니다. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Scene\Lobby\RoomData.h(8): message : 'RoomData' 선언을 참조하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Manager\SceneMgr\../../Scene/Lobby/Lobby.h(9,15): warning C4099: 'RoomData': 처음에는 'struct'을(를) 사용하여 형식 이름을 표시했는데 이제는 'class'을(를) 사용하여 표시합니다. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\RoomSlot.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Scene\Lobby\RoomData.h(8): message : 'RoomData' 선언을 참조하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\RoomSlot.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Manager\SceneMgr\../../Scene/Lobby/Lobby.h(9,15): warning C4099: 'RoomData': 처음에는 'struct'을(를) 사용하여 형식 이름을 표시했는데 이제는 'class'을(를) 사용하여 표시합니다. (소스 파일 컴파일 중 ..\Classes\Manager\SceneMgr\SceneMgr.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Scene\Lobby\RoomData.h(8): message : 'RoomData' 선언을 참조하십시오. (소스 파일 컴파일 중 ..\Classes\Manager\SceneMgr\SceneMgr.cpp)
-..\Classes\Scene\Lobby\RoomSlot.cpp(84,15): warning C4244: '=': 'int64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Scene\Lobby\Lobby.h(9,15): warning C4099: 'RoomData': 처음에는 'struct'을(를) 사용하여 형식 이름을 표시했는데 이제는 'class'을(를) 사용하여 표시합니다. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\Lobby.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Scene\Lobby\RoomData.h(8): message : 'RoomData' 선언을 참조하십시오. (소스 파일 컴파일 중 ..\Classes\Scene\Lobby\Lobby.cpp)
-  main.cpp
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsBody.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsShape.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\base/ccUTF8.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\platform/CCSAXParser.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\ui/UIHelper.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Manager\SceneMgr\../../Scene/Lobby/Lobby.h(9,15): warning C4099: 'RoomData': 처음에는 'struct'을(를) 사용하여 형식 이름을 표시했는데 이제는 'class'을(를) 사용하여 표시합니다. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp)
-D:\Program Files\Git\Omok Multi Play\Omok\Classes\Scene\Lobby\RoomData.h(8): message : 'RoomData' 선언을 참조하십시오. (소스 파일 컴파일 중 D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\main.cpp)
+﻿  Title.cpp
+D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsBody.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsShape.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\base/ccUTF8.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\platform/CCSAXParser.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\ui/UIHelper.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+D:\Program Files\Git\Omok Multi Play\Omok\Classes\Manager\SceneMgr\../../Scene/Lobby/Lobby.h(9,15): warning C4099: 'RoomData': 처음에는 'struct'을(를) 사용하여 형식 이름을 표시했는데 이제는 'class'을(를) 사용하여 표시합니다.
+D:\Program Files\Git\Omok Multi Play\Omok\Classes\Scene\Lobby\RoomData.h(8): message : 'RoomData' 선언을 참조하십시오.
   Omok.vcxproj -> D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\bin\Omok\Debug\Omok.exe

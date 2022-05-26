@@ -122,7 +122,10 @@ void MassageMgr::OnReceiveMsg(Message message)
 			}
 			else
 			{
-				//접속 실패
+				Scene* scene = SCENE_MGR.GetNowScene();
+				Title* titleScene = dynamic_cast<Title*>(scene);
+
+				titleScene->CantLogin();
 			}
 		}
 		break;

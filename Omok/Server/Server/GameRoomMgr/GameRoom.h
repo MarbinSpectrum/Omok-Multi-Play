@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../ClientMgr/ClientMgr.h"
+#include "../GameRoomMgr/GameRoomMgr.h"
 #include <set>
 
 typedef __int64 int64;
@@ -9,18 +10,21 @@ typedef unsigned int uint;
 class GameRoom
 {
 public:
-	GameRoom(uint roomID, int64 roomKey, ClientObj* host);
+	GameRoom(uint roomNum, int64 roomKey, ClientObj* host);
 	~GameRoom();
 
 public:
 	uint					CountPlayer();
 	bool					ExistRoom(ClientObj* guest);
 	bool					EnterGameRoom(ClientObj* guest);
+	bool					ExitGameRoom(ClientObj* guest);
 
 private:
-	const uint				maxPerson = 2;
+	bool					IsHost(ClientObj* guest);
 
-	uint					roomID;
+
+private:
+	uint					roomNum;
 	int64					roomKey;
 	ClientObj*				host;
 	std::set<ClientObj*>	clientList;

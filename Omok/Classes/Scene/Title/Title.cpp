@@ -68,3 +68,9 @@ void Title::EnterGameLobby(Ref* pSender)
 
     MASSAGE_MGR.SendMsg(message);
 }
+
+void Title::CantLogin()
+{
+    LoginPopup* popup = LoginPopup::create();
+    this->addChild(popup,10);
+}
