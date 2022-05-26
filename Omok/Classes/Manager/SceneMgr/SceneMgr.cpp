@@ -52,6 +52,7 @@ void SceneMgr::Init()
 {
 	AddScene(SCENE(Title, "Title"));
 	AddScene(SCENE(Lobby, "Lobby"));
+	AddScene(SCENE(Room, "Room"));
 
 	nowScene = GetScene("Title");
 }

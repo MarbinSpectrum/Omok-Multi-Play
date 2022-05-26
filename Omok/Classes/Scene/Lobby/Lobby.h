@@ -1,10 +1,13 @@
 #pragma once
 
-#include "cocos2d.h"
 #include "ui/CocosGUI.h"
+#include "cocos2d.h"
 #include "framework.h"
 #include "RoomData.h"
-#include <vector>
+#include "RoomSlot.h"
+
+class RoomData;
+class RoomSlot;
 
 #define CSCENE cocos2d::Scene
 #define DIRECTOR Director::getInstance()
@@ -24,10 +27,11 @@ public:
     void            UpdateLobbyRoomList(RoomDataList* newRoomDataList);
     void            LobbyRoomMake(Ref* pSender);
     void            RoomListRefresh(Ref* pSender);
+
 public:
     CREATE_FUNC(Lobby);
 
 private:
-    ui::ScrollView* roomScrollView = NULL;
-    std::vector<Sprite*> SpriteList;
+    ui::ScrollView* roomScrollView;
+    std::vector<RoomSlot*> roomSlotList;
 };

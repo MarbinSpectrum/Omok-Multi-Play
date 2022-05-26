@@ -23,6 +23,7 @@ class Server
 public:
 	Server();
 private:
+	static void Destory();
 	static Server* instance;
 
 public:

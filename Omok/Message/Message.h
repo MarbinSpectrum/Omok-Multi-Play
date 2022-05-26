@@ -12,6 +12,8 @@ enum class MessageType
 	LOBBY_ROOM_DATA_REPLY	= 111,
 	MAKE_ROOM_REQUEST		= 120,
 	MAKE_ROOM_REPLY			= 121,
+	ENTER_ROOM_REQUEST		= 130,
+	ENTER_ROOM_REPLY		= 131
 };
 
 class Message

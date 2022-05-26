@@ -21,33 +21,22 @@ struct ClientObj
 
 class ClientMgr
 {
-	typedef std::unordered_map<SOCKET, ClientObj> ClientList;
+	typedef std::unordered_map<SOCKET, ClientObj*> ClientList;
 private:
 	ClientMgr();
 	~ClientMgr();
+
 private:
+	static void Destory();
 	static ClientMgr*	instance;
 
 public:
 	static ClientMgr&	Instance();
 
 public:
-	bool RegistClient(SOCKET socket, std::string playerName)
-	{
-		if (clientList->find(socket) == clientList->end())
-		{
-			clientList->insert({ socket,ClientObj(socket,playerName) });
-			return true;
-		}
-		return false;
-	}
-	void RemoveClient(SOCKET socket)
-	{
-		if (clientList->find(socket) != clientList->end())
-		{
-			clientList->erase(socket);
-		}
-	}
+	bool RegistClient(SOCKET socket, std::string playerName);
+	void RemoveClient(SOCKET socket);
+	ClientObj* GetClient(SOCKET socket);
 
 private:
 	ClientList* clientList;

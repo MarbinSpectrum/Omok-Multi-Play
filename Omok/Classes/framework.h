@@ -9,6 +9,7 @@
 #include <memory.h>
 #include <tchar.h>
 #include <time.h>
+#include <vector>
 
 #include "cocos2d.h"
 #include "platform/CCStdC.h"

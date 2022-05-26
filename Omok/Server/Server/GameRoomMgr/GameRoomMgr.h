@@ -31,12 +31,15 @@ public:
 	static GameRoomMgr&	Instance();
 
 public:
-	bool				CreateRoom();
+	bool				CreateRoom(SOCKET socket);
+	bool				EnterRoom(SOCKET socket, uint roomNum, int64 roomKey);
 	void				WriteRoomDatas(Message& message);
+
 private:
 	int64				MakeRoomKey();
 	uint				MakeRoomID();
-	bool				CreateRoom(int64 roomNum);
+	bool				CreateRoom(int64 roomkey, SOCKET socket);
+	GameRoom*			GetGameRoom(uint roomNum, int64 roomKey);
 	
 private:
 	RoomDataList*		roomDataList;

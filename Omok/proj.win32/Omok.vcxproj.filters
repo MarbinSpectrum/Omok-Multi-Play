@@ -34,6 +34,12 @@
     <ClCompile Include="..\Message\Message.cpp">
       <Filter>Source Files\Message</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\Room\Room.cpp">
+      <Filter>Source Files\Classes\Scene\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\Lobby\RoomSlot.cpp">
+      <Filter>Source Files\Classes\Scene\Lobby</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.h">
@@ -93,6 +99,12 @@
     <ClInclude Include="..\Message\Message.h">
       <Filter>Source Files\Message</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Scene\Room\Room.h">
+      <Filter>Source Files\Classes\Scene\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\Lobby\RoomSlot.h">
+      <Filter>Source Files\Classes\Scene\Lobby</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Program Files\Git\Omok Multi Play\Omok\CMakeLists.txt" />
@@ -147,6 +159,9 @@
     </Filter>
     <Filter Include="Source Files\Message">
       <UniqueIdentifier>{121830a2-a242-4ef8-a66f-f1fb16f8e33d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Scene\Room">
+      <UniqueIdentifier>{e9cca6aa-de8b-4a09-9a9d-99a883178396}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

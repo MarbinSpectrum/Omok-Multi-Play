@@ -40,15 +40,34 @@ GameRoomMgr::~GameRoomMgr()
 	}
 }
 
-bool GameRoomMgr::CreateRoom()
+bool GameRoomMgr::CreateRoom(SOCKET socket)
 {
 	int64 roomKey = MakeRoomKey();
-	if (CreateRoom(roomKey))
+	if (CreateRoom(roomKey, socket))
 	{
 		//방 생성완료
 		return true;
 	}
 	return false;
+}
+
+bool GameRoomMgr::EnterRoom(SOCKET socket, uint roomNum, int64 roomKey)
+{
+	GameRoom* gameRoom = GetGameRoom(roomNum, roomKey);
+	if (gameRoom == NULL)
+	{
+		//해당 방이 존재하지 않는다.
+		return false;
+	}
+
+	ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
+	if (clientObj == NULL)
+	{
+		//해당 클라이언트가 존재하지 않는다.
+		return false;
+	}
+
+	return gameRoom->EnterGameRoom(clientObj);
 }
 
 void GameRoomMgr::WriteRoomDatas(Message& message)
@@ -94,7 +113,7 @@ uint GameRoomMgr::MakeRoomID()
 	return 0;
 }
 
-bool GameRoomMgr::CreateRoom(int64 roomkey)
+bool GameRoomMgr::CreateRoom(int64 roomkey, SOCKET socket)
 {
 	if (roomDataList->size() > MaxRoomNum)
 	{
@@ -113,7 +132,25 @@ bool GameRoomMgr::CreateRoom(int64 roomkey)
 	roomDataList->insert({ roomID ,RoomData() });
 
 	RoomData& roomData = roomDataList->find(roomID)->second;
-	roomData.insert({ roomkey ,new GameRoom() });
+	ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
+	roomData.insert({ roomkey ,new GameRoom(roomID,roomkey,clientObj) });
 
 	return true;
+}
+
+GameRoom* GameRoomMgr::GetGameRoom(uint roomNum, int64 roomKey)
+{
+	if (roomDataList->find(roomNum) == roomDataList->end())
+	{
+		return NULL;
+	}
+
+	RoomData &roomData = (*roomDataList)[roomNum];
+	if (roomData.find(roomKey) == roomData.end())
+	{
+		return NULL;
+	}
+
+	GameRoom* gameRoom = roomData[roomKey];
+	return gameRoom;
 }

@@ -2,6 +2,8 @@
 
 #include "../../Scene/Title/Title.h"
 #include "../../Scene/Lobby/Lobby.h"
+#include "../../Scene/Room/Room.h"
+
 #include "../BaseMgr.h"
 #include "cocos2d.h"
 #include <unordered_map>

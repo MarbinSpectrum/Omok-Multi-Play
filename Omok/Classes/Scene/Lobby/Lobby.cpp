@@ -34,35 +34,18 @@ bool Lobby::init()
     roomScrollView->setScrollBarWidth(10);
     roomScrollView->setScrollBarPositionFromCorner(Vec2(2, 2));
     roomScrollView->setScrollBarColor(Color3B::WHITE); 
+    
+    int roomCnt = 100;
+    for (int i = 0; i < roomCnt; i++)
     {
-        int roomCnt = 100;
-        
-        roomScrollView->setInnerContainerSize(Size(roomScrollViewSize.width, roomSlotSize.height * roomCnt));
-        for (int i = 0; i < roomCnt; i++)
-        {
-            Sprite* roomSlot = NULL;
-            if (SpriteList.size() >= i)
-            {
-                roomSlot = Sprite::create("res/RoomSlot.png");
-                roomScrollView->addChild(roomSlot);
-                {
-                    auto labelText = Label::createWithTTF("NO." + to_string(i+1), "fonts/GodoM.ttf", 18);
-                    labelText->setTextColor(Color4B(0, 0, 0, 255));
-                    float labelPosX = labelText->getContentSize().width / 2 +10;
-                    float labelPosY = roomSlotSize.height - (labelText->getContentSize().height / 2 + 10);
-                    labelText->setPosition(Vec2(labelPosX, labelPosY));
-                    roomSlot->addChild(labelText);
-                }
+        auto roomSlot = RoomSlot::create(0, 0, 0);
+        float posX = roomScrollView->getContentSize().width / 2;
+        float posY = roomScrollView->getInnerContainerSize().height - roomSlotSize.height * i - roomSlotSize.height / 2;
+        roomSlot->setPosition(Vec2(posX, posY));
 
-                SpriteList.push_back(roomSlot);
-            }
-            else
-                roomSlot = SpriteList[i];
+        roomScrollView->addChild(roomSlot);
 
-            float posX = roomScrollView->getContentSize().width / 2;
-            float posY = roomScrollView->getInnerContainerSize().height - roomSlotSize.height * i - roomSlotSize.height / 2;
-            roomSlot->setPosition(Vec2(posX, posY));
-        }
+        roomSlotList.push_back(roomSlot);
     }
     this->addChild(roomScrollView, 0);
 
@@ -103,18 +86,37 @@ void Lobby::RequestLobbyRoomList()
 void Lobby::UpdateLobbyRoomList(RoomDataList* newRoomDataList)
 {
     int roomCnt = newRoomDataList->size();
+
     roomScrollView->jumpToTop();
     roomScrollView->setInnerContainerSize(Size(roomScrollViewSize.width, roomSlotSize.height * roomCnt));
     for (int i = 0; i < 100; i++)
     {
-        Sprite* roomSlot = SpriteList[i];
+        RoomSlot* roomSlot = roomSlotList[i];
+        if (roomSlot == NULL)
+        {
+            return;
+        }
+
         if (roomCnt <= i)
+        {
             roomSlot->setVisible(false);
+        }
         else
         {
             roomSlot->setVisible(true);
+
+            RoomData& roomData = (*newRoomDataList)[i];
+            uint roomNum = roomData.roomNum;
+            int64 roomKey = roomData.roomKey;
+            int personNum = roomData.personNum;
+
+            roomSlot->SetRoomNum(roomNum);
+            roomSlot->SetRoomKey(roomKey);
+            roomSlot->SetPersonNum(personNum);
+
             float posX = roomScrollView->getContentSize().width / 2;
-            float posY = roomScrollView->getInnerContainerSize().height - roomSlotSize.height * i - roomSlotSize.height / 2;
+            float posY = roomScrollView->getInnerContainerSize().height - 
+                roomSlotSize.height * i - roomSlotSize.height / 2;
             roomSlot->setPosition(Vec2(posX, posY));
         }
     }
@@ -128,8 +130,6 @@ void Lobby::LobbyRoomMake(Ref* pSender)
 {
     Message message(MessageType::MAKE_ROOM_REQUEST);
     MASSAGE_MGR.SendMsg(message);
-
-    RequestLobbyRoomList();
 }
 
 void Lobby::RoomListRefresh(Ref* pSender)

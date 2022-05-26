@@ -96,7 +96,7 @@ vector<string> split(string input, initializer_list<char> check)
 unsigned int StringToUint(string num)
 {
 	unsigned int number = 0;
-	for (int i = num.size() - 1; i >= 0; i--)
+	for (int i = 0; i < num.size(); i++)
 	{
 		int n = num[i] - '0';
 		number *= 10;
@@ -122,7 +122,7 @@ string UintToString(unsigned int num)
 __int64 StringToInt64(string num)
 {
 	__int64 number = 0;
-	for (int i = num.size() - 1; i >= 0; i--)
+	for (int i = 0; i < num.size(); i++)
 	{
 		int n = num[i] - '0';
 		number *= 10;

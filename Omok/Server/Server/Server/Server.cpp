@@ -1,9 +1,20 @@
 #include "Server.h"
 #include "../MsgMgr/MsgMgr.h"
+#include <stdlib.h>
+
+#if _DEBUG
+#define new new(_NORMAL_BLOCK,__FILE__,__LINE__)
+#define malloc(s) _malloc_dbg(s,_NORMAL_BLOCK,__FILE__,__LINE__)
+#endif
 
 Server::Server()
 : serverSock(NULL)
 {
+}
+
+void Server::Destory()
+{
+	delete instance;
 }
 
 Server* Server::instance = NULL;
@@ -13,10 +24,14 @@ Server& Server::Instance()
 	{
 		//싱글톤 객체를 추가
 		instance = new Server();
+		atexit(Destory);
 	}
 	return *instance;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// : 서버가 실행될때 처리해야하는 부분들 (쓰레드 실행)
+////////////////////////////////////////////////////////////////////////////////
 void Server::Run()
 {
 	//WSADATA 윈도우 소캣 데이터 구조체
@@ -52,7 +67,9 @@ void Server::Run()
 	//listen : 소캣을 연결요청 대기 상태로 만든다
 	listen(serverSock, SOMAXCONN);
 
-	std::thread proc(recv_client);
+	//_CrtDumpMemoryLeaks();
+
+	std::thread proc(recv_client);	
 
 	char buffer[PACKET_SIZE] = { 0 };
 	while (!WSAGetLastError())
@@ -72,16 +89,25 @@ void Server::Run()
 	WSACleanup();
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// : 클라이언트의 소캣 리스트
+////////////////////////////////////////////////////////////////////////////////
 SOCKLIST* Server::GetSockList()
 {
 	return &clientSock;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// : 클라이언트를 지속적으로 받는 쓰레드
+////////////////////////////////////////////////////////////////////////////////
 CLIENT_THREAD* Server::GetClientThread()
 {
 	return &clientThread;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// : 서버의 소캣
+////////////////////////////////////////////////////////////////////////////////
 SOCKET Server::GetServerSocket()
 {
 	return serverSock;

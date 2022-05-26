@@ -151,12 +151,26 @@ void MassageMgr::OnReceiveMsg(Message message)
 
 			if (success)
 			{
-				
+				SCENE_MGR.MoveScene("Room");
 			}
 			else
 			{
 				
 			}			
+		}
+		break;
+		case MessageType::ENTER_ROOM_REPLY:
+		{
+			int success = std::stoi(message.ReadMessage());
+
+			if (success)
+			{
+				SCENE_MGR.MoveScene("Room");
+			}
+			else
+			{
+
+			}
 		}
 		break;
 	}
