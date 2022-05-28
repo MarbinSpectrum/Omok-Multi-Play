@@ -118,7 +118,12 @@ void MassageMgr::OnReceiveMsg(Message message)
 			{
 				std::string playerName = message.ReadMessage();
 				PLAYER_MGR.RegistNickName(playerName);
-				SCENE_MGR.MoveScene("Lobby");
+
+				auto director = Director::getInstance();
+				auto scene = Lobby::createScene();
+				director->replaceScene(scene);
+
+				//SCENE_MGR.MoveScene("Lobby");
 			}
 			else
 			{
@@ -154,7 +159,10 @@ void MassageMgr::OnReceiveMsg(Message message)
 
 			if (success)
 			{
-				SCENE_MGR.MoveScene("Room");
+				auto director = Director::getInstance();
+				auto scene = Room::createScene();
+				director->replaceScene(scene);
+				//SCENE_MGR.MoveScene("Room");
 			}
 			else
 			{
@@ -168,7 +176,10 @@ void MassageMgr::OnReceiveMsg(Message message)
 
 			if (success)
 			{
-				SCENE_MGR.MoveScene("Room");
+				auto director = Director::getInstance();
+				auto scene = Room::createScene();
+				director->replaceScene(scene);
+				//SCENE_MGR.MoveScene("Room");
 			}
 			else
 			{

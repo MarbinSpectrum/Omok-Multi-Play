@@ -50,11 +50,11 @@ SceneMgr& SceneMgr::Instance()
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void SceneMgr::Init()
 {
-	AddScene(SCENE(Title, "Title"));
-	AddScene(SCENE(Lobby, "Lobby"));
-	AddScene(SCENE(Room, "Room"));
+	//AddScene(SCENE(Title, "Title"));
+	//AddScene(SCENE(Lobby, "Lobby"));
+	//AddScene(SCENE(Room, "Room"));
 
-	nowScene = GetScene("Title");
+	//nowScene = GetScene("Title");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,10 +62,10 @@ void SceneMgr::Init()
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void SceneMgr::AddScene(std::string sceneName, CSCENE* scene)
 {
-	auto director = Director::getInstance();
+	//auto director = Director::getInstance();
 
-	sceneMap->insert({ sceneName, scene });
-	director->pushScene(scene);
+	//sceneMap->insert({ sceneName, scene });
+	//director->pushScene(scene);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

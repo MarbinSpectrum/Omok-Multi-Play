@@ -128,7 +128,10 @@ void Lobby::Start()
 
 void Lobby::LobbyRoomMake(Ref* pSender)
 {
-    SCENE_MGR.MoveScene("Title");
+    auto director = Director::getInstance();
+    auto scene = Title::createScene();
+    director->replaceScene(scene);
+    //SCENE_MGR.MoveScene("Room");
     return;
     Message message(MessageType::MAKE_ROOM_REQUEST);
     MASSAGE_MGR.SendMsg(message);

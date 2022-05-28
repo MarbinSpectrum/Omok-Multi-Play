@@ -51,18 +51,17 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview)
     {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
         glview = GLViewImpl::createWithRect("Mygame", cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
-#else
-        glview = GLViewImpl::create("Mygame");
-#endif
         director->setOpenGLView(glview);
     }
 
     //게임에 필요한 요소를 등록
     register_all_packages();
 
-    SCENE_MGR.MoveScene("Title");
+    //SCENE_MGR.MoveScene("Title");
+
+    auto scene = Title::createScene();
+    director->runWithScene(scene);
 
     return true;
 }
