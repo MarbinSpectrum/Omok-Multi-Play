@@ -22,5 +22,17 @@ bool LoginPopup::init()
     back->setPosition(Point(visibleSize.width / 2, visibleSize.height / 2));
     this->addChild(back);
 
+    auto closePopup = ui::Button::create("res/Null.png");
+    closePopup->setPosition(Point(visibleSize.width / 2, visibleSize.height / 2));
+    closePopup->setScale(visibleSize.width, visibleSize.height);
+    closePopup->addClickEventListener(CC_CALLBACK_1(LoginPopup::ClosePopUp, this));
+    this->addChild(closePopup);
+
     return true;
+}
+
+void LoginPopup::ClosePopUp(Ref* ref)
+{
+    log("!!!");
+    this->setVisible(false);
 }

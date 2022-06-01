@@ -25,3 +25,5 @@
 
 #define WINSIZEX 480
 #define WINSIZEY 320
+
+#define STRINGDATA "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=,./?<>;:'[]{}!@#$%^&*()_+"

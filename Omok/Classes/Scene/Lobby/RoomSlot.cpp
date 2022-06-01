@@ -32,7 +32,7 @@ bool RoomSlot::init(uint roomNum, int64 roomKey, int roomPerson)
     slotBack = Sprite::create("res/RoomSlot.png");
 
     //规 锅龋 按眉 积己
-    roomNumText = ui::Text::create("NO.1234567890/", "fonts/GodoM.ttf", 35);
+    roomNumText = ui::Text::create(STRINGDATA, "fonts/GodoM.ttf", 35);
     if (roomNumText != NULL)
     {
         SetRoomNumText(roomNum);
@@ -41,7 +41,7 @@ bool RoomSlot::init(uint roomNum, int64 roomKey, int roomPerson)
     }
 
     //规 牢盔荐 按眉 积己
-    personNumText = ui::Text::create("1234567890/", "fonts/GodoM.ttf", 30);
+    personNumText = ui::Text::create(STRINGDATA, "fonts/GodoM.ttf", 30);
     if (personNumText != NULL)
     {
         SetPersonNumText(roomPerson);
@@ -91,7 +91,7 @@ void RoomSlot::SetPersonNum(int pPersonNum)
 
 void RoomSlot::SetRoomNumText(uint roomNum)
 {
-    roomNumText->setString("NO." + std::to_string(roomNum));
+    roomNumText->setString("NO ." + std::to_string(roomNum));
     float labelPosX = roomNumText->getContentSize().width / 2 + 10;
     float labelPosY = slotBack->getContentSize().height - (roomNumText->getContentSize().height / 2 + 10);
     roomNumText->setPosition(Vec2(labelPosX, labelPosY));
@@ -99,7 +99,8 @@ void RoomSlot::SetRoomNumText(uint roomNum)
 
 void RoomSlot::SetPersonNumText(int roomPerson)
 {
-    personNumText->setString(std::to_string(roomPerson) + "/2");
+    int maxPerson = RoomData::maxPerson;
+    personNumText->setString(std::to_string(roomPerson) + "/" + std::to_string(maxPerson));
     float labelPosX = slotBack->getContentSize().width - (personNumText->getContentSize().width / 2 + 10);
     float labelPosY = personNumText->getContentSize().height / 2 + 10;
     personNumText->setPosition(Vec2(labelPosX, labelPosY));

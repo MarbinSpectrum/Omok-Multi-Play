@@ -906,6 +906,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <Image Include="..\Resources\res\LobbyRoomMake_Normal.png" />
     <Image Include="..\Resources\res\LobbyRoomMake_Selected.png" />
     <Image Include="..\Resources\res\NotLogin.png" />
+    <Image Include="..\Resources\res\Null.png" />
     <Image Include="..\Resources\res\OK_Normal.png" />
     <Image Include="..\Resources\res\OK_Selected.png" />
     <Image Include="..\Resources\res\Refresh_Normal.png" />

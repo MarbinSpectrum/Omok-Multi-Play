@@ -198,6 +198,9 @@
     <Image Include="..\Resources\res\NotLogin.png">
       <Filter>Resources\res</Filter>
     </Image>
+    <Image Include="..\Resources\res\Null.png">
+      <Filter>Resources\res</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\Resources\fonts\GodoM.ttf">

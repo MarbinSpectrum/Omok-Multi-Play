@@ -25,6 +25,7 @@ public:
 
 private:
     ui::TextField*  textField;
+    LoginPopup*     loginPopup;
 
 public:
     CREATE_FUNC(Title);

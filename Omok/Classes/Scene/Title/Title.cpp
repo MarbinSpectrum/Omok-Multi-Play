@@ -48,13 +48,18 @@ bool Title::init()
         this->addChild(enterGameLobbyBtn, 1);
     }
 
+    //팝업생성
+    loginPopup = LoginPopup::create();
+    loginPopup->setVisible(false);
+    this->addChild(loginPopup, 10);
+
     return true;
 }
+
 void Title::Start()
 {
-
+    textField->setString("");
 }
-
 
 void Title::EnterGameLobby(Ref* pSender)
 {
@@ -71,6 +76,5 @@ void Title::EnterGameLobby(Ref* pSender)
 
 void Title::CantLogin()
 {
-    LoginPopup* popup = LoginPopup::create();
-    this->addChild(popup,10);
+    loginPopup->setVisible(true);
 }

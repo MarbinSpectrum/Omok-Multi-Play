@@ -18,5 +18,6 @@ public:
 public:
     CREATE_FUNC(LoginPopup);
 
+    void    ClosePopUp(Ref* ref);
     bool    init();
 };

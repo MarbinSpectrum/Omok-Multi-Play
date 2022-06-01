@@ -14,7 +14,7 @@ struct RoomData
     {
 
     }
-    const int maxPerson = 2;
+    static const int maxPerson = 2;
 
     uint roomNum;
     int64 roomKey;
