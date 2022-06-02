@@ -12,6 +12,7 @@
 #define CSCENE cocos2d::Scene
 #define SCENE(x,y) y,x::createScene()
 
+
 class SceneMgr : BaseMgr
 {
 	typedef std::unordered_map<std::string, CSCENE*> SceneMap;
@@ -19,9 +20,6 @@ class SceneMgr : BaseMgr
 public:
 	SceneMgr();
 	~SceneMgr();
-
-private:
-	static SceneMgr* instance;
 
 public:
 	static SceneMgr& Instance();
@@ -33,6 +31,9 @@ public:
 	CSCENE*			GetNowScene();
 	void			MoveScene(std::string sceneName);
 	void			MoveScene(CSCENE* scene);
+
+private:
+	static SceneMgr* instance;
 
 private:
 	CSCENE* nowScene;

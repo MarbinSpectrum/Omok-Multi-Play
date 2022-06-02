@@ -53,6 +53,10 @@ void proc_recv()
 		MASSAGE_MGR.OnReceiveMsg(message);
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 쓰레드 실행
+////////////////////////////////////////////////////////////////////////////////////////////////
 void MassageMgr::RunThread()
 {
 	//WSADATA 윈도우 소캣 데이터 구조체
@@ -98,12 +102,18 @@ void MassageMgr::RunThread()
 	SendMsg(message);
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 메시지 전송
+////////////////////////////////////////////////////////////////////////////////////////////////
 void MassageMgr::SendMsg(Message message)
 {
 	std::string msg = message.ConvertString();
 	send(skt, msg.c_str(), strlen(msg.c_str()), 0);
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 메시지 수신
+////////////////////////////////////////////////////////////////////////////////////////////////
 void MassageMgr::OnReceiveMsg(Message message)
 {
 	MessageType messageType = message.GetMessageType();
@@ -137,10 +147,11 @@ void MassageMgr::OnReceiveMsg(Message message)
 			int roomCnt = std::stoi(message.ReadMessage());
 			for (int idx = 0; idx < roomCnt; idx++)
 			{
+				string roomName = message.ReadMessage();
 				uint roomNum = StringToUint(message.ReadMessage());
 				int64 roomKey = StringToInt64(message.ReadMessage());
 				int personNum = std::stoi(message.ReadMessage());
-				roomList.push_back(RoomData(roomNum, roomKey, personNum));
+				roomList.push_back(RoomData(roomName,roomNum, roomKey, personNum));
 			}
 
 			Scene* scene = SCENE_MGR.GetNowScene();
@@ -177,9 +188,41 @@ void MassageMgr::OnReceiveMsg(Message message)
 			}
 		}
 		break;
+		case MessageType::GAMEROOM_DATA_REPLY:
+		{
+			int success = std::stoi(message.ReadMessage());
+
+			if (success)
+			{
+				Scene* scene = SCENE_MGR.GetNowScene();
+				Room* roomScene = dynamic_cast<Room*>(scene);
+
+				std::string host = message.ReadMessage();
+				int cnt = stoi(message.ReadMessage());
+
+				if (cnt == 0)
+				{
+					roomScene->UpdateRoom(host, "", false);
+				}
+				else
+				{
+					std::string guest = message.ReadMessage();
+					bool ready = std::stoi(message.ReadMessage());
+					roomScene->UpdateRoom(host, guest, ready);
+				}
+			}
+			else
+			{
+
+			}
+		}
+		break;
 	}
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 클라이언트 소캣
+////////////////////////////////////////////////////////////////////////////////////////////////
 SOCKET MassageMgr::GetSock()
 {
 	return skt;

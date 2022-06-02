@@ -107,6 +107,10 @@ unsigned int StringToUint(string num)
 
 string UintToString(unsigned int num)
 {
+	if (num == 0)
+	{
+		return "0";
+	}
 	string temp = "";
 	int c = (int)log10(num);
 	for (int i = 0; i <= c; i++)
@@ -133,6 +137,10 @@ __int64 StringToInt64(string num)
 
 string Int64ToString(__int64 num)
 {
+	if (num == 0)
+	{
+		return "0";
+	}
 	string temp = "";
 	int c = (int)log10(num);
 	for (int i = 0; i <= c; i++)

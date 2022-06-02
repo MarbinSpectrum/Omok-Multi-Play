@@ -5,10 +5,12 @@
 typedef __int64 int64;
 typedef unsigned int uint;
 
-struct RoomData
+class RoomData
 {
-    RoomData(uint roomNum, int64 roomKey, int personNum)
-    : roomNum(roomNum)
+public:
+    RoomData(std::string roomName, uint roomNum, int64 roomKey, int personNum)
+    : roomName(roomName)
+    , roomNum(roomNum)
     , roomKey(roomKey)
     , personNum(personNum)
     {
@@ -16,6 +18,7 @@ struct RoomData
     }
     static const int maxPerson = 2;
 
+    std::string roomName;
     uint roomNum;
     int64 roomKey;
     int personNum;

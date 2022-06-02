@@ -1,5 +1,7 @@
 #pragma once
 
+#include "cocos2d.h"
+
 class BaseMgr
 {
 public:
@@ -9,4 +11,3 @@ public:
 public:
 	virtual void Init() = 0;
 };
-

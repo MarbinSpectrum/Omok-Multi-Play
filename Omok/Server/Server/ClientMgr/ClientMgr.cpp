@@ -1,4 +1,5 @@
 #include "ClientMgr.h"
+#include "../GameRoomMgr/GameRoomMgr.h"
 
 void ClientMgr::Destory()
 {
@@ -15,6 +16,24 @@ ClientMgr& ClientMgr::Instance()
 		instance = new ClientMgr();
 	}
 	return *instance;
+}
+
+bool ClientMgr::PlayerNameCheck(std::string& playerName)
+{
+	if (playerName.size() > 8)
+		return false;
+
+	for (int i = 0; i < playerName.size(); i++)
+	{
+		if ('a' <= playerName[i] && playerName[i] <= 'z')
+			continue;
+		if ('0' <= playerName[i] && playerName[i] <= '9')
+			continue;
+		if ('A' <= playerName[i] && playerName[i] <= 'Z')
+			continue;
+		return false;
+	}
+	return true;
 }
 
 ClientMgr::ClientMgr()
@@ -41,7 +60,25 @@ void ClientMgr::RemoveClient(SOCKET socket)
 	if (clientList->find(socket) != clientList->end())
 	{
 		ClientObj* clientObj = GetClient(socket);
+		
+		if (clientObj == NULL)
+		{
+			return;
+		}
+
+		//클라이언트 정보를 리스트에서 삭제
 		clientList->erase(socket);
+		
+		//해당인원에 속해 있는 방을 탐색
+		uint roomNum = clientObj->playerPos.roomNum;
+		int64 roomKey = clientObj->playerPos.roomKey;
+		GameRoom* gameRoom = GAMEROOM_MGR.GetGameRoom(roomNum, roomKey);
+		if (gameRoom != NULL)
+		{
+			//방에서 플레이어 제거
+			gameRoom->ExitGameRoom(clientObj);
+		}
+
 		delete clientObj;
 		clientObj = NULL;
 	}

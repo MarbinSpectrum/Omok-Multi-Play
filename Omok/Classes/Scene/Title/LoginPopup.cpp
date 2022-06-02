@@ -33,6 +33,5 @@ bool LoginPopup::init()
 
 void LoginPopup::ClosePopUp(Ref* ref)
 {
-    log("!!!");
     this->setVisible(false);
 }

@@ -40,13 +40,14 @@ public:
 	bool				CreateRoom(SOCKET socket);
 	bool				RemoveRoom(uint roomNum, int64 roomKey);
 	bool				EnterRoom(SOCKET socket, uint roomNum, int64 roomKey);
+	bool				ExitRoom(SOCKET socket);
 	void				WriteRoomDatas(Message& message);
+	GameRoom*			GetGameRoom(uint roomNum, int64 roomKey);
 
 private:
 	int64				MakeRoomKey();
 	uint				MakeRoomNum();
 	bool				CreateRoom(int64 roomkey, SOCKET socket);
-	GameRoom*			GetGameRoom(uint roomNum, int64 roomKey);
 	
 private:
 	RoomDataList*		roomDataList;

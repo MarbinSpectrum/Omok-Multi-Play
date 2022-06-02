@@ -38,7 +38,7 @@ bool Lobby::init()
     int roomCnt = 100;
     for (int i = 0; i < roomCnt; i++)
     {
-        auto roomSlot = RoomSlot::create(0, 0, 0);
+        auto roomSlot = RoomSlot::create("",0, 0, 0);
         float posX = roomScrollView->getContentSize().width / 2;
         float posY = roomScrollView->getInnerContainerSize().height - roomSlotSize.height * i - roomSlotSize.height / 2;
         roomSlot->setPosition(Vec2(posX, posY));
@@ -106,10 +106,12 @@ void Lobby::UpdateLobbyRoomList(RoomDataList* newRoomDataList)
             roomSlot->setVisible(true);
 
             RoomData& roomData = (*newRoomDataList)[i];
+            std::string roomName = roomData.roomName;
             uint roomNum = roomData.roomNum;
             int64 roomKey = roomData.roomKey;
             int personNum = roomData.personNum;
 
+            roomSlot->SetRoomName(roomName);
             roomSlot->SetRoomNum(roomNum);
             roomSlot->SetRoomKey(roomKey);
             roomSlot->SetPersonNum(personNum);

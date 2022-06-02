@@ -43,6 +43,9 @@
     <ClCompile Include="..\Classes\Scene\Title\LoginPopup.cpp">
       <Filter>Source Files\Classes\Scene\Title</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\Room\PlayerSlot.cpp">
+      <Filter>Source Files\Classes\Scene\Room</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.h">
@@ -110,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\Title\LoginPopup.h">
       <Filter>Source Files\Classes\Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\Room\PlayerSlot.h">
+      <Filter>Source Files\Classes\Scene\Room</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +205,9 @@
       <Filter>Resources\res</Filter>
     </Image>
     <Image Include="..\Resources\res\Null.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\GameRoomBack.png">
       <Filter>Resources\res</Filter>
     </Image>
   </ItemGroup>

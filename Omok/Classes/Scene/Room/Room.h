@@ -3,6 +3,9 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "framework.h"
+#include "PlayerSlot.h"
+
+class PlayerSlot;
 
 #define CSCENE cocos2d::Scene
 #define DIRECTOR Director::getInstance()
@@ -15,12 +18,12 @@ public:
     static CSCENE*  createScene();
     virtual bool    init();
     virtual void    Start() override;
+    void            UpdateRoom(std::string pHost, std::string pGuest, bool pReady);
 
 public:
     CREATE_FUNC(Room);
 
-
 private:
-    ui::Text* playerName0;
-    ui::Text* playerName1;
+    PlayerSlot* hostSlot;
+    PlayerSlot* guestSlot;
 };

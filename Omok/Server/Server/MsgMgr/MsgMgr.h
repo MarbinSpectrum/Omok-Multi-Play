@@ -8,7 +8,7 @@
 #include <string>
 #include <winsock2.h>
 
-#define MAG_MGR MsgMgr::Instance()
+#define MSG_MGR MsgMgr::Instance()
 
 class MsgMgr
 {

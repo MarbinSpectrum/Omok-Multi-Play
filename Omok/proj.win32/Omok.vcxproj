@@ -810,6 +810,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\Classes\Scene\Lobby\Lobby.h" />
     <ClInclude Include="..\Classes\Scene\Lobby\RoomData.h" />
     <ClInclude Include="..\Classes\Scene\Lobby\RoomSlot.h" />
+    <ClInclude Include="..\Classes\Scene\Room\PlayerSlot.h" />
     <ClInclude Include="..\Classes\Scene\Room\Room.h" />
     <ClInclude Include="..\Classes\Scene\Title\LoginPopup.h" />
     <ClInclude Include="..\Classes\Scene\Title\Title.h" />
@@ -824,6 +825,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\Classes\Manager\SceneMgr\SceneMgr.cpp" />
     <ClCompile Include="..\Classes\Scene\Lobby\Lobby.cpp" />
     <ClCompile Include="..\Classes\Scene\Lobby\RoomSlot.cpp" />
+    <ClCompile Include="..\Classes\Scene\Room\PlayerSlot.cpp" />
     <ClCompile Include="..\Classes\Scene\Room\Room.cpp" />
     <ClCompile Include="..\Classes\Scene\Title\LoginPopup.cpp" />
     <ClCompile Include="..\Classes\Scene\Title\Title.cpp" />
@@ -902,6 +904,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Resources\res\GameRoomBack.png" />
     <Image Include="..\Resources\res\LobbyBack.png" />
     <Image Include="..\Resources\res\LobbyRoomMake_Normal.png" />
     <Image Include="..\Resources\res\LobbyRoomMake_Selected.png" />

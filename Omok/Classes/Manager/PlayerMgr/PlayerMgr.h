@@ -12,18 +12,17 @@ public:
 	PlayerMgr();
 	~PlayerMgr();
 
-private:
-	static PlayerMgr*	instance;
-
 public:
 	static PlayerMgr&	Instance();
 
 public:
 	virtual void		Init() override;
-
-public:
 	void				RegistNickName(std::string nickName);
 	std::string*		GetNickName();
+
+private:
+	static PlayerMgr*	instance;
+
 private:
 	std::string playerNickName;
 	int playerRoom;

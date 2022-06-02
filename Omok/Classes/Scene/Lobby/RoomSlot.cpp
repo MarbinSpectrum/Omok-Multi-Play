@@ -1,6 +1,9 @@
 #include "RoomSlot.h"
+#include "cocostudio/CocoStudio.h"
 
 USING_NS_CC;
+
+using namespace cocostudio::timeline;
 
 RoomSlot::RoomSlot()
 : slotBack(NULL)
@@ -13,10 +16,10 @@ RoomSlot::~RoomSlot()
 {
 }
 
-RoomSlot* RoomSlot::create(uint roomNum, int64 roomKey, int roomPerson)
+RoomSlot* RoomSlot::create(std::string roomName, uint roomNum, int64 roomKey, int roomPerson)
 {
     RoomSlot* ret = new RoomSlot();
-    if (ret && ret->init(roomNum, roomKey, roomPerson))
+    if (ret && ret->init(roomName, roomNum, roomKey, roomPerson))
     {
         ret->autorelease();
     }
@@ -27,12 +30,28 @@ RoomSlot* RoomSlot::create(uint roomNum, int64 roomKey, int roomPerson)
     return ret;
 }
 
-bool RoomSlot::init(uint roomNum, int64 roomKey, int roomPerson)
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 방 초기화
+////////////////////////////////////////////////////////////////////////////////////////////////
+bool RoomSlot::init(std::string roomName, uint roomNum, int64 roomKey, int roomPerson)
 {
     slotBack = Sprite::create("res/RoomSlot.png");
+    if (slotBack != NULL)
+    {
+        this->addChild(slotBack);
+    }
+
+    //방 이름 객체 생성
+    roomNameText = ui::Text::create("", "fonts/GodoM.ttf", 35);
+    if (roomNameText != NULL)
+    {
+        SetRoomNumText(roomNum);
+        roomNameText->setTextColor(Color4B(0, 0, 0, 255));
+        slotBack->addChild(roomNameText);
+    }
 
     //방 번호 객체 생성
-    roomNumText = ui::Text::create(STRINGDATA, "fonts/GodoM.ttf", 35);
+    roomNumText = ui::Text::create("", "fonts/GodoM.ttf", 35);
     if (roomNumText != NULL)
     {
         SetRoomNumText(roomNum);
@@ -41,7 +60,7 @@ bool RoomSlot::init(uint roomNum, int64 roomKey, int roomPerson)
     }
 
     //방 인원수 객체 생성
-    personNumText = ui::Text::create(STRINGDATA, "fonts/GodoM.ttf", 30);
+    personNumText = ui::Text::create("", "fonts/GodoM.ttf", 30);
     if (personNumText != NULL)
     {
         SetPersonNumText(roomPerson);
@@ -59,11 +78,74 @@ bool RoomSlot::init(uint roomNum, int64 roomKey, int roomPerson)
         slotBack->addChild(enterBtn);
     }
 
-    this->addChild(slotBack);
+    this->schedule(CC_SCHEDULE_SELECTOR(RoomSlot::UpdateUI), 0.1f);
 
     return true;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 방 이름
+////////////////////////////////////////////////////////////////////////////////////////////////
+void RoomSlot::SetRoomName(std::string pRoomName)
+{
+    roomName = pRoomName;
+}
+void RoomSlot::SetRoomNameText(std::string pRoomName)
+{
+    if (roomNameText == NULL)
+        return;
+    roomNameText->setString(pRoomName + "의 방");
+    float labelPosX = slotBack->getContentSize().width - (roomNameText->getContentSize().width / 2 + 10);
+    float labelPosY = slotBack->getContentSize().height - (roomNameText->getContentSize().height / 2 + 10);
+    roomNameText->setPosition(Vec2(labelPosX, labelPosY));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 방 번호
+////////////////////////////////////////////////////////////////////////////////////////////////
+void RoomSlot::SetRoomNum(uint pRoomNum)
+{
+    roomNum = pRoomNum;
+}
+void RoomSlot::SetRoomNumText(uint roomNum)
+{
+    if (roomNumText == NULL)
+        return;
+    roomNumText->setString("NO." + std::to_string(roomNum));
+    float labelPosX = roomNumText->getContentSize().width / 2 + 10;
+    float labelPosY = slotBack->getContentSize().height - (roomNumText->getContentSize().height / 2 + 10);
+    roomNumText->setPosition(Vec2(labelPosX, labelPosY));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 방 인원
+////////////////////////////////////////////////////////////////////////////////////////////////
+void RoomSlot::SetPersonNum(int pPersonNum)
+{
+    personNum = pPersonNum;
+}
+void RoomSlot::SetPersonNumText(int roomPerson)
+{
+    if (personNumText == NULL)
+        return;
+    int maxPerson = RoomData::maxPerson;
+    personNumText->setString(std::to_string(roomPerson) + "/" + std::to_string(maxPerson));
+    float labelPosX = slotBack->getContentSize().width - (personNumText->getContentSize().width / 2 + 10);
+    float labelPosY = personNumText->getContentSize().height / 2 + 10;
+    personNumText->setPosition(Vec2(labelPosX, labelPosY));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 방의 키값
+////////////////////////////////////////////////////////////////////////////////////////////////
+void RoomSlot::SetRoomKey(int64 pRoomKey)
+{
+    roomKey = pRoomKey;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 방 입장
+////////////////////////////////////////////////////////////////////////////////////////////////
 void RoomSlot::EnterRoom(Ref* pSender)
 {
     Message message(MessageType::ENTER_ROOM_REQUEST);
@@ -73,35 +155,12 @@ void RoomSlot::EnterRoom(Ref* pSender)
     MASSAGE_MGR.SendMsg(message);
 }
 
-void RoomSlot::SetRoomNum(uint pRoomNum)
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : UI 주기적 갱신
+////////////////////////////////////////////////////////////////////////////////////////////////
+void RoomSlot::UpdateUI(float f)
 {
-    roomNum = pRoomNum;
-    SetRoomNumText(pRoomNum);
-}
-
-void RoomSlot::SetRoomKey(int64 pRoomKey)
-{
-    roomKey = pRoomKey;
-}
-
-void RoomSlot::SetPersonNum(int pPersonNum)
-{
-    SetPersonNumText(pPersonNum);
-}
-
-void RoomSlot::SetRoomNumText(uint roomNum)
-{
-    roomNumText->setString("NO ." + std::to_string(roomNum));
-    float labelPosX = roomNumText->getContentSize().width / 2 + 10;
-    float labelPosY = slotBack->getContentSize().height - (roomNumText->getContentSize().height / 2 + 10);
-    roomNumText->setPosition(Vec2(labelPosX, labelPosY));
-}
-
-void RoomSlot::SetPersonNumText(int roomPerson)
-{
-    int maxPerson = RoomData::maxPerson;
-    personNumText->setString(std::to_string(roomPerson) + "/" + std::to_string(maxPerson));
-    float labelPosX = slotBack->getContentSize().width - (personNumText->getContentSize().width / 2 + 10);
-    float labelPosY = personNumText->getContentSize().height / 2 + 10;
-    personNumText->setPosition(Vec2(labelPosX, labelPosY));
+    SetRoomNameText(roomName);
+    SetRoomNumText(roomNum);
+    SetPersonNumText(personNum);
 }

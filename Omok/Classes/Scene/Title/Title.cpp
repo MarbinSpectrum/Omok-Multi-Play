@@ -77,4 +77,5 @@ void Title::EnterGameLobby(Ref* pSender)
 void Title::CantLogin()
 {
     loginPopup->setVisible(true);
+    textField->setString("");
 }

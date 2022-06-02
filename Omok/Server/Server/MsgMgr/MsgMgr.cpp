@@ -1,4 +1,5 @@
 #include "MsgMgr.h"
+#include "../ClientMgr/ClientMgr.h"
 
 MsgMgr* MsgMgr::instance = NULL;
 MsgMgr& MsgMgr::Instance()
@@ -38,6 +39,17 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			std::cout << message.ReadMessage() << "\n";
 		}
 		break;
+		case MessageType::DISCONNECT_CLIENT:
+		{
+			//클라이언트와 서버가 연결이 해제됨
+			//소캣번호
+			std::cout << "DISCONNECT_CLIENT" << " ";
+			std::cout << "SOCKET : ";
+			std::cout << message.ReadMessage() << "\n";
+
+			CLIENT_MGR.RemoveClient(socket);
+		}
+		break;
 		case MessageType::LOBBY_ENTER_REQUEST:
 		{
 			//클라이언트의 로비 입장 요청
@@ -48,10 +60,16 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			std::cout << "아이디 : ";
 			std::cout << playerName << "\n";
 
+			std::cout << "LOBBY_ENTER_REPLY" << " ";
 			Message msg(MessageType::LOBBY_ENTER_REPLY);
 
-			std::cout << "LOBBY_ENTER_REPLY" << " ";
-			if (CLIENT_MGR.RegistClient(socket, playerName))
+			if (ClientMgr::PlayerNameCheck(playerName) == false)
+			{
+				//아이디가 이상함
+				msg.WriteMessage(false);
+				std::cout << 0 << "\n";
+			}
+			else if (CLIENT_MGR.RegistClient(socket, playerName))
 			{
 				//등록이 성공적으로 완료됨
 				msg.WriteMessage(true);
@@ -111,6 +129,63 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 
 			std::cout << "ENTER_ROOM_REPLY" << " ";
 			std::cout << success << "\n";
+		}
+		break;
+		case MessageType::EXIT_ROOM_REQUEST:
+		{
+			//방에 입장하는 것을 요청
+			//방 번호, 키
+			std::cout << "EXIT_ROOM_REQUEST" << "\n";
+
+			bool success = GAMEROOM_MGR.ExitRoom(socket);
+
+			Message msg(MessageType::EXIT_ROOM_REPLY);
+			msg.WriteMessage(success);
+			SendMsg(msg, socket);
+
+			std::cout << "EXIT_ROOM_REPLY" << " ";
+			std::cout << success << "\n";
+		}
+		break;
+		case MessageType::GAMEROOM_DATA_REQUEST:
+		{
+			//방에 입장하는 것을 요청
+			//방 번호, 키
+			std::cout << "GAMEROOM_DATA_REQUEST" << "\n";
+
+			std::cout << "GAMEROOM_DATA_REPLY" << " ";
+			Message msg(MessageType::GAMEROOM_DATA_REPLY);
+			bool success = false;
+
+			ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
+			if (clientObj == NULL)
+			{
+				//클라이언트가 존재하지 않는다.
+				success = false;
+				msg.WriteMessage(success);
+			}
+			else
+			{
+				uint roomNum = clientObj->playerPos.roomNum;
+				int64 roomKey = clientObj->playerPos.roomKey;
+
+				GameRoom* gameRoom = GAMEROOM_MGR.GetGameRoom(roomNum, roomKey);
+				if (gameRoom == NULL)
+				{
+					//방이 존재하지 않는다.
+					success = false;
+					msg.WriteMessage(success);
+				}
+				else
+				{
+					success = true;
+					msg.WriteMessage(success);
+					gameRoom->WriteRoomData(msg);
+				}
+			}
+
+			std::cout << success << "\n";
+			SendMsg(msg, socket);
 		}
 		break;
 	}

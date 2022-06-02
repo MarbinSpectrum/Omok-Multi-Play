@@ -24,9 +24,6 @@ public:
 	MassageMgr();
 	~MassageMgr();
 
-private:
-	static MassageMgr*	instance;
-
 public:
 	static MassageMgr&	Instance();
 
@@ -36,6 +33,9 @@ public:
 	void				SendMsg(Message message);
 	void				OnReceiveMsg(Message message);
 	SOCKET				GetSock();
+
+private:
+	static MassageMgr*	instance;
 
 private:
 	SOCKET				skt;
