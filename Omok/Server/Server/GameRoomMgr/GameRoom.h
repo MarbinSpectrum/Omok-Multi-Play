@@ -12,6 +12,8 @@ typedef unsigned int uint;
 
 class GameRoom
 {
+	typedef std::map<int64, bool> ClientReady;
+	typedef std::set<ClientObj*> ClientList;
 public:
 	GameRoom(std::string roomName, uint roomNum, int64 roomKey, ClientObj* host);
 	~GameRoom();
@@ -25,6 +27,7 @@ public:
 	void					WriteRoomData(Message& message, SOCKET socket);
 	bool					GetIsPlayerReady(ClientObj* guest);
 	void					SetIsPlayerReady(ClientObj* guest, bool state);
+	void					GameStart();
 	GameMgr*				GetGameMgr();
 
 private:
@@ -35,9 +38,9 @@ private:
 	uint						roomNum;
 	int64						roomKey;
 	ClientObj*					host;
-	std::set<ClientObj*>		clientList;
-	std::map<pair<SOCKET, std::string>, bool>		clientReady;
+	ClientList					clientList;
+	ClientReady					clientReady;
 	GameMgr*					gameMgr;
 
-	bool					gameRun;
+	bool						gameRun;
 };

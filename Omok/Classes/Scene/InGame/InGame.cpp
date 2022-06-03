@@ -7,6 +7,21 @@ Scene* InGame::createScene()
     return InGame::create();
 }
 
+InGame::InGame()
+: piece(new GameBoardMap)
+, pieceData(new PieceDatas)
+{
+}
+
+InGame::~InGame()
+{
+    delete piece;
+    piece = NULL;
+    delete pieceData;
+    pieceData = NULL;
+    
+}
+
 bool InGame::init()
 {
     if (!Scene::init())
@@ -28,14 +43,23 @@ bool InGame::init()
     {
         for (int c = 0; c < boardC; c++)
         {
-            piece[r][c] = Piece::create();
-            auto p = piece[r][c];
+            (*piece)[r][c] = Piece::create(r, c);
+            auto p = (*piece)[r][c];
             p->setAnchorPoint(Vec2(0.5, 0.5));
             p->setPosition(Vec2(90 + r * 16.65 + origin.x, 10 + c* 16.65 + origin.y));
             p->setScale(0.8, 0.8);
             this->addChild(p, 0);
         }
     }
+
+    dontClick = ui::Button::create("res/Null.png");
+    dontClick->setPosition(Point(visibleSize.width / 2, visibleSize.height / 2));
+    dontClick->setScale(visibleSize.width, visibleSize.height);
+    auto fadeBack = LayerColor::create(Color4B(0, 0, 0, 100),
+        visibleSize.width, visibleSize.height);
+    dontClick->addChild(fadeBack);
+    
+    this->addChild(dontClick, 20);
 
     return true;
 }
@@ -46,40 +70,60 @@ void InGame::Start()
     MASSAGE_MGR.SendMsg(message);
 
     //게임보드 초기화
-    pieceData.clear();
+    pieceData->clear();
 
-    this->schedule(CC_SCHEDULE_SELECTOR(InGame::UpdateInGame), 0.03f);
-}
-
-void InGame::UpdateGameBoard(PieceDatas& pPieceData)
-{
-    //게임보드 초기화
-    pieceData.clear();
-    for (int i = 0; i < pPieceData.size(); i++)
-    {
-        int r = pPieceData[i].first.first;
-        int c = pPieceData[i].first.second;
-        PieceType pieceType = pPieceData[i].second;
-        pieceData.push_back({ { r,c }, pieceType });
-    }
-}
-
-void InGame::UpdateInGame(float f)
-{
     //초기화
     for (int r = 0; r < boardR; r++)
     {
         for (int c = 0; c < boardC; c++)
         {
-            piece[r][c]->Update(PieceType::EMPTY);
+            (*piece)[r][c]->Update(PieceType::EMPTY);
         }
     }
 
-    for (int i = 0; i < pieceData.size(); i++)
+    //시작
+    for (int r = 0; r < boardR; r++)
     {
-        int r = pieceData[i].first.first;
-        int c = pieceData[i].first.second;
-        PieceType pieceType = pieceData[i].second;
-        piece[r][c]->Update(pieceType);
+        for (int c = 0; c < boardC; c++)
+        {
+            (*piece)[r][c]->StartSchedule();
+        }
     }
+}
+
+void InGame::UpdateGameBoard(Message& message)
+{
+    //게임보드 초기화
+    pieceData->clear();
+
+    //현재턴 여부
+    yourTurn = std::stoi(message.ReadMessage());
+
+    int cnt = std::stoi(message.ReadMessage());
+    for (int i = 0; i < cnt; i++)
+    {
+        int r = std::stoi(message.ReadMessage());
+        int c = std::stoi(message.ReadMessage());
+        PieceType pieceType = (PieceType)std::stoi(message.ReadMessage());
+
+        pieceData->push_back(PieceData(r,c, pieceType));
+    }
+
+    //초기화
+    for (int r = 0; r < boardR; r++)
+    {
+        for (int c = 0; c < boardC; c++)
+        {
+            (*piece)[r][c]->Update(PieceType::EMPTY);
+        }
+    }
+
+    for (int i = 0; i < pieceData->size(); i++)
+    {
+        int r = (*pieceData)[i].r;
+        int c = (*pieceData)[i].c;
+        PieceType pieceType = (*pieceData)[i].pieceType;
+        (*piece)[r][c]->Update(pieceType);
+    }
+
 }

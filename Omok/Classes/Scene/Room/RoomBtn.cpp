@@ -3,11 +3,16 @@
 USING_NS_CC;
 
 RoomBtn::RoomBtn()
+: readyBtn(NULL)
+, readyOKBtn(NULL)
+, startBtn(NULL)
+, startBtnNotAct(NULL)
 {
 }
 
 RoomBtn::~RoomBtn()
 {
+    this->unschedule(CC_SCHEDULE_SELECTOR(RoomBtn::UpdateUI));
 }
 
 RoomBtn* RoomBtn::create()
@@ -124,4 +129,6 @@ void RoomBtn::ReadyOKBtn(Ref* ref)
 
 void RoomBtn::GameStartBtn(Ref* ref)
 {
+    Message message(MessageType::GAMEROOM_GAME_START_REQUEST);
+    MASSAGE_MGR.SendMsg(message);
 }

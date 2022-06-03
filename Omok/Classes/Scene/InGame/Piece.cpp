@@ -3,21 +3,24 @@
 
 USING_NS_CC;
 
-Piece::Piece()
+Piece::Piece(int pR, int pC)
 : white(NULL)
 , black(NULL)
 , pieceBtn(NULL)
 , pieceType(PieceType::EMPTY)
+, r(pR)
+, c(pC)
 {
 }
 
 Piece::~Piece()
 {
+    this->unschedule(CC_SCHEDULE_SELECTOR(Piece::UpdateInGame));
 }
 
-Piece* Piece::create()
+Piece* Piece::create(int pR,int pC)
 {
-    Piece* ret = new Piece();
+    Piece* ret = new Piece(pR, pC);
     if (ret && ret->init())
     {
         ret->autorelease();
@@ -46,8 +49,6 @@ bool Piece::init()
 
     size = white->getContentSize();
 
-    Update(pieceType);
-
     return true;
 }
 
@@ -70,4 +71,19 @@ void Piece::Update(PieceType pPieceType)
         black->setVisible(true);
         break;
     }
+}
+
+void Piece::StartSchedule()
+{
+    this->schedule(CC_SCHEDULE_SELECTOR(Piece::UpdateInGame), 0.03f);
+}
+
+void Piece::UpdateInGame(float f)
+{
+    Update(pieceType);
+}
+
+void Piece::SetPiece()
+{
+
 }

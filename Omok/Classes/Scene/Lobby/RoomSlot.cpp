@@ -14,6 +14,7 @@ RoomSlot::RoomSlot()
 
 RoomSlot::~RoomSlot()
 {
+    this->unschedule(CC_SCHEDULE_SELECTOR(RoomSlot::UpdateUI));
 }
 
 RoomSlot* RoomSlot::create(std::string roomName, uint roomNum, int64 roomKey, int roomPerson)

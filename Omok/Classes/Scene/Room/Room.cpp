@@ -77,6 +77,13 @@ void Room::Start()
 
 void Room::UpdateRoom(std::string pHost, std::string pGuest, bool pReady, bool isHost)
 {
+    if (hostSlot == NULL)
+        return;
+    if (guestSlot == NULL)
+        return;
+    if (guestSlot == NULL)
+        return;
+
     hostSlot->SetText(pHost);
     guestSlot->SetText(pGuest);
     guestSlot->SetReady(pReady);

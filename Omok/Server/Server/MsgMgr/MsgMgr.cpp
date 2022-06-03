@@ -204,9 +204,34 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			}
 		}
 		break;
+		case MessageType::GAMEROOM_GAME_START_REQUEST:
+		{
+			//게임 시작 요청
+			std::cout << "GAMEROOM_GAME_START_REQUEST" << "\n";
+			ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
+
+			uint roomNum = clientObj->playerPos.roomNum;
+			int64 roomKey = clientObj->playerPos.roomKey;
+
+			std::cout << "GAMEROOM_GAME_START_REPLY" << "\n";
+			GameRoom* gameRoom = GAMEROOM_MGR.GetGameRoom(roomNum, roomKey);
+			if (gameRoom != NULL)
+			{
+				gameRoom->GameStart();
+			}
+			else
+			{
+				Message message(MessageType::GAMEROOM_GAME_START_REPLY);
+				message.WriteMessage(0);
+
+				MSG_MGR.SendMsg(message, socket);
+			}
+		}
+		break;
 		case MessageType::GAMEBOARD_DATA_REQUEST:
 		{
 			//게임판 상태를 요청
+			//플레이어의 턴
 			//피스 갯수
 			//피스 R
 			//피스 C
@@ -235,7 +260,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 					msg.WriteMessage(success);
 
 					GameMgr* gameMgr = gameRoom->GetGameMgr();
-					gameMgr->WriteNowBoard(msg);
+					gameMgr->WriteNowBoard(msg, clientObj);
 				}
 				else
 				{

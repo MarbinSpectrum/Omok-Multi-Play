@@ -9,7 +9,7 @@ GameRoom::GameRoom(std::string roomName, uint roomNum, int64 roomKey, ClientObj*
 , gameRun(false)
 {
 	clientList.insert(host);
-	clientReady.insert({{host->socket,host->playerName},false });
+	clientReady.insert({ host->clientKey,false });
 }
 
 GameRoom::~GameRoom()
@@ -77,14 +77,18 @@ bool GameRoom::EnterGameRoom(ClientObj* guest)
 	//클라이언트 정보설정
 	guest->playerPos = { roomNum,roomKey };
 	clientList.insert(guest);
-	clientReady.insert({{guest->socket, guest->playerName}, false });
+	clientReady.insert({guest->clientKey, false });
 	if (host == NULL)
 	{
 		host = guest;
 	}
 
-	//현재 방에 있는 인원들에게 방정보가 갱신됬음을 전달
-	BroadCastRoomData(guest);
+	if (gameRun == false)
+	{
+		//현재 게임중이 아니라면
+		//현재 방에 있는 인원들에게 방정보가 갱신됬음을 전달
+		BroadCastRoomData(guest);
+	}
 
 	return true;
 }
@@ -108,7 +112,7 @@ bool GameRoom::ExitGameRoom(ClientObj* guest)
 
 	//해당 인원을 리스트에서 삭제
 	clientList.erase(guest);
-	clientReady.erase({ guest->socket, guest->playerName });
+	clientReady.erase(guest->clientKey);
 
 	int playerCnt = CountPlayer();
 	if (playerCnt == 0)
@@ -134,8 +138,12 @@ bool GameRoom::ExitGameRoom(ClientObj* guest)
 		}
 	}
 
-	//방인원들에게 방정보가 갱신됬음을 전달
-	BroadCastRoomData();
+	if (gameRun == false)
+	{
+		//현재 게임중이 아니라면
+		//방인원들에게 방정보가 갱신됬음을 전달
+		BroadCastRoomData();
+	}
 
 	return true;
 }
@@ -186,7 +194,7 @@ void GameRoom::WriteRoomData(Message& message, SOCKET socket)
 ////////////////////////////////////////////////////////////////////////////////
 bool GameRoom::GetIsPlayerReady(ClientObj* guest)
 {
-	return clientReady[{ guest->socket, guest->playerName }];
+	return clientReady[guest->clientKey];
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -199,8 +207,40 @@ void GameRoom::SetIsPlayerReady(ClientObj* guest, bool state)
 	{
 		return;
 	}
-	clientReady[{ guest->socket, guest->playerName }] = state;
+	clientReady[guest->clientKey] = state;
 	BroadCastRoomData();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// : 게임시작
+////////////////////////////////////////////////////////////////////////////////
+void GameRoom::GameStart()
+{
+	ClientObj* client1 = NULL;
+	ClientObj* client2 = NULL;
+	for (std::set<ClientObj*>::iterator iter = clientList.begin();
+		iter != clientList.end(); iter++)
+	{
+		ClientObj* client = (*iter);
+		if (client != NULL)
+		{
+			if (client1 == NULL)
+			{
+				client1 = client;
+			}
+			else if (client2 == NULL)
+			{
+				client2 = client;
+			}
+		}
+	}
+	gameMgr->GameStart(client1, client2);
+
+	Message message(MessageType::GAMEROOM_GAME_START_REPLY);
+	message.WriteMessage(1);
+
+	MSG_MGR.SendMsg(message, client1->socket);
+	MSG_MGR.SendMsg(message, client2->socket);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -223,7 +263,7 @@ void GameRoom::BroadCastRoomData(ClientObj* ignore)
 		ClientObj* client = (*iter);
 		if (client != NULL)
 		{
-			if (ignore != NULL && client->socket == ignore->socket)
+			if (ignore != NULL && client->clientKey == ignore->clientKey)
 			{
 				continue;
 			}

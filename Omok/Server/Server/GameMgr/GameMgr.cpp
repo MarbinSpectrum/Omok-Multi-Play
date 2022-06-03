@@ -4,8 +4,8 @@
 
 GameMgr::GameMgr()
 : gameBoard(new GameBoardMap)
-//, playerNum(new PlayerNum)
-//, playerPiece(new PlayerPiece)
+, playerNum(new PlayerNum)
+, playerPiece(new PlayerPiece)
 , nowTurn(PieceType::BLACK)
 {
 	
@@ -39,28 +39,38 @@ void GameMgr::SetPlayerNum(ClientObj* player0, ClientObj* player1)
 		SetPlayerNum(player1, 1);
 	}
 }
-void GameMgr::SetPlayerNum(ClientObj* player, uint num)
+void GameMgr::SetPlayerNum(ClientObj* player, player_num num)
 {
 	SOCKET socket = player->socket;
 	std::string playerName = player->playerName;
-	//(*playerNum)[{playerName, socket}] = num;
+	(*playerNum)[socket] = num;
 }
 
-void GameMgr::SetPlayerPiece(uint playerNum, PieceType pPieceType)
+void GameMgr::SetPlayerPiece(player_num playerNum, PieceType pPieceType)
 {
-	//(*playerPiece)[playerNum] = pPieceType;
+	(*playerPiece)[playerNum] = pPieceType;
 }
 
-bool GameMgr::SetPiece(uint r, uint c, PieceType pPieceType)
+bool GameMgr::SetPiece(int r, int c, PieceType pPieceType)
 {
-	uint pos = MakeSetPos(r, c);
 	if (nowTurn == pPieceType)
 	{
-		//현재 턴에 해당하는 바둑알
-		if (gameBoard->find(pos) == gameBoard->end())
+		//해당 플레이어의 턴이 아니다.
+		return false;
+	}
+
+	if (gameBoard->find(r) == gameBoard->end())
+	{
+		//바둑알을 배치
+		(*gameBoard)[r][c] = pPieceType;
+		return true;
+	}
+	else
+	{
+		if (gameBoard->find(r)->second.find(c) == gameBoard->find(r)->second.end())
 		{
 			//바둑알을 배치
-			(*gameBoard)[pos] = pPieceType;
+			(*gameBoard)[r][c] = pPieceType;
 			return true;
 		}
 	}
@@ -71,29 +81,34 @@ void GameMgr::SendGameResult()
 {
 }
 
-void GameMgr::WriteNowBoard(Message& message)
+void GameMgr::WriteNowBoard(Message& message, ClientObj* player)
 {
+	player_num num = (*playerNum)[player->socket];
+	PieceType piece = (*playerPiece)[num];
+
+	message.WriteMessage(piece == nowTurn);
+
 	int cnt = gameBoard->size();
 	message.WriteMessage(cnt);
 
-	/*for (GameBoardMap::iterator iter = gameBoard->begin(); iter != gameBoard->end(); iter++)
+	for (GameBoardMap::iterator iter0 = gameBoard->begin(); iter0 != gameBoard->end(); iter0++)
 	{
-		uint r = iter->first.first;
-		uint c = iter->first.second;
-		PieceType pieceType = iter->second;
-		message.WriteMessage(UintToString(r));
-		message.WriteMessage(UintToString(c));
-		message.WriteMessage(std::to_string((int)pieceType));
-	}*/
+		for (std::unordered_map<int, PieceType>::iterator iter1 = iter0->second.begin();
+			iter1 != iter0->second.end(); iter1++)
+		{
+			//현재 필드에 있는 모든 기물의 위치를 받아온다.
+			int r = iter0->first;
+			int c = iter1->first;
+			PieceType pieceType = iter1->second;
+			message.WriteMessage(UintToString(r));
+			message.WriteMessage(UintToString(c));
+			message.WriteMessage(std::to_string((int)pieceType));
+		}
+	}
 }
 
 void GameMgr::ClearBoard()
 {
 	gameBoard->clear();
-}
-
-inline uint GameMgr::MakeSetPos(uint r, uint c)
-{
-	return r * 1000 + c;
 }
 

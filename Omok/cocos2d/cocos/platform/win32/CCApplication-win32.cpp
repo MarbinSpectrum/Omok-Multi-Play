@@ -123,9 +123,6 @@ int Application::run()
         }
     }
 
-    PLAYER_MGR.Destroy();
-    MASSAGE_MGR.Destroy();
-    SCENE_MGR.Destroy();
 
     // Director should still do a cleanup if the window was closed manually.
     if (glview->isOpenGLReady())
@@ -135,6 +132,10 @@ int Application::run()
         director = nullptr;
     }
     glview->release();
+
+    PLAYER_MGR.Destroy();
+    MASSAGE_MGR.Destroy();
+    SCENE_MGR.Destroy();
 
     ///////////////////////////////////////////////////////////////////////////
     /////////////// restoring timer resolution

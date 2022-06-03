@@ -58,6 +58,9 @@
     <ClCompile Include="..\Classes\Scene\InGame\Piece.cpp">
       <Filter>Source Files\Classes\Scene\InGame</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\InGame\PieceData.cpp">
+      <Filter>Source Files\Classes\Scene\InGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.h">
@@ -139,6 +142,9 @@
       <Filter>Source Files\Classes\Scene\InGame</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\InGame\Piece.h">
+      <Filter>Source Files\Classes\Scene\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\InGame\PieceData.h">
       <Filter>Source Files\Classes\Scene\InGame</Filter>
     </ClInclude>
   </ItemGroup>

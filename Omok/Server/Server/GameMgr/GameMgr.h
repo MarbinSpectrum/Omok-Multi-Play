@@ -17,9 +17,10 @@ enum class PieceType
 
 class GameMgr
 {
-	typedef  std::unordered_map<uint, PieceType> GameBoardMap;
-	typedef  std::unordered_map<SOCKET, uint> PlayerNum;
-	typedef  std::unordered_map<uint, PieceType> PlayerPiece;
+	typedef  uint player_num;
+	typedef  std::unordered_map<int, std::unordered_map<int, PieceType>> GameBoardMap;
+	typedef  std::unordered_map<SOCKET, player_num> PlayerNum;
+	typedef  std::unordered_map<player_num, PieceType> PlayerPiece;
 public:
 	GameMgr();
 	~GameMgr();
@@ -27,20 +28,17 @@ public:
 public:
 	void			GameStart(ClientObj* player0, ClientObj* player1);
 	void			SetPlayerNum(ClientObj* player0, ClientObj* player1);
-	void			SetPlayerNum(ClientObj* player, uint num);
-	void			SetPlayerPiece(uint playerNum, PieceType pPieceType);
-	bool			SetPiece(uint r, uint c, PieceType pPieceType);
+	void			SetPlayerNum(ClientObj* player, player_num num);
+	void			SetPlayerPiece(player_num playerNum, PieceType pPieceType);
+	bool			SetPiece(int r, int c, PieceType pPieceType);
 	void			SendGameResult();
-	void			WriteNowBoard(Message& message);
+	void			WriteNowBoard(Message& message, ClientObj* player);
 	void			ClearBoard();
-
-private:
-	inline uint		MakeSetPos(uint r, uint c);
 
 public:
 	GameBoardMap*	gameBoard;
 	PlayerNum*		playerNum;
-	//PlayerPiece*	playerPiece;
+	PlayerPiece*	playerPiece;
 
 	PieceType		nowTurn;
 };

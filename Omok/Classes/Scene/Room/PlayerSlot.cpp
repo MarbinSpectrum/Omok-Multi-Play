@@ -13,6 +13,7 @@ PlayerSlot::PlayerSlot()
 
 PlayerSlot::~PlayerSlot()
 {
+    this->unschedule(CC_SCHEDULE_SELECTOR(PlayerSlot::UpdateUI));
 }
 
 PlayerSlot* PlayerSlot::create(std::string pPlayerName, bool pisHost)

@@ -809,6 +809,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\Classes\Manager\SceneMgr\SceneMgr.h" />
     <ClInclude Include="..\Classes\Scene\InGame\InGame.h" />
     <ClInclude Include="..\Classes\Scene\InGame\Piece.h" />
+    <ClInclude Include="..\Classes\Scene\InGame\PieceData.h" />
     <ClInclude Include="..\Classes\Scene\Lobby\Lobby.h" />
     <ClInclude Include="..\Classes\Scene\Lobby\RoomData.h" />
     <ClInclude Include="..\Classes\Scene\Lobby\RoomEnterPopup.h" />
@@ -829,6 +830,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\Classes\Manager\SceneMgr\SceneMgr.cpp" />
     <ClCompile Include="..\Classes\Scene\InGame\InGame.cpp" />
     <ClCompile Include="..\Classes\Scene\InGame\Piece.cpp" />
+    <ClCompile Include="..\Classes\Scene\InGame\PieceData.cpp" />
     <ClCompile Include="..\Classes\Scene\Lobby\Lobby.cpp" />
     <ClCompile Include="..\Classes\Scene\Lobby\RoomEnterPopup.cpp" />
     <ClCompile Include="..\Classes\Scene\Lobby\RoomSlot.cpp" />

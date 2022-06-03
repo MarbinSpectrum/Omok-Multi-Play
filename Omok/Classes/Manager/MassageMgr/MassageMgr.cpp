@@ -225,16 +225,51 @@ void MassageMgr::OnReceiveMsg(Message message)
 				bool isHost = stoi(message.ReadMessage());
 				int cnt = stoi(message.ReadMessage());
 
-				if (cnt == 0)
+				if (roomScene != NULL)
 				{
-					roomScene->UpdateRoom(host, "", false, isHost);
+					if (cnt == 0)
+					{
+						roomScene->UpdateRoom(host, "", false, isHost);
+					}
+					else
+					{
+						std::string guest = message.ReadMessage();
+						bool ready = std::stoi(message.ReadMessage());
+						roomScene->UpdateRoom(host, guest, ready, isHost);
+					}
 				}
-				else
-				{
-					std::string guest = message.ReadMessage();
-					bool ready = std::stoi(message.ReadMessage());
-					roomScene->UpdateRoom(host, guest, ready, isHost);
-				}
+			}
+			else
+			{
+
+			}
+		}
+		break;
+		case MessageType::GAMEROOM_GAME_START_REPLY:
+		{
+			int success = std::stoi(message.ReadMessage());
+
+			if (success)
+			{
+				SCENE_MGR.MoveScene("InGame");
+			}
+			else
+			{
+
+			}
+		}
+		break;
+		case MessageType::GAMEBOARD_DATA_REPLY:
+		{
+			int success = std::stoi(message.ReadMessage());
+
+			if (success)
+			{
+				Scene* scene = SCENE_MGR.GetNowScene();
+				InGame* inGameScene = dynamic_cast<InGame*>(scene);
+
+				inGameScene->UpdateGameBoard(message);
+
 			}
 			else
 			{
