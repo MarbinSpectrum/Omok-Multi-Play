@@ -58,7 +58,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //게임에 필요한 요소를 등록
     register_all_packages();
 
-    SCENE_MGR.MoveScene("Title");
+    SCENE_MGR.MoveScene("InGame");
 
     return true;
 }

@@ -26,6 +26,7 @@ public:
 
 public:
 	static MassageMgr&	Instance();
+	static void			Destroy();
 
 public:
 	virtual void		Init() override;

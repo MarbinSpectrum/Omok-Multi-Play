@@ -12,24 +12,8 @@ SceneMgr::~SceneMgr()
 	//소멸자
 	if (sceneMap != NULL)
 	{
-		//씬 리스트 삭제
-		for (SceneMap::iterator iter = sceneMap->begin(); iter != sceneMap->end(); iter++)
-		{
-			if (iter->second != NULL)
-			{
-				//씬을 하나씩 삭제
-				delete iter->second;
-				iter->second = NULL;
-			}
-		}
 		delete sceneMap;
 		sceneMap = NULL;
-	}
-
-	if (instance != NULL)
-	{
-		delete instance;
-		instance = NULL;
 	}
 }
 
@@ -44,6 +28,12 @@ SceneMgr& SceneMgr::Instance()
 	return *instance;
 }
 
+void SceneMgr::Destroy()
+{
+	delete instance;
+	instance = NULL;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /// : 매니저 초기화
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,8 +42,7 @@ void SceneMgr::Init()
 	AddScene(SCENE(Title, "Title"));
 	AddScene(SCENE(Lobby, "Lobby"));
 	AddScene(SCENE(Room, "Room"));
-
-	nowScene = GetScene("Title");
+	AddScene(SCENE(InGame, "InGame"));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

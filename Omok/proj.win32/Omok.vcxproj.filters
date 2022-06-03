@@ -46,6 +46,18 @@
     <ClCompile Include="..\Classes\Scene\Room\PlayerSlot.cpp">
       <Filter>Source Files\Classes\Scene\Room</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\Lobby\RoomEnterPopup.cpp">
+      <Filter>Source Files\Classes\Scene\Lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\Room\RoomBtn.cpp">
+      <Filter>Source Files\Classes\Scene\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\InGame\InGame.cpp">
+      <Filter>Source Files\Classes\Scene\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\InGame\Piece.cpp">
+      <Filter>Source Files\Classes\Scene\InGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.h">
@@ -117,6 +129,18 @@
     <ClInclude Include="..\Classes\Scene\Room\PlayerSlot.h">
       <Filter>Source Files\Classes\Scene\Room</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Scene\Lobby\RoomEnterPopup.h">
+      <Filter>Source Files\Classes\Scene\Lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\Room\RoomBtn.h">
+      <Filter>Source Files\Classes\Scene\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\InGame\InGame.h">
+      <Filter>Source Files\Classes\Scene\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\InGame\Piece.h">
+      <Filter>Source Files\Classes\Scene\InGame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Program Files\Git\Omok Multi Play\Omok\CMakeLists.txt" />
@@ -175,6 +199,9 @@
     <Filter Include="Source Files\Classes\Scene\Room">
       <UniqueIdentifier>{e9cca6aa-de8b-4a09-9a9d-99a883178396}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Classes\Scene\InGame">
+      <UniqueIdentifier>{df0bbce6-ed52-4055-b226-c2233f5cd55a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\res\LobbyBack.png">
@@ -208,6 +235,36 @@
       <Filter>Resources\res</Filter>
     </Image>
     <Image Include="..\Resources\res\GameRoomBack.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\GameRoomExit_Normal.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\GameRoomExit_Selected.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\NotRoomEnter.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\GameRoomReady_Normal.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\GameRoomReady_Selected.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\GameRoomReadyOK_Normal.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\GameRoomReadyOK_Selected.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\GameRoomStart_Normal.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\GameRoomStart_Selected.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\GameBoard.png">
       <Filter>Resources\res</Filter>
     </Image>
   </ItemGroup>

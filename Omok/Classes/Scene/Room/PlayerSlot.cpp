@@ -3,6 +3,11 @@
 USING_NS_CC;
 
 PlayerSlot::PlayerSlot()
+: backGround(NULL)
+, playerNameText(NULL)
+, playerReadyText(NULL)
+, isHost(false)
+, playerReady(false)
 {
 }
 
@@ -43,7 +48,6 @@ bool PlayerSlot::init(std::string pPlayerName, bool pisHost)
     backGround->addChild(playerReadyText);
 
     slotSize = backGround->getContentSize();
-    this->schedule(CC_SCHEDULE_SELECTOR(PlayerSlot::UpdateUI), 0.1f);
 	return true;
 }
 
@@ -64,6 +68,14 @@ void PlayerSlot::SetReady(bool pPlayerReady)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 스케줄시작
+////////////////////////////////////////////////////////////////////////////////////////////////
+void PlayerSlot::StartSchedule()
+{
+    this->schedule(CC_SCHEDULE_SELECTOR(PlayerSlot::UpdateUI), 0.03f);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 /// : UI 주기적 갱신
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void PlayerSlot::UpdateUI(float f)
@@ -79,9 +91,9 @@ void PlayerSlot::UpdateUI(float f)
             playerNameText->setString("Empty");
         }
 
-        float labelPosX = backGround->getContentSize().width - (playerNameText->getContentSize().width / 2 + 10);
-        float labelPosY = backGround->getContentSize().height - (playerNameText->getContentSize().height / 2 + 10);
-        playerNameText->setPosition(Vec2(labelPosX, labelPosY));
+        float posX = backGround->getContentSize().width - (playerNameText->getContentSize().width / 2 + 10);
+        float posY = backGround->getContentSize().height - (playerNameText->getContentSize().height / 2 + 10);
+        playerNameText->setPosition(Vec2(posX, posY));
     }
 
     if (playerReadyText != NULL)
@@ -89,18 +101,24 @@ void PlayerSlot::UpdateUI(float f)
         if (isHost)
         {
             playerReadyText->setString("★");
+            playerReadyText->enableOutline(Color4B(0, 0, 0, 255), 1);
+            playerReadyText->setTextColor(Color4B(255, 255, 0, 255));
+            float posX = playerReadyText->getContentSize().width / 2 + 10;
+            float posY = backGround->getContentSize().height - (playerReadyText->getContentSize().height / 2 + 10);
+            playerReadyText->setPosition(Vec2(posX, posY));
         }
         else if(playerReady)
         {
             playerReadyText->setString("Ready");
+            playerReadyText->enableOutline(Color4B(0, 0, 0, 255), 0);
+            playerReadyText->setTextColor(Color4B(0, 255, 0, 255));
+            float posX = playerReadyText->getContentSize().width / 2 + 10;
+            float posY = playerReadyText->getContentSize().height / 2 + 10;
+            playerReadyText->setPosition(Vec2(posX, posY));
         }
         else
         {
             playerReadyText->setString("");
         }
-
-        float labelPosX = playerReadyText->getContentSize().width / 2 + 10;
-        float labelPosY = playerReadyText->getContentSize().height / 2 + 10;
-        playerReadyText->setPosition(Vec2(labelPosX, labelPosY));
     }
 }

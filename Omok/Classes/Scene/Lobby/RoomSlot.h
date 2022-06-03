@@ -24,6 +24,7 @@ public:
     void                SetPersonNum(int pRoomNum);
     void                SetPersonNumText(int pPersonNum);
     void                SetRoomKey(int64 pRoomKey);
+    void                StartSchedule();
 
 private:
     void                EnterRoom(Ref* pSender);

@@ -5,9 +5,11 @@
 #include "framework.h"
 #include "RoomData.h"
 #include "RoomSlot.h"
+#include "RoomEnterPopup.h"
 
 class RoomData;
 class RoomSlot;
+class RoomEnterPopup;
 
 #define CSCENE cocos2d::Scene
 #define DIRECTOR Director::getInstance()
@@ -27,6 +29,7 @@ public:
     void            UpdateLobbyRoomList(RoomDataList* newRoomDataList);
     void            LobbyRoomMake(Ref* pSender);
     void            RoomListRefresh(Ref* pSender);
+    void            CantRoomEnter();
 
 public:
     CREATE_FUNC(Lobby);
@@ -34,4 +37,5 @@ public:
 private:
     ui::ScrollView* roomScrollView;
     std::vector<RoomSlot*> roomSlotList;
+    RoomEnterPopup* roomEnterPopup;
 };

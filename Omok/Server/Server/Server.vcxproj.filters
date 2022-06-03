@@ -28,6 +28,9 @@
     <Filter Include="소스 파일\ClientMgr">
       <UniqueIdentifier>{27aa5aee-ef53-40e4-868e-d1752f4b63ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\GameMgr">
+      <UniqueIdentifier>{0f1e5df9-b81a-400e-9ca7-81d719f0aecc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,6 +57,9 @@
     <ClCompile Include="GameRoomMgr\GameRoom.cpp">
       <Filter>소스 파일\GameRoomMgr</Filter>
     </ClCompile>
+    <ClCompile Include="GameMgr\GameMgr.cpp">
+      <Filter>소스 파일\GameMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -79,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="GameRoomMgr\GameRoom.h">
       <Filter>소스 파일\GameRoomMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMgr\GameMgr.h">
+      <Filter>소스 파일\GameMgr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

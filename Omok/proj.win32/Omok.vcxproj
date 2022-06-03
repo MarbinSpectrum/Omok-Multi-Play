@@ -807,11 +807,15 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\Classes\Manager\MassageMgr\MassageMgr.h" />
     <ClInclude Include="..\Classes\Manager\PlayerMgr\PlayerMgr.h" />
     <ClInclude Include="..\Classes\Manager\SceneMgr\SceneMgr.h" />
+    <ClInclude Include="..\Classes\Scene\InGame\InGame.h" />
+    <ClInclude Include="..\Classes\Scene\InGame\Piece.h" />
     <ClInclude Include="..\Classes\Scene\Lobby\Lobby.h" />
     <ClInclude Include="..\Classes\Scene\Lobby\RoomData.h" />
+    <ClInclude Include="..\Classes\Scene\Lobby\RoomEnterPopup.h" />
     <ClInclude Include="..\Classes\Scene\Lobby\RoomSlot.h" />
     <ClInclude Include="..\Classes\Scene\Room\PlayerSlot.h" />
     <ClInclude Include="..\Classes\Scene\Room\Room.h" />
+    <ClInclude Include="..\Classes\Scene\Room\RoomBtn.h" />
     <ClInclude Include="..\Classes\Scene\Title\LoginPopup.h" />
     <ClInclude Include="..\Classes\Scene\Title\Title.h" />
     <ClInclude Include="..\Message\Message.h" />
@@ -823,10 +827,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\Classes\Manager\MassageMgr\MassageMgr.cpp" />
     <ClCompile Include="..\Classes\Manager\PlayerMgr\PlayerMgr.cpp" />
     <ClCompile Include="..\Classes\Manager\SceneMgr\SceneMgr.cpp" />
+    <ClCompile Include="..\Classes\Scene\InGame\InGame.cpp" />
+    <ClCompile Include="..\Classes\Scene\InGame\Piece.cpp" />
     <ClCompile Include="..\Classes\Scene\Lobby\Lobby.cpp" />
+    <ClCompile Include="..\Classes\Scene\Lobby\RoomEnterPopup.cpp" />
     <ClCompile Include="..\Classes\Scene\Lobby\RoomSlot.cpp" />
     <ClCompile Include="..\Classes\Scene\Room\PlayerSlot.cpp" />
     <ClCompile Include="..\Classes\Scene\Room\Room.cpp" />
+    <ClCompile Include="..\Classes\Scene\Room\RoomBtn.cpp" />
     <ClCompile Include="..\Classes\Scene\Title\LoginPopup.cpp" />
     <ClCompile Include="..\Classes\Scene\Title\Title.cpp" />
     <ClCompile Include="..\Message\Message.cpp" />
@@ -904,11 +912,21 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Resources\res\GameBoard.png" />
     <Image Include="..\Resources\res\GameRoomBack.png" />
+    <Image Include="..\Resources\res\GameRoomExit_Normal.png" />
+    <Image Include="..\Resources\res\GameRoomExit_Selected.png" />
+    <Image Include="..\Resources\res\GameRoomReadyOK_Normal.png" />
+    <Image Include="..\Resources\res\GameRoomReadyOK_Selected.png" />
+    <Image Include="..\Resources\res\GameRoomReady_Normal.png" />
+    <Image Include="..\Resources\res\GameRoomReady_Selected.png" />
+    <Image Include="..\Resources\res\GameRoomStart_Normal.png" />
+    <Image Include="..\Resources\res\GameRoomStart_Selected.png" />
     <Image Include="..\Resources\res\LobbyBack.png" />
     <Image Include="..\Resources\res\LobbyRoomMake_Normal.png" />
     <Image Include="..\Resources\res\LobbyRoomMake_Selected.png" />
     <Image Include="..\Resources\res\NotLogin.png" />
+    <Image Include="..\Resources\res\NotRoomEnter.png" />
     <Image Include="..\Resources\res\Null.png" />
     <Image Include="..\Resources\res\OK_Normal.png" />
     <Image Include="..\Resources\res\OK_Selected.png" />

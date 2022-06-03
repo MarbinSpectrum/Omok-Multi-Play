@@ -14,6 +14,7 @@ public:
 
 public:
 	static PlayerMgr&	Instance();
+	static void			Destroy();
 
 public:
 	virtual void		Init() override;
@@ -24,7 +25,7 @@ private:
 	static PlayerMgr*	instance;
 
 private:
-	std::string playerNickName;
-	int playerRoom;
+	std::string			playerNickName;
+	int					playerRoom;
 };
 

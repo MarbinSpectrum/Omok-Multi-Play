@@ -19,7 +19,9 @@ public:
     bool                    init(std::string pPlayerName, bool pisHost);
     void                    SetText(std::string pPlayerName);
     void                    SetReady(bool pPlayerReady);
+    void                    StartSchedule();
 
+public:
     Size                    slotSize;
 
 private:

@@ -22,6 +22,7 @@
     <ClCompile Include="..\..\Algorithm\Algorithm.cpp" />
     <ClCompile Include="..\..\Message\Message.cpp" />
     <ClCompile Include="ClientMgr\ClientMgr.cpp" />
+    <ClCompile Include="GameMgr\GameMgr.cpp" />
     <ClCompile Include="GameRoomMgr\GameRoom.cpp" />
     <ClCompile Include="GameRoomMgr\GameRoomMgr.cpp" />
     <ClCompile Include="main.cpp" />
@@ -32,6 +33,7 @@
     <ClInclude Include="..\..\Algorithm\Algorithm.h" />
     <ClInclude Include="..\..\Message\Message.h" />
     <ClInclude Include="ClientMgr\ClientMgr.h" />
+    <ClInclude Include="GameMgr\GameMgr.h" />
     <ClInclude Include="GameRoomMgr\GameRoom.h" />
     <ClInclude Include="GameRoomMgr\GameRoomMgr.h" />
     <ClInclude Include="main.h" />

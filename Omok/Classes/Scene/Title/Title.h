@@ -23,11 +23,11 @@ public:
     void            EnterGameLobby(Ref* pSender);
     void            CantLogin();
 
+public:
+    CREATE_FUNC(Title);
+
 private:
     ui::TextField*  textField;
     LoginPopup*     loginPopup;
-
-public:
-    CREATE_FUNC(Title);
 
 };

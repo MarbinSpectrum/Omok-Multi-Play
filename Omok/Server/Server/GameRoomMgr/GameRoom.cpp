@@ -5,6 +5,7 @@ GameRoom::GameRoom(std::string roomName, uint roomNum, int64 roomKey, ClientObj*
 , roomNum(roomNum)
 , roomKey(roomKey)
 , host(host)
+, gameMgr(new GameMgr())
 , gameRun(false)
 {
 	clientList.insert(host);
@@ -13,6 +14,11 @@ GameRoom::GameRoom(std::string roomName, uint roomNum, int64 roomKey, ClientObj*
 
 GameRoom::~GameRoom()
 {
+	if (gameMgr != NULL)
+	{
+		delete gameMgr;
+		gameMgr = NULL;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -113,18 +119,18 @@ bool GameRoom::ExitGameRoom(ClientObj* guest)
 		return true;
 	}
 
-	for (std::set<ClientObj*>::iterator iter = clientList.begin();
-		iter != clientList.end(); iter++)
+	if (host == NULL)
 	{
-		ClientObj* guestClient = (*iter);
-		if (guestClient != NULL)
+		for (std::set<ClientObj*>::iterator iter = clientList.begin();
+			iter != clientList.end(); iter++)
 		{
-			//아무 인원하나를 방장으로 지정하고
-			//해당 클라이언트를 목록에서 제거
-			host = guestClient;
-			clientList.erase(guestClient);
-			clientReady.erase({ guestClient->socket, guestClient->playerName });
-			break;
+			ClientObj* guestClient = (*iter);
+			if (guestClient != NULL)
+			{
+				//아무 인원하나를 방장으로 지정하고
+				host = guestClient;
+				break;
+			}
 		}
 	}
 
@@ -148,10 +154,14 @@ void GameRoom::WriteLobbyRoomData(Message& message)
 ////////////////////////////////////////////////////////////////////////////////
 /// : 방 내부 정보(방장, 플레이어 준비상태)
 ////////////////////////////////////////////////////////////////////////////////
-void GameRoom::WriteRoomData(Message& message)
+void GameRoom::WriteRoomData(Message& message, SOCKET socket)
 {
 	string hostName = host->playerName;
 	message.WriteMessage(hostName);
+
+	ClientObj* hostClient = CLIENT_MGR.GetClient(socket);
+	bool hostPlayer = IsHost(hostClient);
+	message.WriteMessage(hostPlayer);
 
 	uint playerCnt = CountPlayer() - 1;
 	message.WriteMessage(UintToString(playerCnt));
@@ -163,7 +173,7 @@ void GameRoom::WriteRoomData(Message& message)
 		if (client != NULL && IsHost(client) == false)
 		{
 			string playerName = client->playerName;
-			bool ready = IsPlayerReady(client);
+			bool ready = GetIsPlayerReady(client);
 
 			message.WriteMessage(playerName);
 			message.WriteMessage(ready);
@@ -172,13 +182,40 @@ void GameRoom::WriteRoomData(Message& message)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+/// : 플레이어 준비여부
+////////////////////////////////////////////////////////////////////////////////
+bool GameRoom::GetIsPlayerReady(ClientObj* guest)
+{
+	return clientReady[{ guest->socket, guest->playerName }];
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// : 플레이어 준비여부를 설정
+////////////////////////////////////////////////////////////////////////////////
+void GameRoom::SetIsPlayerReady(ClientObj* guest, bool state)
+{
+	bool nowState = GetIsPlayerReady(guest);
+	if (nowState == state)
+	{
+		return;
+	}
+	clientReady[{ guest->socket, guest->playerName }] = state;
+	BroadCastRoomData();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// : 플레이어 준비여부
+////////////////////////////////////////////////////////////////////////////////
+GameMgr* GameRoom::GetGameMgr()
+{
+	return gameMgr;
+}
+
+////////////////////////////////////////////////////////////////////////////////
 /// : 방인원들에게 방정보가 바뀌었음을 전달한다.
 ////////////////////////////////////////////////////////////////////////////////
 void GameRoom::BroadCastRoomData(ClientObj* ignore)
 {
-	Message message(MessageType::GAMEROOM_DATA_REPLY);
-	message.WriteMessage(1);
-	WriteRoomData(message);
 
 	for (std::set<ClientObj*>::iterator iter = clientList.begin();
 		iter != clientList.end(); iter++)
@@ -190,6 +227,10 @@ void GameRoom::BroadCastRoomData(ClientObj* ignore)
 			{
 				continue;
 			}
+
+			Message message(MessageType::GAMEROOM_DATA_REPLY);
+			message.WriteMessage(1);
+			WriteRoomData(message, client->socket);
 
 			MSG_MGR.SendMsg(message, client->socket);		
 		}
@@ -206,12 +247,4 @@ bool GameRoom::IsHost(ClientObj* guest)
 		return true;
 	}
 	return false;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-/// : 플레이어 준비여부
-////////////////////////////////////////////////////////////////////////////////
-bool GameRoom::IsPlayerReady(ClientObj* guest)
-{
-	return clientReady[{ guest->socket, guest->playerName }];
 }

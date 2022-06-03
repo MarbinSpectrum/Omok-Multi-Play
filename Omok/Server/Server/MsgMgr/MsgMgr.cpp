@@ -133,8 +133,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 		break;
 		case MessageType::EXIT_ROOM_REQUEST:
 		{
-			//방에 입장하는 것을 요청
-			//방 번호, 키
+			//방에 퇴장하는 것을 요청
 			std::cout << "EXIT_ROOM_REQUEST" << "\n";
 
 			bool success = GAMEROOM_MGR.ExitRoom(socket);
@@ -149,8 +148,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 		break;
 		case MessageType::GAMEROOM_DATA_REQUEST:
 		{
-			//방에 입장하는 것을 요청
-			//방 번호, 키
+			//방 세부 정보를 요청
 			std::cout << "GAMEROOM_DATA_REQUEST" << "\n";
 
 			std::cout << "GAMEROOM_DATA_REPLY" << " ";
@@ -180,7 +178,69 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 				{
 					success = true;
 					msg.WriteMessage(success);
-					gameRoom->WriteRoomData(msg);
+					gameRoom->WriteRoomData(msg, socket);
+				}
+			}
+
+			std::cout << success << "\n";
+			SendMsg(msg, socket);
+		}
+		break;
+		case MessageType::GAMEROOM_READY_UPDATE:
+		{
+			//게임 준비상태 갱신 요청
+			//준비상태(bool)
+			std::cout << "GAMEROOM_READY_UPDATE" << "\n";
+			ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
+			bool state = stoi(message.ReadMessage());
+
+			uint roomNum = clientObj->playerPos.roomNum;
+			int64 roomKey = clientObj->playerPos.roomKey;
+
+			GameRoom* gameRoom = GAMEROOM_MGR.GetGameRoom(roomNum, roomKey);
+			if (gameRoom != NULL)
+			{
+				gameRoom->SetIsPlayerReady(clientObj, state);
+			}
+		}
+		break;
+		case MessageType::GAMEBOARD_DATA_REQUEST:
+		{
+			//게임판 상태를 요청
+			//피스 갯수
+			//피스 R
+			//피스 C
+			//피스 종류
+			std::cout << "GAMEBOARD_DATA_REQUEST" << "\n";
+			ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
+
+			Message msg(MessageType::GAMEBOARD_DATA_REPLY);
+			std::cout << "GAMEBOARD_DATA_REPLY" << " ";
+			bool success = false;
+
+			if (clientObj == NULL)
+			{
+				success = false;
+				msg.WriteMessage(success);
+			}
+			else
+			{
+				uint roomNum = clientObj->playerPos.roomNum;
+				int64 roomKey = clientObj->playerPos.roomKey;
+
+				GameRoom* gameRoom = GAMEROOM_MGR.GetGameRoom(roomNum, roomKey);
+				if (gameRoom != NULL)
+				{
+					success = true;
+					msg.WriteMessage(success);
+
+					GameMgr* gameMgr = gameRoom->GetGameMgr();
+					gameMgr->WriteNowBoard(msg);
+				}
+				else
+				{
+					success = false;
+					msg.WriteMessage(success);
 				}
 			}
 

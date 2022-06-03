@@ -10,7 +10,7 @@ MassageMgr::~MassageMgr()
 	//소멸자
 
 	//쓰레드를 해제
-	receiveThread.join();
+	receiveThread.~thread();
 	closesocket(skt);
 	WSACleanup();
 }
@@ -24,6 +24,12 @@ MassageMgr& MassageMgr::Instance()
 		instance = new MassageMgr();
 	}
 	return *instance;
+}
+
+void MassageMgr::Destroy()
+{
+	delete instance;
+	instance = NULL;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,6 +101,7 @@ void MassageMgr::RunThread()
 	}
 
 	receiveThread = std::thread(proc_recv);
+	receiveThread.detach();
 
 	Message message(MessageType::CONNECT_CLIENT);
 	message.WriteMessage((int)skt);
@@ -184,6 +191,23 @@ void MassageMgr::OnReceiveMsg(Message message)
 			}
 			else
 			{
+				Scene* scene = SCENE_MGR.GetNowScene();
+				Lobby* lobbyScene = dynamic_cast<Lobby*>(scene);
+
+				lobbyScene->CantRoomEnter();
+			}
+		}
+		break;
+		case MessageType::EXIT_ROOM_REPLY:
+		{
+			int success = std::stoi(message.ReadMessage());
+
+			if (success)
+			{
+				SCENE_MGR.MoveScene("Lobby");
+			}
+			else
+			{
 
 			}
 		}
@@ -198,17 +222,18 @@ void MassageMgr::OnReceiveMsg(Message message)
 				Room* roomScene = dynamic_cast<Room*>(scene);
 
 				std::string host = message.ReadMessage();
+				bool isHost = stoi(message.ReadMessage());
 				int cnt = stoi(message.ReadMessage());
 
 				if (cnt == 0)
 				{
-					roomScene->UpdateRoom(host, "", false);
+					roomScene->UpdateRoom(host, "", false, isHost);
 				}
 				else
 				{
 					std::string guest = message.ReadMessage();
 					bool ready = std::stoi(message.ReadMessage());
-					roomScene->UpdateRoom(host, guest, ready);
+					roomScene->UpdateRoom(host, guest, ready, isHost);
 				}
 			}
 			else

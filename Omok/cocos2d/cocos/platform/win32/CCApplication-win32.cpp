@@ -29,6 +29,8 @@ THE SOFTWARE.
 #include "platform/CCFileUtils.h"
 #include <shellapi.h>
 #include <WinVer.h>
+#include "../Classes/framework.h"
+
 /**
 @brief    This function change the PVRFrame show/hide setting in register.
 @param  bEnable If true show the PVRFrame window, otherwise hide.
@@ -120,6 +122,10 @@ int Application::run()
                 Sleep(waitMS);
         }
     }
+
+    PLAYER_MGR.Destroy();
+    MASSAGE_MGR.Destroy();
+    SCENE_MGR.Destroy();
 
     // Director should still do a cleanup if the window was closed manually.
     if (glview->isOpenGLReady())

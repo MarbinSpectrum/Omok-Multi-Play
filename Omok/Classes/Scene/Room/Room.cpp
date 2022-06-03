@@ -43,6 +43,25 @@ bool Room::init()
         guestSlot->setPosition(Vec2(posX, posY));
         this->addChild(guestSlot, 0);
     }
+
+    roomBtn = RoomBtn::create();
+    if (roomBtn != NULL)
+    {
+        float posX = roomBtn->btnSize.width / 2 + 10;
+        float posY = roomBtn->btnSize.height / 2 + 10;
+        roomBtn->setPosition(Vec2(posX, posY));
+        this->addChild(roomBtn);
+    }
+
+    auto exitBnt = ui::Button::create("res/GameRoomExit_Normal.png", "res/GameRoomExit_Selected.png");
+    if (exitBnt != NULL)
+    {
+        exitBnt->addClickEventListener(CC_CALLBACK_1(Room::RoomExit, this));
+        float posX = visibleSize.width - (exitBnt->getContentSize().width / 2 + 10);
+        float posY = exitBnt->getContentSize().height / 2 + 10;
+        exitBnt->setPosition(Vec2(posX, posY));
+        this->addChild(exitBnt);
+    }
     return true;
 }
 
@@ -50,11 +69,44 @@ void Room::Start()
 {
     Message message(MessageType::GAMEROOM_DATA_REQUEST);
     MASSAGE_MGR.SendMsg(message);
+
+    hostSlot->StartSchedule();
+    guestSlot->StartSchedule();
+    roomBtn->StartSchedule();
 }
 
-void Room::UpdateRoom(std::string pHost, std::string pGuest, bool pReady)
+void Room::UpdateRoom(std::string pHost, std::string pGuest, bool pReady, bool isHost)
 {
     hostSlot->SetText(pHost);
     guestSlot->SetText(pGuest);
     guestSlot->SetReady(pReady);
+
+    if (isHost)
+    {
+        if (pReady)
+        {
+            roomBtn->SetBtnType(RoomBtnType::GAME_START_BTN);
+        }
+        else
+        {
+            roomBtn->SetBtnType(RoomBtnType::GAME_START_NOT_ACT_BTN);
+        }
+    }
+    else
+    {
+        if (pReady)
+        {
+            roomBtn->SetBtnType(RoomBtnType::GAME_READY_OK_BTN);
+        }
+        else
+        {
+            roomBtn->SetBtnType(RoomBtnType::GAME_READY_BTN);
+        }
+    }
+}
+
+void Room::RoomExit(Ref* ref)
+{
+    Message message(MessageType::EXIT_ROOM_REQUEST);
+    MASSAGE_MGR.SendMsg(message);
 }

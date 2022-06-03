@@ -2,6 +2,7 @@
 
 #include "../ClientMgr/ClientMgr.h"
 #include "../GameRoomMgr/GameRoomMgr.h"
+#include "../GameMgr/GameMgr.h"
 #include "../MsgMgr/MsgMgr.h"
 
 #include <set>
@@ -21,13 +22,14 @@ public:
 	bool					EnterGameRoom(ClientObj* guest);
 	bool					ExitGameRoom(ClientObj* guest);
 	void					WriteLobbyRoomData(Message& message);
-	void					WriteRoomData(Message& message);
+	void					WriteRoomData(Message& message, SOCKET socket);
+	bool					GetIsPlayerReady(ClientObj* guest);
+	void					SetIsPlayerReady(ClientObj* guest, bool state);
+	GameMgr*				GetGameMgr();
 
 private:
 	void					BroadCastRoomData(ClientObj* ignore = NULL);
 	bool					IsHost(ClientObj* guest);
-	bool					IsPlayerReady(ClientObj* guest);
-
 private:
 	std::string					roomName;
 	uint						roomNum;
@@ -35,6 +37,7 @@ private:
 	ClientObj*					host;
 	std::set<ClientObj*>		clientList;
 	std::map<pair<SOCKET, std::string>, bool>		clientReady;
+	GameMgr*					gameMgr;
 
 	bool					gameRun;
 };

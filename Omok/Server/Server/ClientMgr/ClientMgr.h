@@ -26,6 +26,7 @@ struct ClientObj
 	: socket(socket)
 	, playerName(playerName)
 	, playerPos(0, 0)
+	, clientKey(0)
 	{
 	}
 	void ExitRoom()
@@ -36,11 +37,13 @@ struct ClientObj
 	SOCKET socket;
 	std::string playerName;
 	PlayerPos playerPos;
+	int64 clientKey;
 };
 
 class ClientMgr
 {
-	typedef std::unordered_map<SOCKET, ClientObj*> ClientList;
+	typedef std::unordered_map<SOCKET, int64> ClientKeyList;
+	typedef std::unordered_map<int64, ClientObj*> ClientList;
 private:
 	ClientMgr();
 	~ClientMgr();
@@ -59,7 +62,12 @@ public:
 	bool				RegistClient(SOCKET socket, std::string playerName);
 	void				RemoveClient(SOCKET socket);
 	ClientObj*			GetClient(SOCKET socket);
+	bool				CompareClient(ClientObj* client0, ClientObj* client1);
 
 private:
+	int64				MakeClientKey();
+
+private:
+	ClientKeyList*		clientKeyList;
 	ClientList*			clientList;
 };

@@ -3,6 +3,7 @@
 #include "../../Scene/Title/Title.h"
 #include "../../Scene/Lobby/Lobby.h"
 #include "../../Scene/Room/Room.h"
+#include "../../Scene/InGame/InGame.h"
 
 #include "../BaseMgr.h"
 #include "cocos2d.h"
@@ -22,21 +23,22 @@ public:
 	~SceneMgr();
 
 public:
-	static SceneMgr& Instance();
+	static SceneMgr&	Instance();
+	static void			Destroy();
 
 public:
-	virtual void	Init() override;
-	void			AddScene(std::string sceneName, CSCENE* scene);
-	CSCENE*			GetScene(std::string sceneName);
-	CSCENE*			GetNowScene();
-	void			MoveScene(std::string sceneName);
-	void			MoveScene(CSCENE* scene);
+	virtual void		Init() override;
+	void				AddScene(std::string sceneName, CSCENE* scene);
+	CSCENE*				GetScene(std::string sceneName);
+	CSCENE*				GetNowScene();
+	void				MoveScene(std::string sceneName);
+	void				MoveScene(CSCENE* scene);
 
 private:
-	static SceneMgr* instance;
+	static SceneMgr*	instance;
 
 private:
-	CSCENE* nowScene;
-	SceneMap* sceneMap;
+	CSCENE*				nowScene;
+	SceneMap*			sceneMap;
 };
 

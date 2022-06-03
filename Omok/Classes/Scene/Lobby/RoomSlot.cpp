@@ -72,9 +72,9 @@ bool RoomSlot::init(std::string roomName, uint roomNum, int64 roomKey, int roomP
     if (enterBtn != NULL)
     {
         enterBtn->addClickEventListener(CC_CALLBACK_1(RoomSlot::EnterRoom, this));
-        float labelPosX = enterBtn->getContentSize().width / 2 + 10;
-        float labelPosY = enterBtn->getContentSize().height / 2 + 10;
-        enterBtn->setPosition(Vec2(labelPosX, labelPosY));
+        float posX = enterBtn->getContentSize().width / 2 + 10;
+        float posY = enterBtn->getContentSize().height / 2 + 10;
+        enterBtn->setPosition(Vec2(posX, posY));
         slotBack->addChild(enterBtn);
     }
 
@@ -95,9 +95,9 @@ void RoomSlot::SetRoomNameText(std::string pRoomName)
     if (roomNameText == NULL)
         return;
     roomNameText->setString(pRoomName + "의 방");
-    float labelPosX = slotBack->getContentSize().width - (roomNameText->getContentSize().width / 2 + 10);
-    float labelPosY = slotBack->getContentSize().height - (roomNameText->getContentSize().height / 2 + 10);
-    roomNameText->setPosition(Vec2(labelPosX, labelPosY));
+    float posX = slotBack->getContentSize().width - (roomNameText->getContentSize().width / 2 + 10);
+    float posY = slotBack->getContentSize().height - (roomNameText->getContentSize().height / 2 + 10);
+    roomNameText->setPosition(Vec2(posX, posY));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,9 +112,9 @@ void RoomSlot::SetRoomNumText(uint roomNum)
     if (roomNumText == NULL)
         return;
     roomNumText->setString("NO." + std::to_string(roomNum));
-    float labelPosX = roomNumText->getContentSize().width / 2 + 10;
-    float labelPosY = slotBack->getContentSize().height - (roomNumText->getContentSize().height / 2 + 10);
-    roomNumText->setPosition(Vec2(labelPosX, labelPosY));
+    float posX = roomNumText->getContentSize().width / 2 + 10;
+    float posY = slotBack->getContentSize().height - (roomNumText->getContentSize().height / 2 + 10);
+    roomNumText->setPosition(Vec2(posX, posY));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -130,9 +130,9 @@ void RoomSlot::SetPersonNumText(int roomPerson)
         return;
     int maxPerson = RoomData::maxPerson;
     personNumText->setString(std::to_string(roomPerson) + "/" + std::to_string(maxPerson));
-    float labelPosX = slotBack->getContentSize().width - (personNumText->getContentSize().width / 2 + 10);
-    float labelPosY = personNumText->getContentSize().height / 2 + 10;
-    personNumText->setPosition(Vec2(labelPosX, labelPosY));
+    float posX = slotBack->getContentSize().width - (personNumText->getContentSize().width / 2 + 10);
+    float posY = personNumText->getContentSize().height / 2 + 10;
+    personNumText->setPosition(Vec2(posX, posY));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -142,6 +142,7 @@ void RoomSlot::SetRoomKey(int64 pRoomKey)
 {
     roomKey = pRoomKey;
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /// : 방 입장
@@ -153,6 +154,14 @@ void RoomSlot::EnterRoom(Ref* pSender)
     message.WriteMessage(std::to_string(roomKey));
 
     MASSAGE_MGR.SendMsg(message);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 스케줄시작
+////////////////////////////////////////////////////////////////////////////////////////////////
+void RoomSlot::StartSchedule()
+{
+    this->schedule(CC_SCHEDULE_SELECTOR(RoomSlot::UpdateUI), 0.03f);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

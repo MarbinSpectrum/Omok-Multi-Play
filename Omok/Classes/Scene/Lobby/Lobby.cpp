@@ -35,8 +35,7 @@ bool Lobby::init()
     roomScrollView->setScrollBarPositionFromCorner(Vec2(2, 2));
     roomScrollView->setScrollBarColor(Color3B::WHITE); 
     
-    int roomCnt = 100;
-    for (int i = 0; i < roomCnt; i++)
+    for (int i = 0; i < 100; i++)
     {
         auto roomSlot = RoomSlot::create("",0, 0, 0);
         float posX = roomScrollView->getContentSize().width / 2;
@@ -70,6 +69,11 @@ bool Lobby::init()
         lobbyRoomMakeBtn->addClickEventListener(CC_CALLBACK_1(Lobby::LobbyRoomMake, this));
         this->addChild(lobbyRoomMakeBtn);
     }
+
+    //ÆË¾÷»ý¼º
+    roomEnterPopup = RoomEnterPopup::create();
+    roomEnterPopup->setVisible(false);
+    this->addChild(roomEnterPopup, 10);
 
     return true;
 }
@@ -126,6 +130,13 @@ void Lobby::UpdateLobbyRoomList(RoomDataList* newRoomDataList)
 void Lobby::Start()
 {
     RequestLobbyRoomList();
+    for (int i = 0; i < 100; i++)
+    {
+        RoomSlot* roomSlot = roomSlotList[i];
+        if (roomSlot == NULL)
+            continue;
+        roomSlot->StartSchedule();
+    }
 }
 
 void Lobby::LobbyRoomMake(Ref* pSender)
@@ -137,5 +148,10 @@ void Lobby::LobbyRoomMake(Ref* pSender)
 void Lobby::RoomListRefresh(Ref* pSender)
 {
     RequestLobbyRoomList();
+}
+
+void Lobby::CantRoomEnter()
+{
+    roomEnterPopup->setVisible(true);
 }
 
