@@ -34,18 +34,14 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 		{
 			//클라이언트와 서버가 연결됨
 			//소캣번호
-			std::cout << "CONNECT_CLIENT" << " ";
-			std::cout << "SOCKET : ";
-			std::cout << message.ReadMessage() << "\n";
+			std::cout << "CONNECT_CLIENT SOCKET : " << message.ReadMessage() << "\n";
 		}
 		break;
 		case MessageType::DISCONNECT_CLIENT:
 		{
 			//클라이언트와 서버가 연결이 해제됨
 			//소캣번호
-			std::cout << "DISCONNECT_CLIENT" << " ";
-			std::cout << "SOCKET : ";
-			std::cout << message.ReadMessage() << "\n";
+			std::cout << "DISCONNECT_CLIENT SOCKET : " << message.ReadMessage() << "\n";
 
 			CLIENT_MGR.RemoveClient(socket);
 		}
@@ -60,28 +56,29 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			std::cout << "아이디 : ";
 			std::cout << playerName << "\n";
 
-			std::cout << "LOBBY_ENTER_REPLY" << " ";
+			bool success = false;
 			Message msg(MessageType::LOBBY_ENTER_REPLY);
 
 			if (ClientMgr::PlayerNameCheck(playerName) == false)
 			{
 				//아이디가 이상함
 				msg.WriteMessage(false);
-				std::cout << 0 << "\n";
+				success = false;
 			}
 			else if (CLIENT_MGR.RegistClient(socket, playerName))
 			{
 				//등록이 성공적으로 완료됨
 				msg.WriteMessage(true);
 				msg.WriteMessage(playerName);
-				std::cout << 1 << "\n";
+				success = true;
 			}
 			else
 			{
 				//등록이 안됨
 				msg.WriteMessage(false);
-				std::cout << 0 << "\n";
+				success = false;
 			}
+			std::cout << "LOBBY_ENTER_REPLY" << " " << success << endl;
 			SendMsg(msg, socket);
 		}
 		break;
@@ -110,8 +107,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			msg.WriteMessage(success);
 			SendMsg(msg, socket);
 
-			std::cout << "MAKE_ROOM_REPLY" << " ";
-			std::cout << success << "\n";
+			std::cout << "MAKE_ROOM_REPLY" << " " << success << "\n";
 		}
 		break;
 		case MessageType::ENTER_ROOM_REQUEST:
@@ -127,8 +123,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			msg.WriteMessage(success);
 			SendMsg(msg, socket);
 
-			std::cout << "ENTER_ROOM_REPLY" << " ";
-			std::cout << success << "\n";
+			std::cout << "ENTER_ROOM_REPLY" << " " << success << "\n";
 		}
 		break;
 		case MessageType::EXIT_ROOM_REQUEST:
@@ -142,8 +137,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			msg.WriteMessage(success);
 			SendMsg(msg, socket);
 
-			std::cout << "EXIT_ROOM_REPLY" << " ";
-			std::cout << success << "\n";
+			std::cout << "EXIT_ROOM_REPLY" << " " << success << "\n";
 		}
 		break;
 		case MessageType::GAMEROOM_DATA_REQUEST:
@@ -151,7 +145,6 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			//방 세부 정보를 요청
 			std::cout << "GAMEROOM_DATA_REQUEST" << "\n";
 
-			std::cout << "GAMEROOM_DATA_REPLY" << " ";
 			Message msg(MessageType::GAMEROOM_DATA_REPLY);
 			bool success = false;
 
@@ -182,7 +175,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 				}
 			}
 
-			std::cout << success << "\n";
+			std::cout << "GAMEROOM_DATA_REPLY" << " " << success << "\n";
 			SendMsg(msg, socket);
 		}
 		break;
@@ -240,7 +233,6 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
 
 			Message msg(MessageType::GAMEBOARD_DATA_REPLY);
-			std::cout << "GAMEBOARD_DATA_REPLY" << " ";
 			bool success = false;
 
 			if (clientObj == NULL)
@@ -269,7 +261,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 				}
 			}
 
-			std::cout << success << "\n";
+			std::cout << "GAMEBOARD_DATA_REPLY" << " " << success << "\n";
 			SendMsg(msg, socket);
 		}
 		break;
