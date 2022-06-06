@@ -34,14 +34,16 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 		{
 			//클라이언트와 서버가 연결됨
 			//소캣번호
-			std::cout << "CONNECT_CLIENT SOCKET : " << message.ReadMessage() << "\n";
+			string sk = message.ReadMessage();
+			printf("CONNECT_CLIENT SOCKET : %s\n", sk.c_str());
 		}
 		break;
 		case MessageType::DISCONNECT_CLIENT:
 		{
 			//클라이언트와 서버가 연결이 해제됨
 			//소캣번호
-			std::cout << "DISCONNECT_CLIENT SOCKET : " << message.ReadMessage() << "\n";
+			string sk = message.ReadMessage();
+			printf("DISCONNECT_CLIENT SOCKET : %s\n", sk.c_str());
 
 			CLIENT_MGR.RemoveClient(socket);
 		}
@@ -51,10 +53,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			//클라이언트의 로비 입장 요청
 			//아이디
 			std::string playerName = message.ReadMessage();
-
-			std::cout << "LOBBY_ENTER_REQUEST" << " ";
-			std::cout << "아이디 : ";
-			std::cout << playerName << "\n";
+			printf("LOBBY_ENTER_REQUEST 아이디 : %s\n", playerName.c_str());
 
 			bool success = false;
 			Message msg(MessageType::LOBBY_ENTER_REPLY);
@@ -78,7 +77,8 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 				msg.WriteMessage(false);
 				success = false;
 			}
-			std::cout << "LOBBY_ENTER_REPLY" << " " << success << endl;
+
+			printf("LOBBY_ENTER_REPLY %d\n", success);
 			SendMsg(msg, socket);
 		}
 		break;
@@ -86,64 +86,62 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 		{
 			//로비의 방 데이터를 요청
 			//아이디
-			std::cout << "LOBBY_ROOM_DATA_REQUEST" << " ";
-			std::cout << "아이디 : ";
-			std::cout << message.ReadMessage() << "\n";
+			printf("LOBBY_ROOM_DATA_REQUEST\n");
 
 			Message msg(MessageType::LOBBY_ROOM_DATA_REPLY);
 			GAMEROOM_MGR.WriteRoomDatas(msg);
-			SendMsg(msg, socket);
 
-			std::cout << "LOBBY_ROOM_DATA_REPLY" << "\n";
+			printf("LOBBY_ROOM_DATA_REPLY\n");
+			SendMsg(msg, socket);
 		}
 		break;
 		case MessageType::MAKE_ROOM_REQUEST:
 		{
 			//방을 만드는 것을 요청
-			std::cout << "MAKE_ROOM_REQUEST" << "\n";
+			printf("MAKE_ROOM_REQUEST\n");
 			bool success = GAMEROOM_MGR.CreateRoom(socket);
 
 			Message msg(MessageType::MAKE_ROOM_REPLY);
 			msg.WriteMessage(success);
-			SendMsg(msg, socket);
 
-			std::cout << "MAKE_ROOM_REPLY" << " " << success << "\n";
+			printf("MAKE_ROOM_REPLY %d\n", success);
+			SendMsg(msg, socket);
 		}
 		break;
 		case MessageType::ENTER_ROOM_REQUEST:
 		{
 			//방에 입장하는 것을 요청
 			//방 번호, 키
-			std::cout << "ENTER_ROOM_REQUEST" << "\n";
+			printf("ENTER_ROOM_REQUEST\n");
 			uint roomNum = StringToUint(message.ReadMessage());
 			int64 roomKey = StringToInt64(message.ReadMessage());
 
 			bool success = GAMEROOM_MGR.EnterRoom(socket, roomNum, roomKey);
 			Message msg(MessageType::ENTER_ROOM_REPLY);
 			msg.WriteMessage(success);
-			SendMsg(msg, socket);
 
-			std::cout << "ENTER_ROOM_REPLY" << " " << success << "\n";
+			printf("ENTER_ROOM_REPLY %d\n", success);
+			SendMsg(msg, socket);
 		}
 		break;
 		case MessageType::EXIT_ROOM_REQUEST:
 		{
 			//방에 퇴장하는 것을 요청
-			std::cout << "EXIT_ROOM_REQUEST" << "\n";
+			printf("EXIT_ROOM_REQUEST\n");
 
 			bool success = GAMEROOM_MGR.ExitRoom(socket);
 
 			Message msg(MessageType::EXIT_ROOM_REPLY);
 			msg.WriteMessage(success);
-			SendMsg(msg, socket);
 
-			std::cout << "EXIT_ROOM_REPLY" << " " << success << "\n";
+			printf("EXIT_ROOM_REPLY %d\n", success);
+			SendMsg(msg, socket);
 		}
 		break;
 		case MessageType::GAMEROOM_DATA_REQUEST:
 		{
 			//방 세부 정보를 요청
-			std::cout << "GAMEROOM_DATA_REQUEST" << "\n";
+			printf("GAMEROOM_DATA_REQUEST\n");
 
 			Message msg(MessageType::GAMEROOM_DATA_REPLY);
 			bool success = false;
@@ -175,7 +173,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 				}
 			}
 
-			std::cout << "GAMEROOM_DATA_REPLY" << " " << success << "\n";
+			printf("GAMEROOM_DATA_REPLY %d\n", success);
 			SendMsg(msg, socket);
 		}
 		break;
@@ -183,7 +181,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 		{
 			//게임 준비상태 갱신 요청
 			//준비상태(bool)
-			std::cout << "GAMEROOM_READY_UPDATE" << "\n";
+			printf("GAMEROOM_READY_UPDATE\n");
 			ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
 			bool state = stoi(message.ReadMessage());
 
@@ -200,13 +198,12 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 		case MessageType::GAMEROOM_GAME_START_REQUEST:
 		{
 			//게임 시작 요청
-			std::cout << "GAMEROOM_GAME_START_REQUEST" << "\n";
+			printf("GAMEROOM_GAME_START_REQUEST\n");
 			ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
 
 			uint roomNum = clientObj->playerPos.roomNum;
 			int64 roomKey = clientObj->playerPos.roomKey;
 
-			std::cout << "GAMEROOM_GAME_START_REPLY" << "\n";
 			GameRoom* gameRoom = GAMEROOM_MGR.GetGameRoom(roomNum, roomKey);
 			if (gameRoom != NULL)
 			{
@@ -217,6 +214,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 				Message message(MessageType::GAMEROOM_GAME_START_REPLY);
 				message.WriteMessage(0);
 
+				printf("GAMEROOM_GAME_START_REPLY\n");
 				MSG_MGR.SendMsg(message, socket);
 			}
 		}
@@ -229,7 +227,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			//피스 R
 			//피스 C
 			//피스 종류
-			std::cout << "GAMEBOARD_DATA_REQUEST" << "\n";
+			printf("GAMEBOARD_DATA_REQUEST\n");
 			ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
 
 			Message msg(MessageType::GAMEBOARD_DATA_REPLY);
@@ -261,8 +259,47 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 				}
 			}
 
-			std::cout << "GAMEBOARD_DATA_REPLY" << " " << success << "\n";
+			printf("GAMEBOARD_DATA_REPLY %d\n", success);
 			SendMsg(msg, socket);
+		}
+		break;
+		case MessageType::GAMEBOARD_SET_PIECE:
+		{
+			//게임판에 기물 배치 요청
+			//r
+			//c
+			int pieceR = stoi(message.ReadMessage());
+			int pieceC = stoi(message.ReadMessage());
+
+			printf("GAMEBOARD_SET_PIECE\n");
+
+			ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
+			
+			if (clientObj != NULL)
+			{
+				uint roomNum = clientObj->playerPos.roomNum;
+				int64 roomKey = clientObj->playerPos.roomKey;
+
+				GameRoom* gameRoom = GAMEROOM_MGR.GetGameRoom(roomNum, roomKey);
+				if (gameRoom != NULL)
+				{
+					GameMgr* gameMgr = gameRoom->GetGameMgr();
+					PieceType playerPiece = gameMgr->GetPlayerPiece(socket);
+					if (gameMgr->SetPiece(pieceR, pieceC, playerPiece))
+					{				
+						printf("%d %d %d\n", pieceR, pieceC, playerPiece);
+						if (gameMgr->CheckGameEnd(pieceR, pieceC, playerPiece))
+						{
+
+						}
+						else
+						{
+							gameMgr->NextTurnPlayer();
+							gameRoom->BroadCastBoardData();
+						}
+					}
+				}
+			}
 		}
 		break;
 	}

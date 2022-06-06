@@ -29,10 +29,12 @@ public:
 	void					SetIsPlayerReady(ClientObj* guest, bool state);
 	void					GameStart();
 	GameMgr*				GetGameMgr();
+	void					BroadCastBoardData(ClientObj* ignore = NULL);
+	void					BroadCastRoomData(ClientObj* ignore = NULL);
 
 private:
-	void					BroadCastRoomData(ClientObj* ignore = NULL);
 	bool					IsHost(ClientObj* guest);
+
 private:
 	std::string					roomName;
 	uint						roomNum;

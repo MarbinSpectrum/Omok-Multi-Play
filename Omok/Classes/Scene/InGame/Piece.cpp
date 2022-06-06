@@ -38,13 +38,14 @@ bool Piece::init()
     white->setAnchorPoint(Size(0.5, 0.5));
     this->addChild(white);
 
-    black = Sprite::create("res/White.png");
+    black = Sprite::create("res/Black.png");
     black->setAnchorPoint(Size(0.5, 0.5));
     this->addChild(black);
 
     pieceBtn = ui::Button::create("res/White.png");
     pieceBtn->setOpacity(0);
     pieceBtn->setAnchorPoint(Size(0.5, 0.5));
+    pieceBtn->addClickEventListener(CC_CALLBACK_1(Piece::SetPiece, this));
     this->addChild(pieceBtn);
 
     size = white->getContentSize();
@@ -55,6 +56,15 @@ bool Piece::init()
 void Piece::Update(PieceType pPieceType)
 {
     pieceType = pPieceType;
+}
+
+void Piece::StartSchedule()
+{
+    this->schedule(CC_SCHEDULE_SELECTOR(Piece::UpdateInGame), 0.03f);
+}
+
+void Piece::UpdateInGame(float f)
+{
     white->setVisible(false);
     black->setVisible(false);
     pieceBtn->setVisible(false);
@@ -73,17 +83,11 @@ void Piece::Update(PieceType pPieceType)
     }
 }
 
-void Piece::StartSchedule()
+void Piece::SetPiece(Ref* ref)
 {
-    this->schedule(CC_SCHEDULE_SELECTOR(Piece::UpdateInGame), 0.03f);
-}
+    Message message(MessageType::GAMEBOARD_SET_PIECE);
+    message.WriteMessage(to_string(r));
+    message.WriteMessage(to_string(c));
 
-void Piece::UpdateInGame(float f)
-{
-    Update(pieceType);
-}
-
-void Piece::SetPiece()
-{
-
+    MASSAGE_MGR.SendMsg(message);
 }

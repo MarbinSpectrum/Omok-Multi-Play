@@ -5,10 +5,11 @@
 #include "framework.h"
 #include "Piece.h"
 #include "PieceData.h"
-//#include "../../Message/Message.h"
+#include "DontClick.h"
 
 class Message;
 class Piece;
+class DontClick;
 
 #define CSCENE cocos2d::Scene
 #define DIRECTOR Director::getInstance()
@@ -34,11 +35,11 @@ public:
     CREATE_FUNC(InGame);
 
 private:
-    const int       boardR = 19;
-    const int       boardC = 19;
     GameBoardMap*   piece;
     PieceDatas*     pieceData;
-    bool            yourTurn;
+    DontClick*      dontClick;
 
-    ui::Button*     dontClick;
+    const int       boardR = 19;
+    const int       boardC = 19;
+    bool            yourTurn;
 };

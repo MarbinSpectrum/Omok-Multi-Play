@@ -52,14 +52,9 @@ bool InGame::init()
         }
     }
 
-    dontClick = ui::Button::create("res/Null.png");
-    dontClick->setPosition(Point(visibleSize.width / 2, visibleSize.height / 2));
-    dontClick->setScale(visibleSize.width, visibleSize.height);
-    auto fadeBack = LayerColor::create(Color4B(0, 0, 0, 100),
-        visibleSize.width, visibleSize.height);
-    dontClick->addChild(fadeBack);
-    
-    this->addChild(dontClick, 20);
+    //클릭 금지
+    dontClick = DontClick::create();
+    this->addChild(dontClick, 10);
 
     return true;
 }
@@ -89,6 +84,8 @@ void InGame::Start()
             (*piece)[r][c]->StartSchedule();
         }
     }
+
+    dontClick->StartSchedule();
 }
 
 void InGame::UpdateGameBoard(Message& message)
@@ -98,6 +95,7 @@ void InGame::UpdateGameBoard(Message& message)
 
     //현재턴 여부
     yourTurn = std::stoi(message.ReadMessage());
+    dontClick->Update(yourTurn);
 
     int cnt = std::stoi(message.ReadMessage());
     for (int i = 0; i < cnt; i++)
@@ -125,5 +123,4 @@ void InGame::UpdateGameBoard(Message& message)
         PieceType pieceType = (*pieceData)[i].pieceType;
         (*piece)[r][c]->Update(pieceType);
     }
-
 }

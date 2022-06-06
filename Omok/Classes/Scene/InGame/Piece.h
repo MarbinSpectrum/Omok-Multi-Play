@@ -26,7 +26,7 @@ public:
 
 private:
     void                UpdateInGame(float f);
-    void                SetPiece();
+    void                SetPiece(Ref* ref);
 
 private:
     cocos2d::Sprite*    white;

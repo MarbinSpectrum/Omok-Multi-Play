@@ -81,9 +81,6 @@ bool Lobby::init()
 void Lobby::RequestLobbyRoomList()
 {
     Message message(MessageType::LOBBY_ROOM_DATA_REQUEST);
-    std::string* nickName = PLAYER_MGR.GetNickName();
-
-    message.WriteMessage(*nickName);
     MASSAGE_MGR.SendMsg(message);
 }
 

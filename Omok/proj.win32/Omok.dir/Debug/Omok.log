@@ -1,8 +1,12 @@
-﻿  MassageMgr.cpp
+﻿  InGame.cpp
 D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsBody.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\physics/CCPhysicsShape.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\base/ccUTF8.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\platform/CCSAXParser.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 D:\Program Files\Git\Omok Multi Play\Omok\cocos2d\cocos\ui/UIHelper.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-..\Classes\Manager\MassageMgr\MassageMgr.cpp(93,25): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+..\Classes\Scene\InGame\InGame.cpp(38,33): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+..\Classes\Scene\InGame\InGame.cpp(49,74): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Classes\Scene\InGame\InGame.cpp(49,48): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Classes\Scene\InGame\InGame.cpp(50,33): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+..\Classes\Scene\InGame\InGame.cpp(119,23): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   Omok.vcxproj -> D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\bin\Omok\Debug\Omok.exe

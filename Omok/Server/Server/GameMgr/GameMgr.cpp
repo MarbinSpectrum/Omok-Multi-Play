@@ -59,21 +59,28 @@ bool GameMgr::SetPiece(int r, int c, PieceType pPieceType)
 		return false;
 	}
 
-	if (gameBoard->find(r) == gameBoard->end())
+	(*gameBoard)[r][c] = pPieceType;
+	return true;
+}
+
+void GameMgr::NextTurnPlayer()
+{
+	if (nowTurn == PieceType::BLACK)
 	{
-		//바둑알을 배치
-		(*gameBoard)[r][c] = pPieceType;
-		return true;
+		nowTurn = PieceType::WHITE;
 	}
 	else
 	{
-		if (gameBoard->find(r)->second.find(c) == gameBoard->find(r)->second.end())
-		{
-			//바둑알을 배치
-			(*gameBoard)[r][c] = pPieceType;
-			return true;
-		}
+		nowTurn = PieceType::BLACK;
 	}
+}
+
+bool GameMgr::CheckGameEnd(int r, int c, PieceType pPieceType)
+{
+	
+
+
+
 	return false;
 }
 
@@ -88,7 +95,13 @@ void GameMgr::WriteNowBoard(Message& message, ClientObj* player)
 
 	message.WriteMessage(piece == nowTurn);
 
-	int cnt = gameBoard->size();
+	int cnt = 0;
+	for (GameBoardMap::iterator iter0 = gameBoard->begin(); iter0 != gameBoard->end(); iter0++)
+	{
+		for (std::unordered_map<int, PieceType>::iterator iter1 = iter0->second.begin();
+			iter1 != iter0->second.end(); iter1++)
+			cnt++;
+	}
 	message.WriteMessage(cnt);
 
 	for (GameBoardMap::iterator iter0 = gameBoard->begin(); iter0 != gameBoard->end(); iter0++)
@@ -111,4 +124,16 @@ void GameMgr::ClearBoard()
 {
 	gameBoard->clear();
 }
+
+int GameMgr::GetPlayerNum(SOCKET socket)
+{
+	return (*playerNum)[socket];
+}
+
+PieceType GameMgr::GetPlayerPiece(SOCKET socket)
+{
+	int pn = GetPlayerNum(socket);
+	return (*playerPiece)[pn];
+}
+
 

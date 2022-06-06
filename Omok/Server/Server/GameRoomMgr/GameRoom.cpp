@@ -252,11 +252,36 @@ GameMgr* GameRoom::GetGameMgr()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+/// : 방인원들에게 같은 메세지를 모두 보내준다.
+////////////////////////////////////////////////////////////////////////////////
+void GameRoom::BroadCastBoardData(ClientObj* ignore)
+{
+	for (std::set<ClientObj*>::iterator iter = clientList.begin();
+		iter != clientList.end(); iter++)
+	{
+		ClientObj* client = (*iter);
+		if (client != NULL)
+		{
+			if (ignore != NULL && client->clientKey == ignore->clientKey)
+			{
+				continue;
+			}
+
+			Message msg(MessageType::GAMEBOARD_DATA_REPLY);
+			msg.WriteMessage(1);
+			gameMgr->WriteNowBoard(msg, client);
+
+			printf("GAMEBOARD_DATA_REPLY %d\n", 1);
+			MSG_MGR.SendMsg(msg, client->socket);
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////
 /// : 방인원들에게 방정보가 바뀌었음을 전달한다.
 ////////////////////////////////////////////////////////////////////////////////
 void GameRoom::BroadCastRoomData(ClientObj* ignore)
 {
-
 	for (std::set<ClientObj*>::iterator iter = clientList.begin();
 		iter != clientList.end(); iter++)
 	{

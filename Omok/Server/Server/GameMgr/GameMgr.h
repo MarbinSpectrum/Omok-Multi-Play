@@ -31,11 +31,15 @@ public:
 	void			SetPlayerNum(ClientObj* player, player_num num);
 	void			SetPlayerPiece(player_num playerNum, PieceType pPieceType);
 	bool			SetPiece(int r, int c, PieceType pPieceType);
+	void			NextTurnPlayer();
+	bool			CheckGameEnd(int r, int c, PieceType pPieceType);
 	void			SendGameResult();
 	void			WriteNowBoard(Message& message, ClientObj* player);
 	void			ClearBoard();
+	int				GetPlayerNum(SOCKET socket);
+	PieceType		GetPlayerPiece(SOCKET socket);
 
-public:
+private:
 	GameBoardMap*	gameBoard;
 	PlayerNum*		playerNum;
 	PlayerPiece*	playerPiece;
