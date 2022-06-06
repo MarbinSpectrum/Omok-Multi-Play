@@ -808,6 +808,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\Classes\Manager\PlayerMgr\PlayerMgr.h" />
     <ClInclude Include="..\Classes\Manager\SceneMgr\SceneMgr.h" />
     <ClInclude Include="..\Classes\Scene\InGame\DontClick.h" />
+    <ClInclude Include="..\Classes\Scene\InGame\GameResultScreen.h" />
     <ClInclude Include="..\Classes\Scene\InGame\InGame.h" />
     <ClInclude Include="..\Classes\Scene\InGame\Piece.h" />
     <ClInclude Include="..\Classes\Scene\InGame\PieceData.h" />
@@ -830,6 +831,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\Classes\Manager\PlayerMgr\PlayerMgr.cpp" />
     <ClCompile Include="..\Classes\Manager\SceneMgr\SceneMgr.cpp" />
     <ClCompile Include="..\Classes\Scene\InGame\DontClick.cpp" />
+    <ClCompile Include="..\Classes\Scene\InGame\GameResultScreen.cpp" />
     <ClCompile Include="..\Classes\Scene\InGame\InGame.cpp" />
     <ClCompile Include="..\Classes\Scene\InGame\Piece.cpp" />
     <ClCompile Include="..\Classes\Scene\InGame\PieceData.cpp" />
@@ -916,6 +918,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Resources\res\Defeat.png" />
+    <Image Include="..\Resources\res\Draw.png" />
     <Image Include="..\Resources\res\GameBoard.png" />
     <Image Include="..\Resources\res\GameRoomBack.png" />
     <Image Include="..\Resources\res\GameRoomExit_Normal.png" />
@@ -937,6 +941,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <Image Include="..\Resources\res\Refresh_Normal.png" />
     <Image Include="..\Resources\res\Refresh_Selected.png" />
     <Image Include="..\Resources\res\RoomSlot.png" />
+    <Image Include="..\Resources\res\Victory.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\Resources\fonts\GodoM.ttf" />

@@ -64,6 +64,9 @@
     <ClCompile Include="..\Classes\Scene\InGame\DontClick.cpp">
       <Filter>Source Files\Classes\Scene\InGame</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\InGame\GameResultScreen.cpp">
+      <Filter>Source Files\Classes\Scene\InGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\Classes\AppDelegate.h">
@@ -151,6 +154,9 @@
       <Filter>Source Files\Classes\Scene\InGame</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\InGame\DontClick.h">
+      <Filter>Source Files\Classes\Scene\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\InGame\GameResultScreen.h">
       <Filter>Source Files\Classes\Scene\InGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -277,6 +283,15 @@
       <Filter>Resources\res</Filter>
     </Image>
     <Image Include="..\Resources\res\GameBoard.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\Defeat.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\Victory.png">
+      <Filter>Resources\res</Filter>
+    </Image>
+    <Image Include="..\Resources\res\Draw.png">
       <Filter>Resources\res</Filter>
     </Image>
   </ItemGroup>

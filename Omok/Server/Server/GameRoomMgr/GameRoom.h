@@ -29,7 +29,6 @@ public:
 	void					SetIsPlayerReady(ClientObj* guest, bool state);
 	void					GameStart();
 	GameMgr*				GetGameMgr();
-	void					BroadCastBoardData(ClientObj* ignore = NULL);
 	void					BroadCastRoomData(ClientObj* ignore = NULL);
 
 private:
@@ -43,6 +42,4 @@ private:
 	ClientList					clientList;
 	ClientReady					clientReady;
 	GameMgr*					gameMgr;
-
-	bool						gameRun;
 };

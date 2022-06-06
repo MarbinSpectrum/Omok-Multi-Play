@@ -10,39 +10,51 @@ typedef unsigned int uint;
 
 enum class PieceType
 {
-	EMPTY,
-	WHITE,
-	BLACK
+	EMPTY	= 0,
+	WHITE	= 1,
+	BLACK	= 2
 };
+
+enum class GameResult
+{
+	EMPTY		= 0,
+	VICTORY		= 1,
+	DEFEAT		= 2,
+	DRAW		= 100,
+};
+
+
 
 class GameMgr
 {
-	typedef  uint player_num;
 	typedef  std::unordered_map<int, std::unordered_map<int, PieceType>> GameBoardMap;
-	typedef  std::unordered_map<SOCKET, player_num> PlayerNum;
-	typedef  std::unordered_map<player_num, PieceType> PlayerPiece;
+	typedef  std::unordered_map<PieceType, ClientObj*> PieceClient;
+	typedef  std::unordered_map<int64, PieceType> PlayerPiece;
 public:
 	GameMgr();
 	~GameMgr();
 
 public:
 	void			GameStart(ClientObj* player0, ClientObj* player1);
+	bool			IsGameRun();
 	void			SetPlayerNum(ClientObj* player0, ClientObj* player1);
-	void			SetPlayerNum(ClientObj* player, player_num num);
-	void			SetPlayerPiece(player_num playerNum, PieceType pPieceType);
+	void			SetPlayerPiece(ClientObj* player, PieceType pPieceType);
 	bool			SetPiece(int r, int c, PieceType pPieceType);
 	void			NextTurnPlayer();
-	bool			CheckGameEnd(int r, int c, PieceType pPieceType);
-	void			SendGameResult();
+	GameResult		CheckGameEnd(int r, int c, PieceType pPieceType);
+	PieceType		GetPiece(int r, int c);
+	PieceType		GetPiece(ClientObj* player);
+	uint			GetPieceCount();
+	void			BroadCastBoardData(ClientObj* ignore = NULL);
+	void			BroadCastGameResult(GameResult pGameResult, ClientObj* victoryPlayer = NULL);
 	void			WriteNowBoard(Message& message, ClientObj* player);
 	void			ClearBoard();
-	int				GetPlayerNum(SOCKET socket);
-	PieceType		GetPlayerPiece(SOCKET socket);
 
 private:
 	GameBoardMap*	gameBoard;
-	PlayerNum*		playerNum;
+	PieceClient*	pieceClient;
 	PlayerPiece*	playerPiece;
 
 	PieceType		nowTurn;
+	bool			gameRun;
 };

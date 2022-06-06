@@ -277,6 +277,24 @@ void MassageMgr::OnReceiveMsg(Message message)
 			}
 		}
 		break;
+		case MessageType::GAME_RESULT_REPLY:
+		{
+			int success = std::stoi(message.ReadMessage());
+
+			if (success)
+			{
+				Scene* scene = SCENE_MGR.GetNowScene();
+				InGame* inGameScene = dynamic_cast<InGame*>(scene);
+
+				inGameScene->UpdateGameResult(message);
+
+			}
+			else
+			{
+
+			}
+		}
+		break;
 	}
 }
 

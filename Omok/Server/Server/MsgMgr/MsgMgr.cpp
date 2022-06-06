@@ -284,19 +284,20 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 				if (gameRoom != NULL)
 				{
 					GameMgr* gameMgr = gameRoom->GetGameMgr();
-					PieceType playerPiece = gameMgr->GetPlayerPiece(socket);
+					PieceType playerPiece = gameMgr->GetPiece(clientObj);
 					if (gameMgr->SetPiece(pieceR, pieceC, playerPiece))
 					{				
 						printf("%d %d %d\n", pieceR, pieceC, playerPiece);
-						if (gameMgr->CheckGameEnd(pieceR, pieceC, playerPiece))
+						GameResult gameResult = gameMgr->CheckGameEnd(pieceR, pieceC, playerPiece);
+						if (gameResult != GameResult::EMPTY)
 						{
-
+							gameMgr->BroadCastGameResult(gameResult, clientObj);
 						}
 						else
 						{
 							gameMgr->NextTurnPlayer();
-							gameRoom->BroadCastBoardData();
 						}
+						gameMgr->BroadCastBoardData();
 					}
 				}
 			}

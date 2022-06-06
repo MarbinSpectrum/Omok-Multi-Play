@@ -6,7 +6,6 @@ GameRoom::GameRoom(std::string roomName, uint roomNum, int64 roomKey, ClientObj*
 , roomKey(roomKey)
 , host(host)
 , gameMgr(new GameMgr())
-, gameRun(false)
 {
 	clientList.insert(host);
 	clientReady.insert({ host->clientKey,false });
@@ -67,7 +66,7 @@ bool GameRoom::EnterGameRoom(ClientObj* guest)
 		return false;
 	}
 
-	if (gameRun)
+	if (gameMgr->IsGameRun())
 	{
 		//게임이 진행중이다.
 		return false;
@@ -83,12 +82,8 @@ bool GameRoom::EnterGameRoom(ClientObj* guest)
 		host = guest;
 	}
 
-	if (gameRun == false)
-	{
-		//현재 게임중이 아니라면
-		//현재 방에 있는 인원들에게 방정보가 갱신됬음을 전달
-		BroadCastRoomData(guest);
-	}
+	//현재 방에 있는 인원들에게 방정보가 갱신됬음을 전달
+	BroadCastRoomData(guest);
 
 	return true;
 }
@@ -138,7 +133,7 @@ bool GameRoom::ExitGameRoom(ClientObj* guest)
 		}
 	}
 
-	if (gameRun == false)
+	if (gameMgr->IsGameRun() == false)
 	{
 		//현재 게임중이 아니라면
 		//방인원들에게 방정보가 갱신됬음을 전달
@@ -234,7 +229,10 @@ void GameRoom::GameStart()
 			}
 		}
 	}
+
 	gameMgr->GameStart(client1, client2);
+	SetIsPlayerReady(client1, false);
+	SetIsPlayerReady(client2, false);
 
 	Message message(MessageType::GAMEROOM_GAME_START_REPLY);
 	message.WriteMessage(1);
@@ -244,37 +242,11 @@ void GameRoom::GameStart()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-/// : 플레이어 준비여부
+/// : 게임 매니저
 ////////////////////////////////////////////////////////////////////////////////
 GameMgr* GameRoom::GetGameMgr()
 {
 	return gameMgr;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-/// : 방인원들에게 같은 메세지를 모두 보내준다.
-////////////////////////////////////////////////////////////////////////////////
-void GameRoom::BroadCastBoardData(ClientObj* ignore)
-{
-	for (std::set<ClientObj*>::iterator iter = clientList.begin();
-		iter != clientList.end(); iter++)
-	{
-		ClientObj* client = (*iter);
-		if (client != NULL)
-		{
-			if (ignore != NULL && client->clientKey == ignore->clientKey)
-			{
-				continue;
-			}
-
-			Message msg(MessageType::GAMEBOARD_DATA_REPLY);
-			msg.WriteMessage(1);
-			gameMgr->WriteNowBoard(msg, client);
-
-			printf("GAMEBOARD_DATA_REPLY %d\n", 1);
-			MSG_MGR.SendMsg(msg, client->socket);
-		}
-	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////

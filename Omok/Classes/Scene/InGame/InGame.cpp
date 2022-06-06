@@ -56,6 +56,9 @@ bool InGame::init()
     dontClick = DontClick::create();
     this->addChild(dontClick, 10);
 
+    gameResultScreen = GameResultScreen::create();
+    this->addChild(gameResultScreen, 10);
+
     return true;
 }
 
@@ -86,6 +89,10 @@ void InGame::Start()
     }
 
     dontClick->StartSchedule();
+    
+    gameResultScreen->Update(GameResult::EMPTY);
+    
+    gameResultScreen->StartSchedule();
 }
 
 void InGame::UpdateGameBoard(Message& message)
@@ -123,4 +130,11 @@ void InGame::UpdateGameBoard(Message& message)
         PieceType pieceType = (*pieceData)[i].pieceType;
         (*piece)[r][c]->Update(pieceType);
     }
+}
+
+void InGame::UpdateGameResult(Message& messag)
+{
+    //게임결과
+    GameResult yourState = (GameResult)stoi(messag.ReadMessage());
+    gameResultScreen->Update(yourState);
 }

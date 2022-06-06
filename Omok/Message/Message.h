@@ -36,6 +36,9 @@ enum class MessageType
 	GAMEBOARD_DATA_REPLY		= 161,
 
 	GAMEBOARD_SET_PIECE			= 162,
+
+	GAME_RESULT_REQUEST			= 170,
+	GAME_RESULT_REPLY			= 171,
 };
 
 class Message
