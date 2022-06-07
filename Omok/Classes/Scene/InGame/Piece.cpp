@@ -89,5 +89,5 @@ void Piece::SetPiece(Ref* ref)
     message.WriteMessage(to_string(r));
     message.WriteMessage(to_string(c));
 
-    MASSAGE_MGR.SendMsg(message);
+    MESSAGE_MGR.SendMsg(message);
 }

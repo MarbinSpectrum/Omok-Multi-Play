@@ -71,7 +71,7 @@ void Title::EnterGameLobby(Ref* pSender)
     Message message(MessageType::LOBBY_ENTER_REQUEST);  
     message.WriteMessage(nickName);
 
-    MASSAGE_MGR.SendMsg(message);
+    MESSAGE_MGR.SendMsg(message);
 }
 
 void Title::CantLogin()

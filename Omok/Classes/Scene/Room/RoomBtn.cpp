@@ -116,7 +116,7 @@ void RoomBtn::ReadyBtn(Ref* ref)
     Message message(MessageType::GAMEROOM_READY_UPDATE);
     message.WriteMessage(true);
 
-    MASSAGE_MGR.SendMsg(message);
+    MESSAGE_MGR.SendMsg(message);
 }
 
 void RoomBtn::ReadyOKBtn(Ref* ref)
@@ -124,11 +124,11 @@ void RoomBtn::ReadyOKBtn(Ref* ref)
     Message message(MessageType::GAMEROOM_READY_UPDATE);
     message.WriteMessage(false);
 
-    MASSAGE_MGR.SendMsg(message);
+    MESSAGE_MGR.SendMsg(message);
 }
 
 void RoomBtn::GameStartBtn(Ref* ref)
 {
     Message message(MessageType::GAMEROOM_GAME_START_REQUEST);
-    MASSAGE_MGR.SendMsg(message);
+    MESSAGE_MGR.SendMsg(message);
 }

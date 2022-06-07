@@ -68,7 +68,7 @@ bool Room::init()
 void Room::Start()
 {
     Message message(MessageType::GAMEROOM_DATA_REQUEST);
-    MASSAGE_MGR.SendMsg(message);
+    MESSAGE_MGR.SendMsg(message);
 
     hostSlot->StartSchedule();
     guestSlot->StartSchedule();
@@ -115,5 +115,5 @@ void Room::UpdateRoom(std::string pHost, std::string pGuest, bool pReady, bool i
 void Room::RoomExit(Ref* ref)
 {
     Message message(MessageType::EXIT_ROOM_REQUEST);
-    MASSAGE_MGR.SendMsg(message);
+    MESSAGE_MGR.SendMsg(message);
 }

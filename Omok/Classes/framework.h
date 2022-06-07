@@ -16,11 +16,11 @@
 #include "../Algorithm/Algorithm.h"
 
 #include "Manager/SceneMgr/SceneMgr.h"
-#include "Manager/MassageMgr/MassageMgr.h"
+#include "Manager/MessageMgr/MessageMgr.h"
 #include "Manager/PlayerMgr/PlayerMgr.h"
 
 #define SCENE_MGR SceneMgr::Instance()
-#define MASSAGE_MGR MassageMgr::Instance()
+#define MESSAGE_MGR MessageMgr::Instance()
 #define PLAYER_MGR PlayerMgr::Instance()
 
 #define WINSIZEX 480

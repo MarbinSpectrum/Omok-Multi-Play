@@ -81,7 +81,7 @@ bool Lobby::init()
 void Lobby::RequestLobbyRoomList()
 {
     Message message(MessageType::LOBBY_ROOM_DATA_REQUEST);
-    MASSAGE_MGR.SendMsg(message);
+    MESSAGE_MGR.SendMsg(message);
 }
 
 void Lobby::UpdateLobbyRoomList(RoomDataList* newRoomDataList)
@@ -139,7 +139,7 @@ void Lobby::Start()
 void Lobby::LobbyRoomMake(Ref* pSender)
 {
     Message message(MessageType::MAKE_ROOM_REQUEST);
-    MASSAGE_MGR.SendMsg(message);
+    MESSAGE_MGR.SendMsg(message);
 }
 
 void Lobby::RoomListRefresh(Ref* pSender)

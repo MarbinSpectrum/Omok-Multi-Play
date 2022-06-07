@@ -1,4 +1,2 @@
-﻿  GameMgr.cpp
-D:\Program Files\Git\Omok Multi Play\Omok\Server\Server\GameMgr\GameMgr.cpp(34,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Program Files\Git\Omok Multi Play\Omok\Server\Server\GameMgr\GameMgr.cpp(143,16): warning C4244: '초기화 중': 'int64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  MsgMgr.cpp
   Server.vcxproj -> D:\Program Files\Git\Omok Multi Play\Omok\Server\Debug\Server.exe

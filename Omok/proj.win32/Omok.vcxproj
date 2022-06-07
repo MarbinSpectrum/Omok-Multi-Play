@@ -804,7 +804,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\Algorithm\Algorithm.h" />
     <ClInclude Include="..\Classes\framework.h" />
     <ClInclude Include="..\Classes\Manager\BaseMgr.h" />
-    <ClInclude Include="..\Classes\Manager\MassageMgr\MassageMgr.h" />
+    <ClInclude Include="..\Classes\Manager\MessageMgr\MessageMgr.h" />
     <ClInclude Include="..\Classes\Manager\PlayerMgr\PlayerMgr.h" />
     <ClInclude Include="..\Classes\Manager\SceneMgr\SceneMgr.h" />
     <ClInclude Include="..\Classes\Scene\InGame\DontClick.h" />
@@ -827,7 +827,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\Program Files\Git\Omok Multi Play\Omok\proj.win32\resource.h" />
     <ClCompile Include="..\Algorithm\Algorithm.cpp" />
     <ClCompile Include="..\Classes\Manager\BaseMgr.cpp" />
-    <ClCompile Include="..\Classes\Manager\MassageMgr\MassageMgr.cpp" />
+    <ClCompile Include="..\Classes\Manager\MessageMgr\MessageMgr.cpp" />
     <ClCompile Include="..\Classes\Manager\PlayerMgr\PlayerMgr.cpp" />
     <ClCompile Include="..\Classes\Manager\SceneMgr\SceneMgr.cpp" />
     <ClCompile Include="..\Classes\Scene\InGame\DontClick.cpp" />
@@ -941,6 +941,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <Image Include="..\Resources\res\Refresh_Normal.png" />
     <Image Include="..\Resources\res\Refresh_Selected.png" />
     <Image Include="..\Resources\res\RoomSlot.png" />
+    <Image Include="..\Resources\res\Surrender.png" />
     <Image Include="..\Resources\res\Victory.png" />
   </ItemGroup>
   <ItemGroup>

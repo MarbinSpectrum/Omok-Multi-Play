@@ -134,7 +134,7 @@ int Application::run()
     glview->release();
 
     PLAYER_MGR.Destroy();
-    MASSAGE_MGR.Destroy();
+    MESSAGE_MGR.Destroy();
     SCENE_MGR.Destroy();
 
     ///////////////////////////////////////////////////////////////////////////

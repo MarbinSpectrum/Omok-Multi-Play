@@ -274,7 +274,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			printf("GAMEBOARD_SET_PIECE\n");
 
 			ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
-			
+
 			if (clientObj != NULL)
 			{
 				uint roomNum = clientObj->playerPos.roomNum;
@@ -286,7 +286,7 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 					GameMgr* gameMgr = gameRoom->GetGameMgr();
 					PieceType playerPiece = gameMgr->GetPiece(clientObj);
 					if (gameMgr->SetPiece(pieceR, pieceC, playerPiece))
-					{				
+					{
 						printf("%d %d %d\n", pieceR, pieceC, playerPiece);
 						GameResult gameResult = gameMgr->CheckGameEnd(pieceR, pieceC, playerPiece);
 						if (gameResult != GameResult::EMPTY)
@@ -303,5 +303,30 @@ void MsgMgr::OnReceiveMsg(Message message, SOCKET socket)
 			}
 		}
 		break;
+		case MessageType::GAME_RESULT_REQUEST:
+		{
+			printf("GAME_RESULT_REQUEST\n");
+
+			GameResult gameResult = (GameResult)stoi(message.ReadMessage());
+			if (gameResult == GameResult::DEFEAT)
+			{
+				ClientObj* clientObj = CLIENT_MGR.GetClient(socket);
+
+				if (clientObj != NULL)
+				{
+					uint roomNum = clientObj->playerPos.roomNum;
+					int64 roomKey = clientObj->playerPos.roomKey;
+
+					GameRoom* gameRoom = GAMEROOM_MGR.GetGameRoom(roomNum, roomKey);
+					if (gameRoom != NULL)
+					{
+						GameMgr* gameMgr = gameRoom->GetGameMgr();
+
+						gameMgr->BroadCastGameResult(gameResult, clientObj);
+					}
+				}
+			}
+			break;
+		}
 	}
 }

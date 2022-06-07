@@ -154,7 +154,7 @@ void RoomSlot::EnterRoom(Ref* pSender)
     message.WriteMessage(std::to_string(roomNum));
     message.WriteMessage(std::to_string(roomKey));
 
-    MASSAGE_MGR.SendMsg(message);
+    MESSAGE_MGR.SendMsg(message);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

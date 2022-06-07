@@ -31,6 +31,7 @@ public:
 
     virtual bool        init();
     virtual void        Start() override;
+    void                Surrender(Ref* ref);
     void                UpdateGameBoard(Message& message);
     void                UpdateGameResult(Message& messag);
 

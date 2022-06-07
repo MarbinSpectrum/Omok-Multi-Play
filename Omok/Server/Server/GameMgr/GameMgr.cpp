@@ -182,7 +182,7 @@ void GameMgr::BroadCastBoardData(ClientObj* ignore)
 	}
 }
 
-void GameMgr::BroadCastGameResult(GameResult pGameResult, ClientObj* victoryPlayer)
+void GameMgr::BroadCastGameResult(GameResult pGameResult, ClientObj* targetPlayer)
 {
 	//게임종료
 	gameRun = false;
@@ -199,15 +199,26 @@ void GameMgr::BroadCastGameResult(GameResult pGameResult, ClientObj* victoryPlay
 			{
 				msg.WriteMessage((int)pGameResult);
 			}
-			else
+			else if (pGameResult == GameResult::VICTORY)
 			{
-				if (victoryPlayer != NULL && client->clientKey == victoryPlayer->clientKey)
+				if (targetPlayer != NULL && client->clientKey == targetPlayer->clientKey)
 				{
 					msg.WriteMessage((int)GameResult::VICTORY);
 				}
 				else
 				{
 					msg.WriteMessage((int)GameResult::DEFEAT);
+				}
+			}
+			else
+			{
+				if (targetPlayer != NULL && client->clientKey == targetPlayer->clientKey)
+				{
+					msg.WriteMessage((int)GameResult::DEFEAT);
+				}
+				else
+				{
+					msg.WriteMessage((int)GameResult::VICTORY);
 				}
 			}
 

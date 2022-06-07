@@ -46,7 +46,7 @@ public:
 	PieceType		GetPiece(ClientObj* player);
 	uint			GetPieceCount();
 	void			BroadCastBoardData(ClientObj* ignore = NULL);
-	void			BroadCastGameResult(GameResult pGameResult, ClientObj* victoryPlayer = NULL);
+	void			BroadCastGameResult(GameResult pGameResult, ClientObj* targetPlayer = NULL);
 	void			WriteNowBoard(Message& message, ClientObj* player);
 	void			ClearBoard();
 

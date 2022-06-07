@@ -9,8 +9,8 @@ PlayerMgr::~PlayerMgr()
 {
 	//¼Ò¸êÀÚ
 	Message message(MessageType::DISCONNECT_CLIENT);
-	message.WriteMessage(to_string(MASSAGE_MGR.GetSock()));
-	MASSAGE_MGR.SendMsg(message);
+	message.WriteMessage(to_string(MESSAGE_MGR.GetSock()));
+	MESSAGE_MGR.SendMsg(message);
 }
 
 PlayerMgr* PlayerMgr::instance = NULL;

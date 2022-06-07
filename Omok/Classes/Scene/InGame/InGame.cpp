@@ -1,4 +1,5 @@
 ﻿#include "InGame.h"
+#include "../Classes/Manager/MessageMgr/MessageMgr.h"
 
 USING_NS_CC;
 
@@ -38,6 +39,13 @@ bool InGame::init()
     gameBoard->setScale(0.8, 0.8);
     this->addChild(gameBoard, 0);
    
+    auto surrenderBtn = ui::Button::create("res/Surrender.png");
+    surrenderBtn->setAnchorPoint(Vec2(0.5, 0.5));
+    surrenderBtn->addClickEventListener(CC_CALLBACK_1(InGame::Surrender, this));
+    surrenderBtn->setPosition(Vec2(visibleSize.width - surrenderBtn->getContentSize().width + origin.x,
+        surrenderBtn->getContentSize().height + origin.y));
+    this->addChild(surrenderBtn, 15);
+
     //보드판 생성
     for (int r = 0; r < boardR; r++)
     {
@@ -57,7 +65,7 @@ bool InGame::init()
     this->addChild(dontClick, 10);
 
     gameResultScreen = GameResultScreen::create();
-    this->addChild(gameResultScreen, 10);
+    this->addChild(gameResultScreen, 20);
 
     return true;
 }
@@ -65,7 +73,7 @@ bool InGame::init()
 void InGame::Start()
 {
     Message message(MessageType::GAMEBOARD_DATA_REQUEST);
-    MASSAGE_MGR.SendMsg(message);
+    MESSAGE_MGR.SendMsg(message);
 
     //게임보드 초기화
     pieceData->clear();
@@ -93,6 +101,14 @@ void InGame::Start()
     gameResultScreen->Update(GameResult::EMPTY);
     
     gameResultScreen->StartSchedule();
+}
+
+void InGame::Surrender(Ref* ref)
+{
+    Message message(MessageType::GAME_RESULT_REQUEST);
+    message.WriteMessage((int)GameResult::DEFEAT);
+    
+    MESSAGE_MGR.SendMsg(message);
 }
 
 void InGame::UpdateGameBoard(Message& message)

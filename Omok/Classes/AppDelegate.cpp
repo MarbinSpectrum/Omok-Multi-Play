@@ -40,7 +40,7 @@ void AppDelegate::initGLContextAttrs()
 static int register_all_packages()
 {
     PLAYER_MGR.Init();
-    MASSAGE_MGR.Init();
+    MESSAGE_MGR.Init();
     SCENE_MGR.Init();
     return 0; //flag for packages manager
 }
